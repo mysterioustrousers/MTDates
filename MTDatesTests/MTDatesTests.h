@@ -9,5 +9,5 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 @interface MTDatesTests : SenTestCase
-
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @end
