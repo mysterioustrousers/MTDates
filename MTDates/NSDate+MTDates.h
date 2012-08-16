@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 
 
+typedef enum {
+	MTDateWeekNumberingSystemUS		= 1,	// First week contains January 1st.
+	MTDateWeekNumberingSystemISO	= 4		// First week contains January 4th.
+} MTDateWeekNumberingSystem;
+
+
+
+
+
+
+
 @interface NSDate (MTDates)
 
 
@@ -18,6 +29,9 @@
 
 + (void)setLocale:(NSLocale *)locale;
 + (void)setTimeZone:(NSTimeZone *)timeZone;
++ (void)setFirstDayOfWeek:(NSUInteger)firstDay; // Sunday: 1, Saturday: 7
++ (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system;
+
 
 
 
@@ -181,6 +195,9 @@
 
 - (NSString *)stringFromDatesShortMonth;
 - (NSString *)stringFromDatesFullMonth;
+- (NSString *)stringWithAMPMSymbol;
+- (NSString *)stringWithShortWeekdayTitle;
+- (NSString *)stringWithFullWeekdayTitle;
 - (NSString *)stringFromDateWithFormat:(NSString *)format;		// http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
 - (NSString *)stringFromDateWithISODateTime;
 - (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;

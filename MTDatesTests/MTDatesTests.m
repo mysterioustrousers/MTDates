@@ -640,6 +640,21 @@
 	STAssertTrue([[date stringFromDatesFullMonth] isEqualToString:@"July"], nil);
 }
 
+- (void)test_stringWithAMPMSymbol {
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	STAssertTrue([[date stringWithAMPMSymbol] isEqualToString:@"AM"], nil);
+}
+
+- (void)test_stringWithShortWeekdayTitle {
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	STAssertTrue([[date stringWithShortWeekdayTitle] isEqualToString:@"Fri"], nil);
+}
+
+- (void)test_stringWithFullWeekdayTitle {
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	STAssertTrue([[date stringWithFullWeekdayTitle] isEqualToString:@"Friday"], nil);
+}
+
 - (void)test_stringFromDateWithFormat {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
 	STAssertTrue([[date stringFromDateWithFormat:@"MMM dd yyyy"] isEqualToString:@"Jul 11 1986"], nil);
@@ -707,6 +722,127 @@
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
 	STAssertTrue([date daysInNextMonth] == 31, nil);
 }
+
+
+
+
+
+#pragma mark - INTERNATIONAL WEEK TESTS
+
+- (void)test_firstDayOfWeek {
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
+
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Sun"], nil);
+
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Mon"], nil);
+
+	[NSDate setFirstDayOfWeek:3];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Tue"], nil);
+
+	[NSDate setFirstDayOfWeek:4];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Wed"], nil);
+
+	[NSDate setFirstDayOfWeek:5];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Thu"], nil);
+
+	[NSDate setFirstDayOfWeek:6];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Fri"], nil);
+
+	[NSDate setFirstDayOfWeek:7];
+	STAssertTrue([[[date startOfCurrentWeek] stringWithShortWeekdayTitle] isEqualToString:@"Sat"], nil);
+
+	[NSDate setFirstDayOfWeek:1];
+}
+
+- (void)test_firstWeekOfYear {
+
+	NSDate *date = nil;
+
+	// Jan 1st is a sunday
+	date = [_formatter dateFromString:@"01/01/2012 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 52, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a monday
+	date = [_formatter dateFromString:@"01/01/2001 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a tuesday
+	date = [_formatter dateFromString:@"01/01/2002 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a wednesday
+	date = [_formatter dateFromString:@"01/01/2003 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a thursday
+	date = [_formatter dateFromString:@"01/01/2004 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a friday
+	date = [_formatter dateFromString:@"01/01/2010 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 53, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+	// Jan 1st is a saturday
+	date = [_formatter dateFromString:@"01/01/2011 12:00am"];
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
+	[NSDate setFirstDayOfWeek:2];
+	STAssertTrue([date weekOfYear] == 52, nil);
+
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+	STAssertTrue([date weekOfYear] == 1, nil);
+
+
+	// reset for other tests
+	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
+	[NSDate setFirstDayOfWeek:1];
+}
+
 
 
 

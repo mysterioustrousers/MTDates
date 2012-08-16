@@ -35,6 +35,8 @@ static NSMutableDictionary *_formatters = nil;
 
 static NSLocale *_locale = nil;
 static NSTimeZone *_timeZone = nil;
+static NSUInteger _firstWeekday = 1;
+static NSUInteger _minDaysInFirstWeek = 1;
 
 
 
@@ -51,6 +53,8 @@ static NSTimeZone *_timeZone = nil;
 
 	if (!calendar) {
 		calendar = [[NSCalendar currentCalendar] copy];
+		calendar.firstWeekday = _firstWeekday;
+		calendar.minimumDaysInFirstWeek = _minDaysInFirstWeek;
 		[_calendars setObject:calendar forKey:queueLabel];
 	}
     
@@ -121,6 +125,15 @@ static NSTimeZone *_timeZone = nil;
 + (void)setTimeZone:(NSTimeZone *)timeZone {
 	_timeZone = timeZone;
 	[self reset];
+}
+
++ (void)setFirstDayOfWeek:(NSUInteger)firstDay {
+	_firstWeekday = firstDay;
+	[self reset];
+}
+
++ (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system {
+	_minDaysInFirstWeek = (NSUInteger)system;
 }
 
 
@@ -726,6 +739,18 @@ static NSTimeZone *_timeZone = nil;
 
 - (NSString *)stringFromDatesFullMonth {
 	return [self stringFromDateWithFormat:@"MMMM"];
+}
+
+- (NSString *)stringWithAMPMSymbol {
+	return [self stringFromDateWithFormat:@"a"];
+}
+
+- (NSString *)stringWithShortWeekdayTitle {
+	return [self stringFromDateWithFormat:@"E"];
+}
+
+- (NSString *)stringWithFullWeekdayTitle {
+	return [self stringFromDateWithFormat:@"EEEE"];
 }
 
 - (NSString *)stringFromDateWithFormat:(NSString *)format {
