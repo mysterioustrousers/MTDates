@@ -33,10 +33,10 @@ static NSMutableDictionary *_calendars	= nil;
 static NSMutableDictionary *_components = nil;
 static NSMutableDictionary *_formatters = nil;
 
-static NSLocale *_locale = nil;
-static NSTimeZone *_timeZone = nil;
-static NSUInteger _firstWeekday = 1;
-static NSUInteger _minDaysInFirstWeek = 1;
+static NSLocale		*_locale			= nil;
+static NSTimeZone	*_timeZone			= nil;
+static NSUInteger	_firstWeekday		= 1;
+static NSUInteger	_minDaysInFirstWeek = 1;
 
 
 
@@ -117,23 +117,28 @@ static NSUInteger _minDaysInFirstWeek = 1;
 	[_formatters removeAllObjects];
 }
 
-+ (void)setLocale:(NSLocale *)locale {
++ (void)setLocale:(NSLocale *)locale
+{
 	_locale = locale;
 	[self reset];
 }
 
-+ (void)setTimeZone:(NSTimeZone *)timeZone {
++ (void)setTimeZone:(NSTimeZone *)timeZone
+{
 	_timeZone = timeZone;
 	[self reset];
 }
 
-+ (void)setFirstDayOfWeek:(NSUInteger)firstDay {
++ (void)setFirstDayOfWeek:(NSUInteger)firstDay
+{
 	_firstWeekday = firstDay;
 	[self reset];
 }
 
-+ (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system {
++ (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system
+{
 	_minDaysInFirstWeek = (NSUInteger)system;
+	[self reset];
 }
 
 
@@ -309,14 +314,7 @@ static NSUInteger _minDaysInFirstWeek = 1;
 - (NSUInteger)hourOfDay
 {
     NSDateComponents *components = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self];
-    return [components hour];
-}
-
-- (NSUInteger)hourOfDayNonMilitary
-{
-    NSDateComponents *components = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self];
-    NSInteger hour = [components hour] % 12;
-    return (hour == 0 ? 12 : hour);
+	return [components hour];
 }
 
 - (NSUInteger)minuteOfHour
@@ -733,23 +731,32 @@ static NSUInteger _minDaysInFirstWeek = 1;
 
 #pragma mark - STRINGS
 
-- (NSString *)stringFromDatesShortMonth {
+- (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format {
+	if (format == MTDateHourFormat24Hour) {
+		return [self stringFromDateWithFormat:@"HH:mm"];
+	}
+	else {
+		return [self stringFromDateWithFormat:@"hh:mma"];
+	}
+}
+
+- (NSString *)stringFromDateWithShortMonth {
 	return [self stringFromDateWithFormat:@"MMM"];
 }
 
-- (NSString *)stringFromDatesFullMonth {
+- (NSString *)stringFromDateWithFullMonth {
 	return [self stringFromDateWithFormat:@"MMMM"];
 }
 
-- (NSString *)stringWithAMPMSymbol {
+- (NSString *)stringFromDateWithAMPMSymbol {
 	return [self stringFromDateWithFormat:@"a"];
 }
 
-- (NSString *)stringWithShortWeekdayTitle {
+- (NSString *)stringFromDateWithShortWeekdayTitle {
 	return [self stringFromDateWithFormat:@"E"];
 }
 
-- (NSString *)stringWithFullWeekdayTitle {
+- (NSString *)stringFromDateWithFullWeekdayTitle {
 	return [self stringFromDateWithFormat:@"EEEE"];
 }
 
@@ -811,14 +818,6 @@ static NSUInteger _minDaysInFirstWeek = 1;
 
 
 #pragma mark - MISC
-
-+ (NSUInteger)convertHour:(NSUInteger)hour toMilitaryFromAM:(BOOL)isAM
-{
-    if (hour >= 12) {
-        return (isAM ? 0 : 12);
-    }
-    return (isAM ? hour : hour + 12);
-}
 
 + (NSArray *)datesCollectionFromDate:(NSDate *)startDate untilDate:(NSDate *)endDate
 {

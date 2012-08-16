@@ -6,13 +6,18 @@
 //  Copyright 2011 Mysterious Trousers, LLC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
-
+// Week Numbering System
 typedef enum {
 	MTDateWeekNumberingSystemUS		= 1,	// First week contains January 1st.
 	MTDateWeekNumberingSystemISO	= 4		// First week contains January 4th.
 } MTDateWeekNumberingSystem;
+
+// Hour Format
+typedef enum {
+	MTDateHourFormat24Hour,					// 23:00
+	MTDateHourFormat12Hour					// 11:00PM
+} MTDateHourFormat;
 
 
 
@@ -69,7 +74,6 @@ typedef enum {
 - (NSUInteger)monthOfYear;
 - (NSUInteger)dayOfMonth;
 - (NSUInteger)hourOfDay;
-- (NSUInteger)hourOfDayNonMilitary;
 - (NSUInteger)minuteOfHour;
 - (NSUInteger)secondOfMinute;
 - (NSTimeInterval)secondsIntoDay;
@@ -193,11 +197,12 @@ typedef enum {
 
 #pragma mark - STRINGS
 
-- (NSString *)stringFromDatesShortMonth;
-- (NSString *)stringFromDatesFullMonth;
-- (NSString *)stringWithAMPMSymbol;
-- (NSString *)stringWithShortWeekdayTitle;
-- (NSString *)stringWithFullWeekdayTitle;
+- (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format;
+- (NSString *)stringFromDateWithShortMonth;
+- (NSString *)stringFromDateWithFullMonth;
+- (NSString *)stringFromDateWithAMPMSymbol;
+- (NSString *)stringFromDateWithShortWeekdayTitle;
+- (NSString *)stringFromDateWithFullWeekdayTitle;
 - (NSString *)stringFromDateWithFormat:(NSString *)format;		// http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
 - (NSString *)stringFromDateWithISODateTime;
 - (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;
@@ -207,7 +212,6 @@ typedef enum {
 
 #pragma mark - MISC
 
-+ (NSUInteger)convertHour:(NSUInteger)hour toMilitaryFromAM:(BOOL)isAM;
 + (NSArray *)datesCollectionFromDate:(NSDate *)startDate untilDate:(NSDate *)endDate;
 - (NSArray *)hoursInCurrentDayAsDatesCollection;
 - (BOOL)isInAM;
