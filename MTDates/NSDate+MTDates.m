@@ -1,5 +1,5 @@
 //
-//  NSDate+Utilities.m
+//  NSDate+MTDates.m
 //  calvetica
 //
 //  Created by Adam Kirk on 4/21/11.
@@ -33,10 +33,10 @@ static NSMutableDictionary *_calendars	= nil;
 static NSMutableDictionary *_components = nil;
 static NSMutableDictionary *_formatters = nil;
 
-static NSLocale		*_locale			= nil;
-static NSTimeZone	*_timeZone			= nil;
-static NSUInteger	_firstWeekday		= 1;
-static NSUInteger	_minDaysInFirstWeek = 1;
+static NSLocale						*_locale				= nil;
+static NSTimeZone					*_timeZone				= nil;
+static NSUInteger					_firstWeekday			= 1;
+static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 
 
@@ -54,7 +54,7 @@ static NSUInteger	_minDaysInFirstWeek = 1;
 	if (!calendar) {
 		calendar = [[NSCalendar currentCalendar] copy];
 		calendar.firstWeekday = _firstWeekday;
-		calendar.minimumDaysInFirstWeek = _minDaysInFirstWeek;
+		calendar.minimumDaysInFirstWeek = (NSUInteger)_weekNumberingSystem;
 		[_calendars setObject:calendar forKey:queueLabel];
 	}
     
@@ -137,7 +137,7 @@ static NSUInteger	_minDaysInFirstWeek = 1;
 
 + (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system
 {
-	_minDaysInFirstWeek = (NSUInteger)system;
+	_weekNumberingSystem = system;
 	[self reset];
 }
 
@@ -152,8 +152,15 @@ static NSUInteger	_minDaysInFirstWeek = 1;
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    NSDate *result = [formatter dateFromString:ISOString];
-    return result;
+    return [formatter dateFromString:ISOString];
+}
+
++ (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format
+{
+	if (string == nil || (NSNull *)string == [NSNull null]) return nil;
+	NSDateFormatter* formatter = [self formatter];
+    [formatter setDateFormat:format];
+    return [formatter dateFromString:string];
 }
 
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day
@@ -878,3 +885,21 @@ static NSUInteger	_minDaysInFirstWeek = 1;
 
 
 @end
+
+
+
+
+#pragma mark - Common Date Formats
+
+NSString *const MTDatesFormatDefault		= @"EE MMM dd yyyy HH:mm:ss";		// Sat Jun 09 2007 17:46:21
+NSString *const MTDatesFormatShortDate		= @"M/d/yy";						// 6/9/07
+NSString *const MTDatesFormatMediumDate		= @"MMM d, yyyy";					// Jun 9, 2007
+NSString *const MTDatesFormatLongDate		= @"MMMM d, yyyy";					// June 9, 2007
+NSString *const MTDatesFormatFullDate		= @"EEEE, MMMM d, yyyy";			// Saturday, June 9, 2007
+NSString *const MTDatesFormatShortTime		= @"h:mm a";						// 5:46 PM
+NSString *const MTDatesFormatMediumTime		= @"h:mm:ss a";						// 5:46:21 PM
+NSString *const MTDatesFormatLongTime		= @"h:mm:ss a zzz";					// 5:46:21 PM EST
+NSString *const MTDatesFormatISODate		= @"yyyy-MM-dd";					// 2007-06-09
+NSString *const MTDatesFormatISOTime		= @"HH:mm:ss";						// 17:46:21
+NSString *const MTDatesFormatISODateTime	= @"yyyy-MM-dd'T'HH:mm:ss";			// 2007-06-09T17:46:21
+//NSString *const MTDatesFormatISOUTCDateTime	= @"yyyy-MM-dd'T'HH:mm:ss'Z'";		// 2007-06-09T22:46:21Z

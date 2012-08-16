@@ -1,5 +1,5 @@
 //
-//  NSDate+Utilities.h
+//  NSDate+MTDates.h
 //  calvetica
 //
 //  Created by Adam Kirk on 4/21/11.
@@ -10,7 +10,8 @@
 // Week Numbering System
 typedef enum {
 	MTDateWeekNumberingSystemUS		= 1,	// First week contains January 1st.
-	MTDateWeekNumberingSystemISO	= 4		// First week contains January 4th.
+	MTDateWeekNumberingSystemISO	= 4,	// First week contains January 4th.
+//	MTDateWeekNumberingSystemSimple	= 8		// First week starts on January 1st, next on Jan 8th, etc.
 } MTDateWeekNumberingSystem;
 
 // Hour Format
@@ -43,6 +44,7 @@ typedef enum {
 #pragma mark - CONSTRUCTORS
 
 + (NSDate *)dateFromISOString:(NSString *)ISOString;
++ (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format;
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day;
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute;
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
@@ -223,3 +225,22 @@ typedef enum {
 
 
 @end
+
+
+
+
+#pragma mark - Common Date Formats
+// for use with stringFromDateWithFormat:
+
+extern NSString *const MTDatesFormatDefault;			// Sat Jun 09 2007 17:46:21
+extern NSString *const MTDatesFormatShortDate;			// 6/9/07
+extern NSString *const MTDatesFormatMediumDate;			// Jun 9, 2007
+extern NSString *const MTDatesFormatLongDate;			// June 9, 2007
+extern NSString *const MTDatesFormatFullDate;			// Saturday, June 9, 2007
+extern NSString *const MTDatesFormatShortTime;			// 5:46 PM
+extern NSString *const MTDatesFormatMediumTime;			// 5:46:21 PM
+extern NSString *const MTDatesFormatLongTime;			// 5:46:21 PM EST
+extern NSString *const MTDatesFormatISODate;			// 2007-06-09
+extern NSString *const MTDatesFormatISOTime;			// 17:46:21
+extern NSString *const MTDatesFormatISODateTime;		// 2007-06-09T17:46:21
+//extern NSString *const MTDatesFormatISOUTCDateTime;		// 2007-06-09T22:46:21Z

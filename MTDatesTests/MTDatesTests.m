@@ -34,6 +34,13 @@
 	STAssertTrue([[NSDate dateFromISOString:@"1986-07-11T17:29:00"] isEqualToDate:date], nil);
 }
 
+- (void)test_dateFromString_usingFormat
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [NSDate dateFromString:@"11 July 1986 11-29-am" usingFormat:@"dd MMMM yyyy hh'-'mm'-'a"];
+	STAssertTrue([date isEqualToDate:date2], nil);
+}
+
 - (void)test_dateFromYear_month_day 
 {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 12:00am"];
@@ -858,7 +865,6 @@
 
 - (void)test_firstWeekOfYear 
 {
-
 	NSDate *date = nil;
 
 	// Jan 1st is a sunday
@@ -945,6 +951,132 @@
 }
 
 
+
+
+
+#pragma mark - COMMON DATE FORMATS
+
+- (void)test_MTDatesFormatDefault
+{
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
+	NSString *string = @"Sat Jun 09 2007 17:46:21";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatDefault] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatDefault] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatShortDate
+{
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
+	NSString *string = @"6/9/07";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatShortDate] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatShortDate] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatMediumDate
+{
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
+	NSString *string = @"Jun 9, 2007";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatMediumDate] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatMediumDate] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatLongDate
+{
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
+	NSString *string = @"June 9, 2007";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatLongDate] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatLongDate] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatFullDate
+{
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
+	NSString *string = @"Saturday, June 9, 2007";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatFullDate] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatFullDate] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatShortTime
+{
+	NSDate *date = [_formatter dateFromString:@"01/01/1970 05:46pm"];
+	NSString *string = @"5:46 PM";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatShortTime] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatShortTime] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatMediumTime
+{
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+	NSDate *date = [_formatter dateFromString:@"01/01/1970 05:46:21pm"];
+	NSString *string = @"5:46:21 PM";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatMediumTime] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatMediumTime] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatLongTime
+{
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa zzz";
+	[NSDate setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EST"]];
+	NSDate *date = [_formatter dateFromString:@"01/01/1970 05:46:21pm EST"];
+	NSString *string = @"5:46:21 PM EST";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatLongTime] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatLongTime] isEqualToString:string], nil);
+
+	[NSDate setTimeZone:[NSTimeZone defaultTimeZone]];
+}
+
+- (void)test_MTDatesFormatISODate
+{
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
+	NSString *string = @"2007-06-09";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISODate] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatISODate] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatISOTime
+{
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+	NSDate *date = [_formatter dateFromString:@"01/01/1970 05:46:21pm"];
+	NSString *string = @"17:46:21";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISOTime] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatISOTime] isEqualToString:string], nil);
+}
+
+- (void)test_MTDatesFormatISODateTime
+{
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+	NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
+	NSString *string = @"2007-06-09T17:46:21";
+
+	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISODateTime] isEqualToDate:date], nil);
+	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatISODateTime] isEqualToString:string], nil);
+}
+
+//- (void) test_MTDatesFormatISOUTCDateTime
+//{
+//	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+//	NSDate *date = [_formatter dateFromString:@"06/09/2007 10:46:21pm"];
+//	NSString *string = @"2007-06-09T22:46:21Z";
+//	NSDate *d = [NSDate dateFromString:string usingFormat:MTDatesFormatISOUTCDateTime];
+//	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISOUTCDateTime] isEqualToDate:date], nil);
+//	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatISOUTCDateTime] isEqualToString:string], nil);
+//}
+//
+//- (void)testThis {
+//	_formatter.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+//	NSDate *date = [_formatter dateFromString:@"2012-08-16 13:11:00"];
+//}
 
 
 @end
