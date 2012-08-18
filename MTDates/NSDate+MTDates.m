@@ -799,31 +799,31 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 	NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
 	if (months > 0) {
-		[s appendFormat:@"%d months, ", months];
+		[s appendFormat:@"%dl months, ", months];
 		absInterval -= months * SECONDS_IN_MONTH;
 	}
 	
 	NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
 	if (days > 0) {
-		[s appendFormat:@"%d days, ", days];
+		[s appendFormat:@"%dl days, ", days];
 		absInterval -= days * SECONDS_IN_DAY;
 	}
 	
 	NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
 	if (hours > 0) {
-		[s appendFormat:@"%d hours, ", hours];
+		[s appendFormat:@"%dl hours, ", hours];
 		absInterval -= hours * SECONDS_IN_HOUR;
 	}
 
 	NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
 	if (minutes > 0) {
-		[s appendFormat:@"%d minutes, ", minutes];
+		[s appendFormat:@"%dl minutes, ", minutes];
 		absInterval -= minutes * SECONDS_IN_MINUTE;
 	}
 	
 	NSInteger seconds = absInterval;
 	if (seconds > 0) {
-		[s appendFormat:@"%d seconds, ", seconds];
+		[s appendFormat:@"%dl seconds, ", seconds];
 	}
 	
 	NSString *preString = [s stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ,"]];
