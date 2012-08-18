@@ -193,6 +193,7 @@ typedef enum {
 - (BOOL)isWithinSameWeek:(NSDate *)date;
 - (BOOL)isWithinSameDay:(NSDate *)date;
 - (BOOL)isWithinSameHour:(NSDate *)date;
+- (BOOL)isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2;
 
 
 

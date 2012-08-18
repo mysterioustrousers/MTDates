@@ -733,6 +733,15 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return NO;
 }
 
+- (BOOL)isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2 {
+	if ([self isOnOrAfter:date1] && [self isOnOrBefore:date2])
+		return YES;
+	else if ([self isOnOrAfter:date2] && [self isOnOrBefore:date1])
+		return YES;
+	else
+		return NO;
+}
+
 
 
 
