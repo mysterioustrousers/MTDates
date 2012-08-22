@@ -45,7 +45,7 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSCalendar *)calendar
 {
-	if (!_calendars) _calendars = [NSMutableDictionary dictionary];
+	if (!_calendars) _calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
@@ -63,7 +63,7 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSDateComponents *)components
 {
-	if (!_components) _components = [NSMutableDictionary dictionary];
+	if (!_components) _components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
@@ -93,7 +93,7 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSDateFormatter *)formatter
 {
-	if (!_formatters) _formatters = [NSMutableDictionary dictionary];
+	if (!_formatters) _formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
