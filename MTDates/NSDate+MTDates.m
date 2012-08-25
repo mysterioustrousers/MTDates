@@ -341,6 +341,11 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return [self timeIntervalSinceDate:[self startOfCurrentDay]];
 }
 
+- (NSDateComponents *)components
+{
+	NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit;
+	return [[NSDate calendar] components:units fromDate:self];
+}
 
 
 

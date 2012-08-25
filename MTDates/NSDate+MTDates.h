@@ -79,6 +79,7 @@ typedef enum {
 - (NSUInteger)minuteOfHour;
 - (NSUInteger)secondOfMinute;
 - (NSTimeInterval)secondsIntoDay;
+- (NSDateComponents *)components;
 
 
 
