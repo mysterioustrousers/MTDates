@@ -248,6 +248,11 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return [[NSDate calendar] dateByAddingComponents:comps toDate:self options:0];
 }
 
++ (NSDate *)dateFromComponents:(NSDateComponents *)components
+{
+	return [[NSDate calendar] dateFromComponents:components];
+}
+
 
 
 
