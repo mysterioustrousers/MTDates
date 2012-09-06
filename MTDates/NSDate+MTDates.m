@@ -421,6 +421,14 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 }
 
 
+- (NSInteger)yearsUntilDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSYearCalendarUnit fromDate:self toDate:date options:0];
+    NSInteger years = [comps year];
+    return years;
+}
+
+
 #pragma mark months
 
 - (NSDate *)startOfPreviousMonth
@@ -480,6 +488,14 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 - (NSInteger)monthsSinceDate:(NSDate *)date
 {
     NSDateComponents *components = [[NSDate calendar] components:NSMonthCalendarUnit fromDate:date toDate:self options:0];
+    NSInteger months = [components month];
+    return months;
+}
+
+
+- (NSInteger)monthsUntilDate:(NSDate *)date
+{
+    NSDateComponents *components = [[NSDate calendar] components:NSMonthCalendarUnit fromDate:self toDate:date options:0];
     NSInteger months = [components month];
     return months;
 }
@@ -549,6 +565,13 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return weeks;
 }
 
+- (NSInteger)weeksUntilDate:(NSDate *)date
+{
+    NSDateComponents *components = [[NSDate calendar] components:NSWeekCalendarUnit fromDate:self toDate:date options:0];
+    NSInteger weeks = [components week];
+    return weeks;
+}
+
 
 #pragma mark days
 
@@ -609,6 +632,14 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 - (NSInteger)daysSinceDate:(NSDate *)date
 {    
     NSDateComponents *comps = [[NSDate calendar] components:NSDayCalendarUnit fromDate:date toDate:self options:0];
+    NSInteger days = [comps day];
+    return days;
+}
+
+
+- (NSInteger)daysUntilDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSDayCalendarUnit fromDate:self toDate:date options:0];
     NSInteger days = [comps day];
     return days;
 }
@@ -677,7 +708,12 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 }
 
 
-
+- (NSInteger)hoursUntilDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self toDate:date options:0];
+    NSInteger hours = [comps hour];
+    return hours;
+}
 
 
 
