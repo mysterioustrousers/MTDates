@@ -278,6 +278,13 @@
 }
 
 
+- (void)test_yearsUntilDate
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [_formatter dateFromString:@"07/11/1994 11:29am"];
+	STAssertTrue([date yearsUntilDate:date2] == 8, nil);
+}
+
 
 #pragma mark months
 
@@ -363,6 +370,14 @@
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
 	NSDate *date2 = [_formatter dateFromString:@"10/11/1986 11:29am"];
 	STAssertTrue([date2 monthsSinceDate:date] == 3, nil);
+}
+
+
+- (void)test_monthsUntilDate
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [_formatter dateFromString:@"10/11/1986 11:29am"];
+	STAssertTrue([date monthsUntilDate:date2] == 3, nil);
 }
 
 
@@ -454,6 +469,13 @@
 }
 
 
+- (void)test_weeksUntilDate
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [_formatter dateFromString:@"02/07/1986 11:29am"];
+	STAssertTrue([date2 weeksUntilDate:date] == 22, nil);
+}
+
 
 #pragma mark days
 
@@ -540,6 +562,14 @@
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
 	NSDate *date2 = [_formatter dateFromString:@"07/15/1986 11:29am"];
 	STAssertTrue([date2 daysSinceDate:date] == 4, nil);
+}
+
+
+- (void)test_daysUntilDate
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [_formatter dateFromString:@"07/15/1986 11:29am"];
+	STAssertTrue([date daysUntilDate:date2] == 4, nil);
 }
 
 
@@ -631,6 +661,12 @@
 }
 
 
+- (void)test_hoursUntilDate
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+	NSDate *date2 = [_formatter dateFromString:@"07/11/1986 07:29am"];
+	STAssertTrue([date2 hoursUntilDate:date] == 4, nil);
+}
 
 
 
