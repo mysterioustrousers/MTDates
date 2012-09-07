@@ -105,6 +105,7 @@ typedef enum {
 - (NSDate *)dateYearsAfter:(NSUInteger)years;
 
 - (NSInteger)yearsSinceDate:(NSDate *)date;
+- (NSInteger)yearsUntilDate:(NSDate *)date;
 
 
 #pragma mark months
@@ -124,6 +125,7 @@ typedef enum {
 - (NSDate *)dateMonthsAfter:(NSUInteger)months;
 
 - (NSInteger)monthsSinceDate:(NSDate *)date;
+- (NSInteger)monthsUntilDate:(NSDate *)date;
 
 
 #pragma mark weeks
@@ -143,6 +145,7 @@ typedef enum {
 - (NSDate *)dateWeeksAfter:(NSUInteger)weeks;
 
 - (NSInteger)weeksSinceDate:(NSDate *)date;
+- (NSInteger)weeksUntilDate:(NSDate *)date;
 
 
 #pragma mark days
@@ -162,6 +165,7 @@ typedef enum {
 - (NSDate *)dateDaysAfter:(NSUInteger)days;
 
 - (NSInteger)daysSinceDate:(NSDate *)date;
+- (NSInteger)daysUntilDate:(NSDate *)date;
 
 
 #pragma mark hours
@@ -181,7 +185,7 @@ typedef enum {
 - (NSDate *)dateHoursAfter:(NSUInteger)hours;
 
 - (NSInteger)hoursSinceDate:(NSDate *)date;
-
+- (NSInteger)hoursUntilDate:(NSDate *)date;
 
 
 
