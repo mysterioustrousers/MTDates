@@ -10,4 +10,5 @@
 
 @interface MTDatesTests : SenTestCase
 @property (strong, nonatomic) NSDateFormatter *formatter;
+@property (strong, nonatomic) NSDateFormatter *GMTFormatter;
 @end
