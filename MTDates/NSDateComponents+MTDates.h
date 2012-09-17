@@ -19,5 +19,6 @@
 
 + (NSDateComponents *)componentsFromString:(NSString *)string;
 - (NSString *)stringValue;
+- (BOOL)isEqualToDateComponents:(NSDateComponents *)components;
 
 @end
