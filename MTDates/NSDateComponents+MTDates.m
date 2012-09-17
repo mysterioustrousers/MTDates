@@ -81,8 +81,7 @@
 	BOOL wkofM	= self.weekOfMonth			== components.weekOfMonth;
 	BOOL wkofY	= self.weekOfYear			== components.weekOfYear;
 	BOOL YfWoY	= self.yearForWeekOfYear	== components.yearForWeekOfYear;
-	BOOL isLeM	= self.isLeapMonth			== components.isLeapMonth;
-	return cal && tz && era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY && isLeM;
+	return cal && tz && era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
 
