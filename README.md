@@ -203,3 +203,23 @@ NOTE: You may need to add `-all_load` to "Other Linker Flags" in your targets bu
 	- (NSUInteger)daysInCurrentMonth;
 	- (NSUInteger)daysInPreviousMonth;
 	- (NSUInteger)daysInNextMonth;
+
+### NSDateComponents Additions
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"10 October 2009"];
+	[comps stringValue] 	// => @"10 October 2009"
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"October 2009"];
+	[comps stringValue] 	// => @"October 2009"
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"2009"];
+	[comps stringValue] 	// => @"2009"
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"10 2009"];
+	[comps stringValue] 	// => @"October 2009"
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"10 July"];
+	[comps stringValue] 	// => @"10 July"
+
+	NSDateComponents *comps = [NSDateComponents componentsFromString:@"10"];
+	[comps stringValue] 	// => @"October"
