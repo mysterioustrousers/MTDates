@@ -65,8 +65,6 @@
 
 - (BOOL)isEqualToDateComponents:(NSDateComponents *)components
 {
-	BOOL cal	= [self.calendar.calendarIdentifier isEqualToString:components.calendar.calendarIdentifier];
-	BOOL tz		= [self.timeZone.name isEqualToString:self.timeZone.name];
 	BOOL era	= self.era					== components.era;
 	BOOL year	= self.year					== components.year;
 	BOOL month	= self.month				== components.month;
@@ -81,7 +79,7 @@
 	BOOL wkofM	= self.weekOfMonth			== components.weekOfMonth;
 	BOOL wkofY	= self.weekOfYear			== components.weekOfYear;
 	BOOL YfWoY	= self.yearForWeekOfYear	== components.yearForWeekOfYear;
-	return cal && tz && era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
+	return era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
 
