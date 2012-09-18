@@ -226,7 +226,7 @@ NOTE: You may need to add `-all_load` to "Other Linker Flags" in your targets bu
 
 ### Contributors
 
-* Adam Kirk			@atomkirk
-* Parker Wightman ‏ @parkerwightman
-* James Schultz ‏ 	@boxenjim
-* Ryan Maxwell		@ryanmaxwell
+* [Adam Kirk](https://github.com/atomkirk) @atomkirk
+* [Parker Wightman](https://github.com/pwightman) @parkerwightman
+* [James Schultz](https://github.com/boxenjim) @boxenjim
+* [Ryan Maxwell](https://github.com/ryanmaxwell) @ryanmaxwell
