@@ -225,6 +225,7 @@ NOTE: You may need to add `-all_load` to "Other Linker Flags" in your targets bu
 	[comps stringValue] 	// => @"October"
 
 ### Contributors
+
 Adam Kirk			@atomkirk
 Parker Wightman ‏ 	@parkerwightman
 James Schultz ‏ 	@boxenjim
