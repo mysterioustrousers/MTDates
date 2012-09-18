@@ -223,3 +223,9 @@ NOTE: You may need to add `-all_load` to "Other Linker Flags" in your targets bu
 
 	NSDateComponents *comps = [NSDateComponents componentsFromString:@"10"];
 	[comps stringValue] 	// => @"October"
+
+### Contributors
+Adam Kirk			@atomkirk
+Parker Wightman ‏ 	@parkerwightman
+James Schultz ‏ 	@boxenjim
+Ryan Maxwell		@ryanmaxwell
