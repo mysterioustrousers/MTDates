@@ -30,7 +30,6 @@
 
 
 
-
 #pragma mark - CONSTRUCTORS
 
 - (void)test_dateFromISOString 
@@ -990,6 +989,23 @@
 	// reset for other tests
 	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
 	[NSDate setFirstDayOfWeek:1];
+}
+
+
+
+#pragma mark - TIMEZONE TESTS
+
+- (void)test_changeTimezone
+{
+	[NSDate setTimeZone:[NSTimeZone timeZoneWithName:@"America/Denver"]];
+	NSDate *saltLake = [NSDate dateFromYear:2012 month:9 day:18 hour:19 minute:29];
+
+	[NSDate setTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]];
+	NSDate *seattle = [NSDate dateFromYear:2012 month:9 day:18 hour:18 minute:29];
+
+	[NSDate setTimeZone:[NSTimeZone defaultTimeZone]];
+
+	STAssertTrue([saltLake isEqualToDate:seattle], nil);
 }
 
 
