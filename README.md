@@ -203,6 +203,7 @@ NOTE: You may need to add `-all_load` to "Other Linker Flags" in your targets bu
 	- (NSUInteger)daysInCurrentMonth;
 	- (NSUInteger)daysInPreviousMonth;
 	- (NSUInteger)daysInNextMonth;
+	- (NSDate *)inTimeZone:(NSTimeZone *)timezone;
 
 ### NSDateComponents Additions
 
