@@ -870,6 +870,18 @@
 	STAssertTrue([date daysInNextMonth] == 31, nil);
 }
 
+- (void)test_toTimeZone
+{
+	[NSDate setTimeZone:[NSTimeZone timeZoneWithName:@"America/Denver"]];
+	NSDate *salt_lake	= [_formatter dateFromString:@"07/11/1986 09:23am"];
+
+	[NSDate setTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]];
+	NSDate *los_angeles	= [_formatter dateFromString:@"07/11/1986 08:23am"];
+
+	[NSDate setTimeZone:[NSTimeZone defaultTimeZone]];
+	STAssertTrue([[salt_lake inTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]] isEqualToDate:los_angeles], nil);
+}
+
 
 
 

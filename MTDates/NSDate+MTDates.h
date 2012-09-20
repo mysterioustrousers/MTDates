@@ -229,6 +229,7 @@ typedef enum {
 - (NSUInteger)daysInCurrentMonth;
 - (NSUInteger)daysInPreviousMonth;
 - (NSUInteger)daysInNextMonth;
+- (NSDate *)inTimeZone:(NSTimeZone *)timezone;
 
 
 @end

@@ -29,14 +29,14 @@
 @implementation NSDate (MTDates)
 
 // These are NOT thread safe, so we must use a seperate one on each thread
-static NSMutableDictionary *_calendars	= nil;
-static NSMutableDictionary *_components = nil;
-static NSMutableDictionary *_formatters = nil;
+static NSMutableDictionary *__calendars	= nil;
+static NSMutableDictionary *__components = nil;
+static NSMutableDictionary *__formatters = nil;
 
-static NSLocale						*_locale				= nil;
-static NSTimeZone					*_timeZone				= nil;
-static NSUInteger					_firstWeekday			= 1;
-static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
+static NSLocale						*__locale				= nil;
+static NSTimeZone					*__timeZone				= nil;
+static NSUInteger					__firstWeekday			= 1;
+static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 
 
 
@@ -45,17 +45,17 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSCalendar *)calendar
 {
-	if (!_calendars) _calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
+	if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSCalendar *calendar = [_calendars objectForKey:queueLabel];
+	NSCalendar *calendar = [__calendars objectForKey:queueLabel];
 
 	if (!calendar) {
 		calendar = [[NSCalendar currentCalendar] copy];
-		calendar.firstWeekday = _firstWeekday;
-		calendar.minimumDaysInFirstWeek = (NSUInteger)_weekNumberingSystem;
-		[_calendars setObject:calendar forKey:queueLabel];
+		calendar.firstWeekday = __firstWeekday;
+		calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
+		[__calendars setObject:calendar forKey:queueLabel];
 	}
     
     return calendar;
@@ -63,17 +63,17 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSDateComponents *)components
 {
-	if (!_components) _components = [[NSMutableDictionary alloc] initWithCapacity:0];
+	if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateComponents *component = [_components objectForKey:queueLabel];
+	NSDateComponents *component = [__components objectForKey:queueLabel];
 
 	if (!component) {
 		component = [[NSDateComponents alloc] init];
 		component.calendar = [self calendar];
-		if (_timeZone) component.timeZone = _timeZone;
-		[_components setObject:component forKey:queueLabel];
+		if (__timeZone) component.timeZone = __timeZone;
+		[__components setObject:component forKey:queueLabel];
 	}
 
 	[component setEra:NSUndefinedDateComponent];
@@ -93,18 +93,18 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (NSDateFormatter *)formatter
 {
-	if (!_formatters) _formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
+	if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
 	dispatch_queue_t queue = dispatch_get_current_queue();
 	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateFormatter *formatter = [_formatters objectForKey:queueLabel];
+	NSDateFormatter *formatter = [__formatters objectForKey:queueLabel];
 
 	if (!formatter) {
 		formatter = [[NSDateFormatter alloc] init];
 		formatter.calendar = [self calendar];
-		if (_locale) formatter.locale = _locale;
-		if (_timeZone) formatter.timeZone = _timeZone;
-		[_formatters setObject:formatter forKey:queueLabel];
+		if (__locale) formatter.locale = __locale;
+		if (__timeZone) formatter.timeZone = __timeZone;
+		[__formatters setObject:formatter forKey:queueLabel];
 	}
 
     return formatter;
@@ -112,32 +112,32 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
 
 + (void)reset
 {
-	[_calendars removeAllObjects];
-	[_components removeAllObjects];
-	[_formatters removeAllObjects];
+	[__calendars removeAllObjects];
+	[__components removeAllObjects];
+	[__formatters removeAllObjects];
 }
 
 + (void)setLocale:(NSLocale *)locale
 {
-	_locale = locale;
+	__locale = locale;
 	[self reset];
 }
 
 + (void)setTimeZone:(NSTimeZone *)timeZone
 {
-	_timeZone = timeZone;
+	__timeZone = timeZone;
 	[self reset];
 }
 
 + (void)setFirstDayOfWeek:(NSUInteger)firstDay
 {
-	_firstWeekday = firstDay;
+	__firstWeekday = firstDay;
 	[self reset];
 }
 
 + (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system
 {
-	_weekNumberingSystem = system;
+	__weekNumberingSystem = system;
 	[self reset];
 }
 
@@ -936,6 +936,14 @@ static MTDateWeekNumberingSystem	_weekNumberingSystem	= 1;
     return [[self endOfNextMonth] dayOfMonth];
 }
 
+- (NSDate *)inTimeZone:(NSTimeZone *)timezone
+{
+	NSTimeZone *current				= __timeZone ? __timeZone : [NSTimeZone defaultTimeZone];
+	NSTimeInterval currentOffset	= [current secondsFromGMTForDate:self];
+	NSTimeInterval toOffset			= [timezone secondsFromGMTForDate:self];
+	NSTimeInterval diff				= toOffset - currentOffset;
+	return [self dateByAddingTimeInterval:diff];
+}
 
 
 
