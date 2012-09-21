@@ -997,7 +997,6 @@
 	[NSDate setFirstDayOfWeek:1];
 	STAssertTrue([date weekOfYear] == 1, nil);
 
-
 	// reset for other tests
 	[NSDate setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
 	[NSDate setFirstDayOfWeek:1];
@@ -1015,9 +1014,21 @@
 	[NSDate setTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]];
 	NSDate *seattle = [NSDate dateFromYear:2012 month:9 day:18 hour:18 minute:29];
 
-	[NSDate setTimeZone:[NSTimeZone defaultTimeZone]];
-
 	STAssertTrue([saltLake isEqualToDate:seattle], nil);
+
+	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+	NSDate *septStartDenver = [_formatter dateFromString:@"09/01/2012 01:00:00am"];
+	NSDate *septEndDenver = [_formatter dateFromString:@"10/01/2012 12:59:59am"];
+
+	NSDate *losAngeles = [NSDate dateFromYear:2012 month:9 day:20 hour:9 minute:49 second:11];
+
+	STAssertTrue([[losAngeles startOfCurrentMonth] isEqualToDate:septStartDenver], nil);
+
+	STAssertTrue([[losAngeles endOfCurrentMonth] isEqualToDate:septEndDenver], nil);
+
+	STAssertTrue([losAngeles daysInCurrentMonth] == 30, nil);
+
+	[NSDate setTimeZone:[NSTimeZone defaultTimeZone]];
 }
 
 

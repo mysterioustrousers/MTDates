@@ -52,9 +52,10 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 	NSCalendar *calendar = [__calendars objectForKey:queueLabel];
 
 	if (!calendar) {
-		calendar = [[NSCalendar currentCalendar] copy];
+		calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 		calendar.firstWeekday = __firstWeekday;
 		calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
+		if (__timeZone) calendar.timeZone = __timeZone;
 		[__calendars setObject:calendar forKey:queueLabel];
 	}
     
