@@ -349,7 +349,7 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 
 - (NSDateComponents *)components
 {
-	NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit;
+	NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
 	return [[NSDate calendar] components:units fromDate:self];
 }
 
