@@ -722,22 +722,22 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 
 - (BOOL)isAfter:(NSDate *)date
 {
-    return [self timeIntervalSinceDate:date] > 0 ? YES : NO;
+    return [self compare:date] == NSOrderedDescending;
 }
 
 - (BOOL)isBefore:(NSDate *)date
 {
-    return [date timeIntervalSinceDate:self] > 0 ? YES : NO;
+    return [self compare:date] == NSOrderedAscending;
 }
 
 - (BOOL)isOnOrAfter:(NSDate *)date
 {
-    return [self timeIntervalSinceDate:date] >= 0 ? YES : NO;
+    return [self compare:date] == NSOrderedDescending || [date compare:self] == NSOrderedSame;
 }
 
 - (BOOL)isOnOrBefore:(NSDate *)date
 {
-    return [date timeIntervalSinceDate:self] >= 0 ? YES : NO;
+    return [self compare:date] == NSOrderedAscending || [self compare:date] == NSOrderedSame;
 }
 
 - (BOOL)isWithinSameYear:(NSDate *)date
