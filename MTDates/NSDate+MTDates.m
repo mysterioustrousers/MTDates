@@ -716,7 +716,129 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
     return hours;
 }
 
+#pragma mark minutes
 
+- (NSDate *)startOfPreviousMinute
+{
+    return [[self startOfCurrentMinute] oneMinutePrevious];
+}
+
+- (NSDate *)startOfCurrentMinute
+{
+    return [NSDate dateFromYear:[self year] month:[self monthOfYear] day:[self dayOfMonth] hour:[self hourOfDay] minute:[self minuteOfHour] second:0];
+}
+
+- (NSDate *)startOfNextMinute
+{
+    return [[self startOfCurrentMinute] oneMinuteNext];
+}
+
+
+- (NSDate *)endOfPreviousMinute
+{
+    return [[self endOfCurrentMinute] oneMinutePrevious];
+}
+
+- (NSDate *)endOfCurrentMinute
+{
+    return [[self startOfCurrentMinute] dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:1 seconds:-1];
+}
+
+- (NSDate *)endOfNextMinute
+{
+    return [[self endOfCurrentMinute] oneMinuteNext];
+}
+
+- (NSDate *)oneMinutePrevious
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:-1 seconds:0];
+}
+
+- (NSDate *)oneMinuteNext
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:1 seconds:0];
+}
+
+
+- (NSDate *)dateMinutesBefore:(NSUInteger)minutes
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:-minutes seconds:0];
+}
+
+- (NSDate *)dateMinutesAfter:(NSUInteger)minutes
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:minutes seconds:0];
+}
+
+
+- (NSInteger)minutesSinceDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSMinuteCalendarUnit fromDate:date toDate:self options:0];
+    NSInteger minutes = [comps minute];
+    return minutes;
+}
+
+
+- (NSInteger)minutesUntilDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSMinuteCalendarUnit fromDate:self toDate:date options:0];
+    NSInteger minutes = [comps minute];
+    return minutes;
+}
+
+#pragma mark seconds
+
+- (NSDate *)startOfPreviousSecond
+{
+    return [[self startOfCurrentSecond] oneSecondPrevious];
+}
+
+- (NSDate *)startOfCurrentSecond
+{
+    return [NSDate dateFromYear:[self year] month:[self monthOfYear] day:[self dayOfMonth] hour:[self hourOfDay] minute:[self minuteOfHour] second:[self secondOfMinute]];
+}
+
+- (NSDate *)startOfNextSecond
+{
+    return [[self startOfCurrentSecond] oneSecondNext];
+}
+
+- (NSDate *)oneSecondPrevious
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-1];
+}
+
+- (NSDate *)oneSecondNext
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-1];
+}
+
+
+- (NSDate *)dateSecondsBefore:(NSUInteger)seconds
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-seconds];
+}
+
+- (NSDate *)dateSecondsAfter:(NSUInteger)seconds
+{
+    return [self dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:seconds];
+}
+
+
+- (NSInteger)secondsSinceDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSSecondCalendarUnit fromDate:date toDate:self options:0];
+    NSInteger seconds = [comps second];
+    return seconds;
+}
+
+
+- (NSInteger)secondsUntilDate:(NSDate *)date
+{
+    NSDateComponents *comps = [[NSDate calendar] components:NSSecondCalendarUnit fromDate:self toDate:date options:0];
+    NSInteger seconds = [comps second];
+    return seconds;
+}
 
 #pragma mark - COMPARES
 

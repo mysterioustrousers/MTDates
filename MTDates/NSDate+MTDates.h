@@ -187,6 +187,39 @@ typedef enum {
 - (NSInteger)hoursSinceDate:(NSDate *)date;
 - (NSInteger)hoursUntilDate:(NSDate *)date;
 
+#pragma mark minutes
+
+- (NSDate *)startOfPreviousMinute;
+- (NSDate *)startOfCurrentMinute;
+- (NSDate *)startOfNextMinute;
+
+- (NSDate *)endOfPreviousMinute;
+- (NSDate *)endOfCurrentMinute;
+- (NSDate *)endOfNextMinute;
+
+- (NSDate *)oneMinutePrevious;
+- (NSDate *)oneMinuteNext;
+
+- (NSDate *)dateMinutesBefore:(NSUInteger)minute;
+- (NSDate *)dateMinutesAfter:(NSUInteger)minute;
+
+- (NSInteger)minutesSinceDate:(NSDate *)date;
+- (NSInteger)minutesUntilDate:(NSDate *)date;
+
+#pragma mark seconds
+
+- (NSDate *)startOfPreviousSecond;
+- (NSDate *)startOfCurrentSecond;
+- (NSDate *)startOfNextSecond;
+
+- (NSDate *)oneSecondPrevious;
+- (NSDate *)oneSecondNext;
+
+- (NSDate *)dateSecondsBefore:(NSUInteger)seconds;
+- (NSDate *)dateSecondsAfter:(NSUInteger)seconds;
+
+- (NSInteger)secondsSinceDate:(NSDate *)date;
+- (NSInteger)secondsUntilDate:(NSDate *)date;
 
 
 #pragma mark - COMPARES
