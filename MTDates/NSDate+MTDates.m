@@ -877,6 +877,44 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 	return interval < 0 ? [NSString stringWithFormat:@"%@ before", preString] : [NSString stringWithFormat:@"%@ after", preString];
 }
 
+- (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date
+{
+	NSMutableArray *s = [NSMutableArray array];
+    NSTimeInterval interval = [date timeIntervalSinceDate:self];
+	NSTimeInterval absInterval = interval > 0 ? interval : -interval;
+
+	NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
+	if (months > 0) {
+        NSString *formatString = months == 1 ? @"%ld month" : @"%ld months";
+		[s addObject:[NSString stringWithFormat:formatString, (long)months]];
+		absInterval -= months * SECONDS_IN_MONTH;
+	}
+
+	NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
+	if (days > 0) {
+        NSString *formatString = days == 1 ? @"%ld day" : @"%ld days";
+		[s addObject:[NSString stringWithFormat:formatString, (long)days]];
+		absInterval -= days * SECONDS_IN_DAY;
+	}
+
+	NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
+	if (hours > 0) {
+        NSString *formatString = hours == 1 ? @"%ld hour" : @"%ld hours";
+		[s addObject:[NSString stringWithFormat:formatString, (long)hours]];
+		absInterval -= hours * SECONDS_IN_HOUR;
+	}
+
+	NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
+	if (minutes > 0) {
+        NSString *formatString = minutes == 1 ? @"%ld minute" : @"%ld minutes";
+        [s addObject:[NSString stringWithFormat:formatString, (long)minutes]];
+	}
+
+    NSString *preString = [s componentsJoinedByString:@", "];
+	return interval < 0 ? [NSString stringWithFormat:@"%@ Ago", preString] : [NSString stringWithFormat:@"In %@", preString];
+}
+
+
 
 
 

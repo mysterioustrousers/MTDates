@@ -814,6 +814,13 @@
 	STAssertTrue([[date stringFromDateWithGreatestComponentsForSecondsPassed:3002] isEqualToString:@"50 minutes, 2 seconds after"], nil);
 }
 
+- (void)test_stringFromDateWithGreatestComponentsUntilDate
+{
+    NSDate *date1 = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/12/1986 12:33pm"];
+    STAssertTrue([[date1 stringFromDateWithGreatestComponentsUntilDate:date2] isEqualToString:@"In 1 day, 1 hour, 4 minutes"], nil);
+}
+
 
 
 

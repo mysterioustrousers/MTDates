@@ -215,6 +215,7 @@ typedef enum {
 - (NSString *)stringFromDateWithFormat:(NSString *)format;		// http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
 - (NSString *)stringFromDateWithISODateTime;
 - (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;
+- (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date;
 
 
 
