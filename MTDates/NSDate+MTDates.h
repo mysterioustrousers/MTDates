@@ -29,6 +29,8 @@ typedef enum {
 @interface NSDate (MTDates)
 
 
++ (NSDateFormatter *)sharedFormatter;
+
 
 
 # pragma mark - GLOBAL CONFIG
@@ -239,6 +241,10 @@ typedef enum {
 
 #pragma mark - STRINGS
 
++ (void)setFormatterDateStyle:(NSDateFormatterStyle)style;
++ (void)setFormatterTimeStyle:(NSDateFormatterStyle)style;
+
+- (NSString *)stringValue;
 - (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format;
 - (NSString *)stringFromDateWithShortMonth;
 - (NSString *)stringFromDateWithFullMonth;

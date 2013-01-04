@@ -30,6 +30,12 @@
 
 
 
+- (void)testSharedFormatter
+{
+    STAssertNotNil([NSDate sharedFormatter], nil);
+}
+
+
 #pragma mark - CONSTRUCTORS
 
 - (void)test_dateFromISOString 
@@ -758,6 +764,26 @@
 
 
 #pragma mark - STRINGS
+
+- (void)test_settingDateFormattingDateStyle
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
+    [NSDate setFormatterDateStyle:NSDateFormatterLongStyle];
+    STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986, 11:00 PM"], nil);
+
+    [NSDate setFormatterTimeStyle:NSDateFormatterNoStyle];
+    STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986"], nil);
+}
+
+- (void)test_settingDateFormattingTimeStyle
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
+    [NSDate setFormatterTimeStyle:NSDateFormatterMediumStyle];
+    STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986, 11:00:00 PM"], nil);
+
+    [NSDate setFormatterDateStyle:NSDateFormatterNoStyle];
+    STAssertTrue([[date stringValue] isEqualToString:@"11:00:00 PM"], nil);
+}
 
 - (void)test_stringFromDateWithHourAndMinuteFormat
 {

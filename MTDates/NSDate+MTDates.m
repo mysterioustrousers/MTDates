@@ -29,14 +29,17 @@
 @implementation NSDate (MTDates)
 
 // These are NOT thread safe, so we must use a seperate one on each thread
-static NSMutableDictionary *__calendars	= nil;
-static NSMutableDictionary *__components = nil;
-static NSMutableDictionary *__formatters = nil;
+static NSMutableDictionary          *__calendars            = nil;
+static NSMutableDictionary          *__components           = nil;
+static NSMutableDictionary          *__formatters           = nil;
 
 static NSLocale						*__locale				= nil;
 static NSTimeZone					*__timeZone				= nil;
 static NSUInteger					__firstWeekday			= 1;
 static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
+
+static NSDateFormatterStyle         __dateStyle             = NSDateFormatterShortStyle;
+static NSDateFormatterStyle         __timeStyle             = NSDateFormatterShortStyle;
 
 
 
@@ -47,16 +50,15 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 {
 	if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-	dispatch_queue_t queue = dispatch_get_current_queue();
-	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSCalendar *calendar = [__calendars objectForKey:queueLabel];
+    NSOperationQueue *queue = [NSOperationQueue currentQueue];
+	NSCalendar *calendar = [__calendars objectForKey:queue.name];
 
 	if (!calendar) {
 		calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 		calendar.firstWeekday = __firstWeekday;
 		calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
 		if (__timeZone) calendar.timeZone = __timeZone;
-		[__calendars setObject:calendar forKey:queueLabel];
+		[__calendars setObject:calendar forKey:queue.name];
 	}
     
     return calendar;
@@ -66,15 +68,14 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 {
 	if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-	dispatch_queue_t queue = dispatch_get_current_queue();
-	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateComponents *component = [__components objectForKey:queueLabel];
+    NSOperationQueue *queue = [NSOperationQueue currentQueue];
+	NSDateComponents *component = [__components objectForKey:queue.name];
 
 	if (!component) {
 		component = [[NSDateComponents alloc] init];
 		component.calendar = [self calendar];
 		if (__timeZone) component.timeZone = __timeZone;
-		[__components setObject:component forKey:queueLabel];
+		[__components setObject:component forKey:queue.name];
 	}
 
 	[component setEra:NSUndefinedDateComponent];
@@ -92,20 +93,21 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
     return component;
 }
 
-+ (NSDateFormatter *)formatter
++ (NSDateFormatter *)sharedFormatter
 {
 	if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-	dispatch_queue_t queue = dispatch_get_current_queue();
-	NSString *queueLabel = [NSString stringWithUTF8String:dispatch_queue_get_label(queue)];
-	NSDateFormatter *formatter = [__formatters objectForKey:queueLabel];
+    NSOperationQueue *queue = [NSOperationQueue currentQueue];
+	NSDateFormatter *formatter = [__formatters objectForKey:queue.name];
 
 	if (!formatter) {
 		formatter = [[NSDateFormatter alloc] init];
 		formatter.calendar = [self calendar];
 		if (__locale) formatter.locale = __locale;
 		if (__timeZone) formatter.timeZone = __timeZone;
-		[__formatters setObject:formatter forKey:queueLabel];
+        [formatter setDateStyle:__dateStyle];
+        [formatter setTimeStyle:__dateStyle];
+		[__formatters setObject:formatter forKey:queue.name];
 	}
 
     return formatter;
@@ -159,7 +161,7 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 + (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format
 {
 	if (string == nil || (NSNull *)string == [NSNull null]) return nil;
-	NSDateFormatter* formatter = [self formatter];
+	NSDateFormatter* formatter = [self sharedFormatter];
     [formatter setDateFormat:format];
     return [formatter dateFromString:string];
 }
@@ -262,32 +264,32 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 
 + (NSArray *)shortWeekdaySymbols
 {
-    return [[NSDate formatter] shortWeekdaySymbols];
+    return [[NSDate sharedFormatter] shortWeekdaySymbols];
 }
 
 + (NSArray *)weekdaySymbols
 {
-    return [[NSDate formatter] weekdaySymbols];
+    return [[NSDate sharedFormatter] weekdaySymbols];
 }
 
 + (NSArray *)veryShortWeekdaySymbols
 {
-    return [[NSDate formatter] veryShortWeekdaySymbols];
+    return [[NSDate sharedFormatter] veryShortWeekdaySymbols];
 }
 
 + (NSArray *)shortMonthlySymbols
 {
-    return [[NSDate formatter] shortMonthSymbols];
+    return [[NSDate sharedFormatter] shortMonthSymbols];
 }
 
 + (NSArray *)monthlySymbols
 {
-    return [[NSDate formatter] monthSymbols];
+    return [[NSDate sharedFormatter] monthSymbols];
 }
 
 + (NSArray *)veryShortMonthlySymbols
 {
-    return [[NSDate formatter] veryShortMonthSymbols];
+    return [[NSDate sharedFormatter] veryShortMonthSymbols];
 }
 
 
@@ -916,6 +918,23 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 
 #pragma mark - STRINGS
 
++ (void)setFormatterDateStyle:(NSDateFormatterStyle)style
+{
+    __dateStyle = style;
+    [[NSDate sharedFormatter] setDateStyle:style];
+}
+
++ (void)setFormatterTimeStyle:(NSDateFormatterStyle)style
+{
+    __timeStyle = style;
+    [[NSDate sharedFormatter] setTimeStyle:style];
+}
+
+- (NSString *)stringValue
+{
+    return [[NSDate sharedFormatter] stringFromDate:self];
+}
+
 - (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format {
 	if (format == MTDateHourFormat24Hour) {
 		return [self stringFromDateWithFormat:@"HH:mm"];
@@ -946,7 +965,7 @@ static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
 }
 
 - (NSString *)stringFromDateWithFormat:(NSString *)format {
-    NSDateFormatter *formatter = [NSDate formatter];
+    NSDateFormatter *formatter = [NSDate sharedFormatter];
 	[formatter setDateFormat:format];
     return [formatter stringFromDate:self];
 }
