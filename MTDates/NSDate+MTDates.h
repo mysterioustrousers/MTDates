@@ -245,6 +245,7 @@ typedef enum {
 + (void)setFormatterTimeStyle:(NSDateFormatterStyle)style;
 
 - (NSString *)stringValue;
+- (NSString *)stringValueWithDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle;
 - (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format;
 - (NSString *)stringFromDateWithShortMonth;
 - (NSString *)stringFromDateWithFullMonth;

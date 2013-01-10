@@ -106,7 +106,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 		if (__locale) formatter.locale = __locale;
 		if (__timeZone) formatter.timeZone = __timeZone;
         [formatter setDateStyle:__dateStyle];
-        [formatter setTimeStyle:__dateStyle];
+        [formatter setTimeStyle:__timeStyle];
 		[__formatters setObject:formatter forKey:queue.name];
 	}
 
@@ -933,6 +933,16 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSString *)stringValue
 {
     return [[NSDate sharedFormatter] stringFromDate:self];
+}
+
+- (NSString *)stringValueWithDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle
+{
+    [[NSDate sharedFormatter] setDateStyle:dateStyle];
+    [[NSDate sharedFormatter] setTimeStyle:timeStyle];
+    NSString *str = [[NSDate sharedFormatter] stringFromDate:self];
+    [[NSDate sharedFormatter] setDateStyle:__dateStyle];
+    [[NSDate sharedFormatter] setTimeStyle:__timeStyle];
+    return str;
 }
 
 - (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format {

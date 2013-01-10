@@ -785,6 +785,13 @@
     STAssertTrue([[date stringValue] isEqualToString:@"11:00:00 PM"], nil);
 }
 
+- (void)test_stringValueWithDateStyleTimeStyle
+{
+	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
+    NSString *str = [date stringValueWithDateStyle:NSDateFormatterFullStyle timeStyle:NSDateFormatterShortStyle];
+    STAssertTrue([str isEqualToString:@"Friday, July 11, 1986, 11:00 PM"], nil);
+}
+
 - (void)test_stringFromDateWithHourAndMinuteFormat
 {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
