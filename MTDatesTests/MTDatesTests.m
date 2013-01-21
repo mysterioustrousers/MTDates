@@ -1199,5 +1199,13 @@
 //	NSDate *date = [_formatter dateFromString:@"2012-08-16 13:11:00"];
 //}
 
+- (void)test_MTDatesBlockInvoke {
+    dispatch_queue_t queue = dispatch_queue_create("mtdates-test", NULL);
+    dispatch_async(queue, ^{
+        NSDate * date = [NSDate dateFromYear:2013 month:1 day:1];
+        STAssertNotNil(date, nil);
+    });
+    dispatch_release(queue);
+}
 
 @end
