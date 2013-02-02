@@ -153,7 +153,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	if (ISOString == nil || (NSNull *)ISOString == [NSNull null]) return nil;
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss +0000"];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     return [formatter dateFromString:ISOString];
 }
@@ -983,7 +983,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSString *)stringFromDateWithISODateTime
 {
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSString* result = [formatter stringFromDate:self];
     return result;
@@ -1154,5 +1154,5 @@ NSString *const MTDatesFormatMediumTime		= @"h:mm:ss a";						// 5:46:21 PM
 NSString *const MTDatesFormatLongTime		= @"h:mm:ss a zzz";					// 5:46:21 PM EST
 NSString *const MTDatesFormatISODate		= @"yyyy-MM-dd";					// 2007-06-09
 NSString *const MTDatesFormatISOTime		= @"HH:mm:ss";						// 17:46:21
-NSString *const MTDatesFormatISODateTime	= @"yyyy-MM-dd'T'HH:mm:ss";			// 2007-06-09T17:46:21
+NSString *const MTDatesFormatISODateTime	= @"yyyy-MM-dd H:mm:ss Z";			// 2007-06-09 17:46:21 +0000
 //NSString *const MTDatesFormatISOUTCDateTime	= @"yyyy-MM-dd'T'HH:mm:ss'Z'";		// 2007-06-09T22:46:21Z
