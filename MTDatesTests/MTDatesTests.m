@@ -20,6 +20,8 @@
 	_GMTFormatter.dateFormat = @"MM/dd/yyyy hh:mma";
     _GMTFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithName:@"America/Denver"]];
+
     [super setUp];
 }
 
