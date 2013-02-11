@@ -46,19 +46,24 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - STATIC 
 
++ (NSString *)threadIdentifier
+{
+    return [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+}
+
 + (NSCalendar *)calendar
 {
 	if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    NSOperationQueue *queue = [NSOperationQueue currentQueue];
-	NSCalendar *calendar = [__calendars objectForKey:queue.name];
+    NSString *keyName = [NSDate threadIdentifier];
+    NSCalendar *calendar = [__calendars objectForKey:keyName];
 
 	if (!calendar) {
 		calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 		calendar.firstWeekday = __firstWeekday;
 		calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
 		if (__timeZone) calendar.timeZone = __timeZone;
-		[__calendars setObject:calendar forKey:queue.name];
+        [__calendars setObject:calendar forKey:keyName];
 	}
     
     return calendar;
@@ -68,14 +73,14 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-    NSOperationQueue *queue = [NSOperationQueue currentQueue];
-	NSDateComponents *component = [__components objectForKey:queue.name];
+    NSString *keyName = [NSDate threadIdentifier];
+    NSDateComponents *component = [__components objectForKey:keyName];
 
 	if (!component) {
 		component = [[NSDateComponents alloc] init];
 		component.calendar = [self calendar];
 		if (__timeZone) component.timeZone = __timeZone;
-		[__components setObject:component forKey:queue.name];
+        [__components setObject:component forKey:keyName];
 	}
 
 	[component setEra:NSUndefinedDateComponent];
@@ -97,8 +102,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-    NSOperationQueue *queue = [NSOperationQueue currentQueue];
-	NSDateFormatter *formatter = [__formatters objectForKey:queue.name];
+    NSString *keyName = [NSDate threadIdentifier];
+    NSDateFormatter *formatter = [__formatters objectForKey:keyName];
 
 	if (!formatter) {
 		formatter = [[NSDateFormatter alloc] init];
@@ -107,7 +112,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 		if (__timeZone) formatter.timeZone = __timeZone;
         [formatter setDateStyle:__dateStyle];
         [formatter setTimeStyle:__timeStyle];
-		[__formatters setObject:formatter forKey:queue.name];
+        [__formatters setObject:formatter forKey:keyName];
 	}
 
     return formatter;
