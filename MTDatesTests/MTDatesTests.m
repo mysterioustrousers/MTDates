@@ -20,6 +20,8 @@
 	_GMTFormatter.dateFormat = @"MM/dd/yyyy hh:mma";
     _GMTFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithName:@"America/Denver"]];
+
     [super setUp];
 }
 
@@ -41,8 +43,14 @@
 - (void)test_dateFromISOString 
 {
 	NSDate *date = [_GMTFormatter dateFromString:@"07/11/1986 5:29pm"];
-    NSDate *date2 = [NSDate dateFromISOString:@"1986-07-11T17:29:00"];
+    NSDate *date2 = [NSDate dateFromISOString:@"1986-07-11 17:29:00"];
 	STAssertTrue([date isEqualToDate:date2], nil);
+
+    NSDate *date3 = [NSDate dateFromISOString:@"1986-07-11T17:29:00Z"];
+	STAssertTrue([date isEqualToDate:date3], nil);
+
+    NSDate *date4 = [NSDate dateFromISOString:@"1986-07-11 17:29:00 +0000"];
+	STAssertTrue([date isEqualToDate:date4], nil);
 }
 
 - (void)test_dateFromString_usingFormat
@@ -838,7 +846,7 @@
 - (void)test_stringFromDateWithISODateTime 
 {
 	NSDate *date = [_GMTFormatter dateFromString:@"07/11/1986 5:29pm"];
-	STAssertTrue([[date stringFromDateWithISODateTime] isEqualToString:@"1986-07-11T17:29:00Z"], nil);
+	STAssertTrue([[date stringFromDateWithISODateTime] isEqualToString:@"1986-07-11 17:29:00 +0000"], nil);
 }
 
 - (void)test_stringFromDateWithGreatestComponentsForInterval 
@@ -1178,8 +1186,8 @@
 {
 	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
 	NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
-	NSString *string = @"2007-06-09T17:46:21";
 
+	NSString *string = @"2007-06-09 17:46:21";
 	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISODateTime] isEqualToDate:date], nil);
 	STAssertTrue([[date stringFromDateWithFormat:MTDatesFormatISODateTime] isEqualToString:string], nil);
 }
