@@ -46,13 +46,16 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - STATIC 
 
++ (NSString *)threadIdentifier
+{
+    return [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+}
+
 + (NSCalendar *)calendar
 {
 	if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
-    NSString *keyName = [[NSOperationQueue currentQueue] name];
-    if (keyName == nil)
-        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    NSString *keyName = [NSDate threadIdentifier];
     NSCalendar *calendar = [__calendars objectForKey:keyName];
 
 	if (!calendar) {
@@ -70,9 +73,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-    NSString *keyName = [[NSOperationQueue currentQueue] name];
-    if (keyName == nil)
-        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    NSString *keyName = [NSDate threadIdentifier];
     NSDateComponents *component = [__components objectForKey:keyName];
 
 	if (!component) {
@@ -101,9 +102,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 	
-    NSString *keyName = [[NSOperationQueue currentQueue] name];
-    if (keyName == nil)
-        keyName = [NSString stringWithFormat:@"%p", (void *) [NSThread currentThread]];
+    NSString *keyName = [NSDate threadIdentifier];
     NSDateFormatter *formatter = [__formatters objectForKey:keyName];
 
 	if (!formatter) {
