@@ -30,6 +30,20 @@
     [super tearDown];
 }
 
+- (NSInteger)dateFormatterDefaultYear {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"hh:mm";
+    NSDate *defaultDate = [dateFormatter dateFromString:@"00:00"];
+
+    dateFormatter.dateFormat = @"MM/dd/yyyy hh:mm";
+    NSDate *ios6DefaultDate = [dateFormatter dateFromString:@"01/01/2000 00:00"];
+
+    if ([defaultDate timeIntervalSinceDate:ios6DefaultDate] == 0) {
+        return 2000;
+    } else {
+        return 1970;
+    }
+}
 
 
 - (void)testSharedFormatter
@@ -1133,7 +1147,8 @@
 
 - (void)test_MTDatesFormatShortTime
 {
-	NSDate *date = [_formatter dateFromString:@"01/01/2000 05:46pm"];
+	NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46pm", [self dateFormatterDefaultYear]];
+	NSDate *date = [_formatter dateFromString:dateString];
 	NSString *string = @"5:46 PM";
 
 	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatShortTime] isEqualToDate:date], nil);
@@ -1143,7 +1158,8 @@
 - (void)test_MTDatesFormatMediumTime
 {
 	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
-	NSDate *date = [_formatter dateFromString:@"01/01/2000 05:46:21pm"];
+	NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm", [self dateFormatterDefaultYear]];
+	NSDate *date = [_formatter dateFromString:dateString];
 	NSString *string = @"5:46:21 PM";
 
 	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatMediumTime] isEqualToDate:date], nil);
@@ -1154,7 +1170,8 @@
 {
 	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa zzz";
 	[NSDate setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EST"]];
-	NSDate *date = [_formatter dateFromString:@"01/01/2000 05:46:21pm EST"];
+	NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm EST", [self dateFormatterDefaultYear]];
+	NSDate *date = [_formatter dateFromString:dateString];
 	NSString *string = @"5:46:21 PM EST";
 
 	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatLongTime] isEqualToDate:date], nil);
@@ -1175,7 +1192,8 @@
 - (void)test_MTDatesFormatISOTime
 {
 	_formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
-	NSDate *date = [_formatter dateFromString:@"01/01/2000 05:46:21pm"];
+	NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm", [self dateFormatterDefaultYear]];
+	NSDate *date = [_formatter dateFromString:dateString];
 	NSString *string = @"17:46:21";
 
 	STAssertTrue([[NSDate dateFromString:string usingFormat:MTDatesFormatISOTime] isEqualToDate:date], nil);
