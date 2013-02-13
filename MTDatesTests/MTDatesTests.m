@@ -791,7 +791,10 @@
 {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
     [NSDate setFormatterDateStyle:NSDateFormatterLongStyle];
-    STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986, 11:00 PM"], nil);
+
+    NSString *s = [date stringValue];
+    BOOL match = [s isEqualToString:@"July 11, 1986 11:00 PM"] || [s isEqualToString:@"July 11, 1986, 11:00 PM"];
+    STAssertTrue(match, nil);
 
     [NSDate setFormatterTimeStyle:NSDateFormatterNoStyle];
     STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986"], nil);
@@ -801,7 +804,10 @@
 {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
     [NSDate setFormatterTimeStyle:NSDateFormatterMediumStyle];
-    STAssertTrue([[date stringValue] isEqualToString:@"July 11, 1986, 11:00:00 PM"], nil);
+
+    NSString *s = [date stringValue];
+    BOOL match = [s isEqualToString:@"July 11, 1986 11:00:00 PM"] || [s isEqualToString:@"July 11, 1986, 11:00:00 PM"];
+    STAssertTrue(match, nil);
 
     [NSDate setFormatterDateStyle:NSDateFormatterNoStyle];
     STAssertTrue([[date stringValue] isEqualToString:@"11:00:00 PM"], nil);
@@ -810,8 +816,10 @@
 - (void)test_stringValueWithDateStyleTimeStyle
 {
 	NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
-    NSString *str = [date stringValueWithDateStyle:NSDateFormatterFullStyle timeStyle:NSDateFormatterShortStyle];
-    STAssertTrue([str isEqualToString:@"Friday, July 11, 1986, 11:00 PM"], nil);
+    NSString *s = [date stringValueWithDateStyle:NSDateFormatterFullStyle timeStyle:NSDateFormatterShortStyle];
+
+    BOOL match = [s isEqualToString:@"Friday, July 11, 1986 11:00 PM"] || [s isEqualToString:@"Friday, July 11, 1986, 11:00 PM"];
+    STAssertTrue(match, nil);
 }
 
 - (void)test_stringFromDateWithHourAndMinuteFormat
