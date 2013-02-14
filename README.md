@@ -232,7 +232,7 @@ NSDateComponents *comps = [NSDateComponents componentsFromString:@"10"];
 
 ### Contributors
 
-* [Adam Kirk](https://github.com/atomkirk) @atomkirk
-* [Parker Wightman](https://github.com/pwightman) @parkerwightman
-* [James Schultz](https://github.com/boxenjim) @boxenjim
+* [Adam Kirk](https://github.com/atomkirk) [@atomkirk](https://twitter.com/atomkirk)
+* [Parker Wightman](https://github.com/pwightman) [@parkerwightman](https://twitter.com/parkerwightman)
+* [James Schultz](https://github.com/boxenjim) [@boxenjim](https://twitter.com/boxenjim)
 * [Good Samaritans](https://github.com/mysterioustrousers/MTDates/contributors)
