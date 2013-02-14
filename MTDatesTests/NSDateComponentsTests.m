@@ -14,57 +14,57 @@
 
 - (void)testCompenentsFromString
 {
-	NSDateComponents *comps = nil;
+  NSDateComponents *comps = nil;
 
-	comps = [NSDateComponents componentsFromString:@"10 October 2009"];
-	STAssertTrue([[NSDate dateFromComponents:comps] isEqualToDate:[NSDate dateFromYear:2009 month:10 day:10]] , nil);
-	STAssertTrue([comps year] == 2009, nil);
-	STAssertTrue([comps month] == 10, nil);
-	STAssertTrue([comps day] == 10, nil);
+  comps = [NSDateComponents componentsFromString:@"10 October 2009"];
+  STAssertTrue([[NSDate dateFromComponents:comps] isEqualToDate:[NSDate dateFromYear:2009 month:10 day:10]] , nil);
+  STAssertTrue([comps year] == 2009, nil);
+  STAssertTrue([comps month] == 10, nil);
+  STAssertTrue([comps day] == 10, nil);
 
-	comps = [NSDateComponents componentsFromString:@"October 2009"];
-	STAssertTrue([comps year] == 2009, nil);
-	STAssertTrue([comps month] == 10, nil);
-	STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
+  comps = [NSDateComponents componentsFromString:@"October 2009"];
+  STAssertTrue([comps year] == 2009, nil);
+  STAssertTrue([comps month] == 10, nil);
+  STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
 
-	comps = [NSDateComponents componentsFromString:@"2009"];
-	STAssertTrue([comps year] == 2009, nil);
-	STAssertTrue([comps month] == NSUndefinedDateComponent, nil);
-	STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
+  comps = [NSDateComponents componentsFromString:@"2009"];
+  STAssertTrue([comps year] == 2009, nil);
+  STAssertTrue([comps month] == NSUndefinedDateComponent, nil);
+  STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
 
-	comps = [NSDateComponents componentsFromString:@"10 2009"];
-	STAssertTrue([comps year] == 2009, nil);
-	STAssertTrue([comps month] == 10, nil);
-	STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
+  comps = [NSDateComponents componentsFromString:@"10 2009"];
+  STAssertTrue([comps year] == 2009, nil);
+  STAssertTrue([comps month] == 10, nil);
+  STAssertTrue([comps day] == NSUndefinedDateComponent, nil);
 
-	comps = [NSDateComponents componentsFromString:@"10 July"];
-	STAssertTrue([comps year] == NSUndefinedDateComponent, nil);
-	STAssertTrue([comps month] == 7, nil);
-	STAssertTrue([comps day] == 10, nil);
+  comps = [NSDateComponents componentsFromString:@"10 July"];
+  STAssertTrue([comps year] == NSUndefinedDateComponent, nil);
+  STAssertTrue([comps month] == 7, nil);
+  STAssertTrue([comps day] == 10, nil);
 
 }
 
 - (void)testComponentsStringValue
 {
-	NSDateComponents *comps = nil;
+  NSDateComponents *comps = nil;
 
-	comps = [NSDateComponents componentsFromString:@"10 October 2009"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"10 October 2009"], nil);
+  comps = [NSDateComponents componentsFromString:@"10 October 2009"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"10 October 2009"], nil);
 
-	comps = [NSDateComponents componentsFromString:@"October 2009"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"October 2009"], nil);
+  comps = [NSDateComponents componentsFromString:@"October 2009"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"October 2009"], nil);
 
-	comps = [NSDateComponents componentsFromString:@"2009"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"2009"], nil);
+  comps = [NSDateComponents componentsFromString:@"2009"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"2009"], nil);
 
-	comps = [NSDateComponents componentsFromString:@"10 2009"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"October 2009"], nil);
+  comps = [NSDateComponents componentsFromString:@"10 2009"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"October 2009"], nil);
 
-	comps = [NSDateComponents componentsFromString:@"10 July"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"10 July"], nil);
+  comps = [NSDateComponents componentsFromString:@"10 July"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"10 July"], nil);
 
-	comps = [NSDateComponents componentsFromString:@"10"];
-	STAssertTrue([[comps stringValue] isEqualToString:@"October"], nil);
+  comps = [NSDateComponents componentsFromString:@"10"];
+  STAssertTrue([[comps stringValue] isEqualToString:@"October"], nil);
 }
 
 @end

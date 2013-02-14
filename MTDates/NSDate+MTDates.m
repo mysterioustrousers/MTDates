@@ -56,14 +56,14 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
     NSString *keyName = [NSDate threadIdentifier];
-    NSCalendar *calendar = [__calendars objectForKey:keyName];
+    NSCalendar *calendar = __calendars[keyName];
 
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         calendar.firstWeekday = __firstWeekday;
         calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
         if (__timeZone) calendar.timeZone = __timeZone;
-        [__calendars setObject:calendar forKey:keyName];
+        __calendars[keyName] = calendar;
     }
 
     return calendar;
@@ -74,13 +74,13 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
 
     NSString *keyName = [NSDate threadIdentifier];
-    NSDateComponents *component = [__components objectForKey:keyName];
+    NSDateComponents *component = __components[keyName];
 
     if (!component) {
         component = [[NSDateComponents alloc] init];
         component.calendar = [self calendar];
         if (__timeZone) component.timeZone = __timeZone;
-        [__components setObject:component forKey:keyName];
+        __components[keyName] = component;
     }
 
     [component setEra:NSUndefinedDateComponent];
@@ -103,7 +103,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
 
     NSString *keyName = [NSDate threadIdentifier];
-    NSDateFormatter *formatter = [__formatters objectForKey:keyName];
+    NSDateFormatter *formatter = __formatters[keyName];
 
     if (!formatter) {
         formatter = [[NSDateFormatter alloc] init];
@@ -112,7 +112,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
         if (__timeZone) formatter.timeZone = __timeZone;
         [formatter setDateStyle:__dateStyle];
         [formatter setTimeStyle:__timeStyle];
-        [__formatters setObject:formatter forKey:keyName];
+        __formatters[keyName] = formatter;
     }
 
     return formatter;
