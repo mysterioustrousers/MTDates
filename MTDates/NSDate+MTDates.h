@@ -9,15 +9,15 @@
 
 // Week Numbering System
 typedef enum {
-	MTDateWeekNumberingSystemUS		= 1,	// First week contains January 1st.
-	MTDateWeekNumberingSystemISO	= 4,	// First week contains January 4th.
-//	MTDateWeekNumberingSystemSimple	= 8		// First week starts on January 1st, next on Jan 8th, etc.
+  MTDateWeekNumberingSystemUS       = 1,  // First week contains January 1st.
+  MTDateWeekNumberingSystemISO      = 4,  // First week contains January 4th.
+//  MTDateWeekNumberingSystemSimple = 8   // First week starts on January 1st, next on Jan 8th, etc.
 } MTDateWeekNumberingSystem;
 
 // Hour Format
 typedef enum {
-	MTDateHourFormat24Hour,					// 23:00
-	MTDateHourFormat12Hour					// 11:00PM
+  MTDateHourFormat24Hour,         // 23:00
+  MTDateHourFormat12Hour          // 11:00PM
 } MTDateHourFormat;
 
 
@@ -252,7 +252,7 @@ typedef enum {
 - (NSString *)stringFromDateWithAMPMSymbol;
 - (NSString *)stringFromDateWithShortWeekdayTitle;
 - (NSString *)stringFromDateWithFullWeekdayTitle;
-- (NSString *)stringFromDateWithFormat:(NSString *)format;		// http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
+- (NSString *)stringFromDateWithFormat:(NSString *)format;    // http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
 - (NSString *)stringFromDateWithISODateTime;
 - (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;
 - (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date;
@@ -281,15 +281,15 @@ typedef enum {
 #pragma mark - Common Date Formats
 // for use with stringFromDateWithFormat:
 
-extern NSString *const MTDatesFormatDefault;			// Sat Jun 09 2007 17:46:21
-extern NSString *const MTDatesFormatShortDate;			// 6/9/07
-extern NSString *const MTDatesFormatMediumDate;			// Jun 9, 2007
-extern NSString *const MTDatesFormatLongDate;			// June 9, 2007
-extern NSString *const MTDatesFormatFullDate;			// Saturday, June 9, 2007
-extern NSString *const MTDatesFormatShortTime;			// 5:46 PM
-extern NSString *const MTDatesFormatMediumTime;			// 5:46:21 PM
-extern NSString *const MTDatesFormatLongTime;			// 5:46:21 PM EST
-extern NSString *const MTDatesFormatISODate;			// 2007-06-09
-extern NSString *const MTDatesFormatISOTime;			// 17:46:21
-extern NSString *const MTDatesFormatISODateTime;		// 2007-06-09T17:46:21
-//extern NSString *const MTDatesFormatISOUTCDateTime;		// 2007-06-09T22:46:21Z
+extern NSString *const MTDatesFormatDefault;          // Sat Jun 09 2007 17:46:21
+extern NSString *const MTDatesFormatShortDate;        // 6/9/07
+extern NSString *const MTDatesFormatMediumDate;       // Jun 9, 2007
+extern NSString *const MTDatesFormatLongDate;         // June 9, 2007
+extern NSString *const MTDatesFormatFullDate;         // Saturday, June 9, 2007
+extern NSString *const MTDatesFormatShortTime;        // 5:46 PM
+extern NSString *const MTDatesFormatMediumTime;       // 5:46:21 PM
+extern NSString *const MTDatesFormatLongTime;         // 5:46:21 PM EST
+extern NSString *const MTDatesFormatISODate;          // 2007-06-09
+extern NSString *const MTDatesFormatISOTime;          // 17:46:21
+extern NSString *const MTDatesFormatISODateTime;      // 2007-06-09T17:46:21
+//extern NSString *const MTDatesFormatISOUTCDateTime;   // 2007-06-09T22:46:21Z

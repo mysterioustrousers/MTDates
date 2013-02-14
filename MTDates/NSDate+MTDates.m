@@ -10,14 +10,14 @@
 #import "NSDate+MTDates.h"
 
 
-#define SECONDS_IN_MINUTE 60
-#define MINUTES_IN_HOUR 60
-#define DAYS_IN_WEEK 7
-#define SECONDS_IN_HOUR (SECONDS_IN_MINUTE * MINUTES_IN_HOUR)
-#define HOURS_IN_DAY 24
-#define SECONDS_IN_DAY (HOURS_IN_DAY * SECONDS_IN_HOUR)
-#define SECONDS_IN_WEEK (DAYS_IN_WEEK * SECONDS_IN_DAY)
-#define SECONDS_IN_MONTH (30 * SECONDS_IN_DAY)
+#define SECONDS_IN_MINUTE   60
+#define MINUTES_IN_HOUR     60
+#define DAYS_IN_WEEK        7
+#define SECONDS_IN_HOUR     (SECONDS_IN_MINUTE * MINUTES_IN_HOUR)
+#define HOURS_IN_DAY        24
+#define SECONDS_IN_DAY      (HOURS_IN_DAY * SECONDS_IN_HOUR)
+#define SECONDS_IN_WEEK     (DAYS_IN_WEEK * SECONDS_IN_DAY)
+#define SECONDS_IN_MONTH    (30 * SECONDS_IN_DAY)
 
 
 
@@ -33,10 +33,10 @@ static NSMutableDictionary          *__calendars            = nil;
 static NSMutableDictionary          *__components           = nil;
 static NSMutableDictionary          *__formatters           = nil;
 
-static NSLocale						*__locale				= nil;
-static NSTimeZone					*__timeZone				= nil;
-static NSUInteger					__firstWeekday			= 1;
-static MTDateWeekNumberingSystem	__weekNumberingSystem	= 1;
+static NSLocale                     *__locale               = nil;
+static NSTimeZone                   *__timeZone             = nil;
+static NSUInteger                   __firstWeekday          = 1;
+static MTDateWeekNumberingSystem    __weekNumberingSystem   = 1;
 
 static NSDateFormatterStyle         __dateStyle             = NSDateFormatterShortStyle;
 static NSDateFormatterStyle         __timeStyle             = NSDateFormatterShortStyle;
@@ -44,7 +44,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 
 
-#pragma mark - STATIC 
+#pragma mark - STATIC
 
 + (NSString *)threadIdentifier
 {
@@ -53,37 +53,37 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSCalendar *)calendar
 {
-	if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
+    if (!__calendars) __calendars = [[NSMutableDictionary alloc] initWithCapacity:0];
 
     NSString *keyName = [NSDate threadIdentifier];
     NSCalendar *calendar = [__calendars objectForKey:keyName];
 
-	if (!calendar) {
-		calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-		calendar.firstWeekday = __firstWeekday;
-		calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
-		if (__timeZone) calendar.timeZone = __timeZone;
+    if (!calendar) {
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        calendar.firstWeekday = __firstWeekday;
+        calendar.minimumDaysInFirstWeek = (NSUInteger)__weekNumberingSystem;
+        if (__timeZone) calendar.timeZone = __timeZone;
         [__calendars setObject:calendar forKey:keyName];
-	}
-    
+    }
+
     return calendar;
 }
 
 + (NSDateComponents *)components
 {
-	if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
-	
+    if (!__components) __components = [[NSMutableDictionary alloc] initWithCapacity:0];
+
     NSString *keyName = [NSDate threadIdentifier];
     NSDateComponents *component = [__components objectForKey:keyName];
 
-	if (!component) {
-		component = [[NSDateComponents alloc] init];
-		component.calendar = [self calendar];
-		if (__timeZone) component.timeZone = __timeZone;
+    if (!component) {
+        component = [[NSDateComponents alloc] init];
+        component.calendar = [self calendar];
+        if (__timeZone) component.timeZone = __timeZone;
         [__components setObject:component forKey:keyName];
-	}
+    }
 
-	[component setEra:NSUndefinedDateComponent];
+    [component setEra:NSUndefinedDateComponent];
     [component setYear:NSUndefinedDateComponent];
     [component setMonth:NSUndefinedDateComponent];
     [component setDay:NSUndefinedDateComponent];
@@ -92,61 +92,61 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [component setSecond:NSUndefinedDateComponent];
     [component setWeek:NSUndefinedDateComponent];
     [component setWeekday:NSUndefinedDateComponent];
-	[component setWeekdayOrdinal:NSUndefinedDateComponent];
-	[component setQuarter:NSUndefinedDateComponent];
+    [component setWeekdayOrdinal:NSUndefinedDateComponent];
+    [component setQuarter:NSUndefinedDateComponent];
 
     return component;
 }
 
 + (NSDateFormatter *)sharedFormatter
 {
-	if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
-	
+    if (!__formatters) __formatters = [[NSMutableDictionary alloc] initWithCapacity:0];
+
     NSString *keyName = [NSDate threadIdentifier];
     NSDateFormatter *formatter = [__formatters objectForKey:keyName];
 
-	if (!formatter) {
-		formatter = [[NSDateFormatter alloc] init];
-		formatter.calendar = [self calendar];
-		if (__locale) formatter.locale = __locale;
-		if (__timeZone) formatter.timeZone = __timeZone;
+    if (!formatter) {
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.calendar = [self calendar];
+        if (__locale) formatter.locale = __locale;
+        if (__timeZone) formatter.timeZone = __timeZone;
         [formatter setDateStyle:__dateStyle];
         [formatter setTimeStyle:__timeStyle];
         [__formatters setObject:formatter forKey:keyName];
-	}
+    }
 
     return formatter;
 }
 
 + (void)reset
 {
-	[__calendars removeAllObjects];
-	[__components removeAllObjects];
-	[__formatters removeAllObjects];
+    [__calendars removeAllObjects];
+    [__components removeAllObjects];
+    [__formatters removeAllObjects];
 }
 
 + (void)setLocale:(NSLocale *)locale
 {
-	__locale = locale;
-	[self reset];
+    __locale = locale;
+    [self reset];
 }
 
 + (void)setTimeZone:(NSTimeZone *)timeZone
 {
-	__timeZone = timeZone;
-	[self reset];
+    __timeZone = timeZone;
+    [self reset];
 }
 
 + (void)setFirstDayOfWeek:(NSUInteger)firstDay
 {
-	__firstWeekday = firstDay;
-	[self reset];
+    __firstWeekday = firstDay;
+    [self reset];
 }
 
 + (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system
 {
-	__weekNumberingSystem = system;
-	[self reset];
+    __weekNumberingSystem = system;
+    [self reset];
 }
 
 
@@ -156,8 +156,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSDate *)dateFromISOString:(NSString *)ISOString
 {
-	if (ISOString == nil || (NSNull *)ISOString == [NSNull null]) return nil;
-	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    if (ISOString == nil || (NSNull *)ISOString == [NSNull null]) return nil;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
     NSArray *formatsToTry = @[ @"yyyy-MM-dd HH:mm:ss ZZZ", @"yyyy-MM-dd HH:mm:ss Z", @"yyyy-MM-dd HH:mm:ss", @"yyyy-MM-dd'T'HH:mm:ss'Z'" ];
@@ -174,8 +174,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format
 {
-	if (string == nil || (NSNull *)string == [NSNull null]) return nil;
-	NSDateFormatter* formatter = [self sharedFormatter];
+    if (string == nil || (NSNull *)string == [NSNull null]) return nil;
+    NSDateFormatter* formatter = [self sharedFormatter];
     [formatter setDateFormat:format];
     return [formatter dateFromString:string];
 }
@@ -255,19 +255,19 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months weeks:(NSInteger)weeks days:(NSInteger)days hours:(NSInteger)hours minutes:(NSInteger)minutes seconds:(NSInteger)seconds
 {
     NSDateComponents *comps = [NSDate components];
-    if (years)		[comps setYear:years];
-    if (months)		[comps setMonth:months];
-    if (weeks)		[comps setWeek:weeks];
-    if (days)		[comps setDay:days];
-    if (hours)		[comps setHour:hours];
-    if (minutes)	[comps setMinute:minutes];
-    if (seconds)	[comps setSecond:seconds];
+    if (years)      [comps setYear:years];
+    if (months)     [comps setMonth:months];
+    if (weeks)      [comps setWeek:weeks];
+    if (days)       [comps setDay:days];
+    if (hours)      [comps setHour:hours];
+    if (minutes)    [comps setMinute:minutes];
+    if (seconds)    [comps setSecond:seconds];
     return [[NSDate calendar] dateByAddingComponents:comps toDate:self options:0];
 }
 
 + (NSDate *)dateFromComponents:(NSDateComponents *)components
 {
-	return [[NSDate calendar] dateFromComponents:components];
+    return [[NSDate calendar] dateFromComponents:components];
 }
 
 
@@ -343,7 +343,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSUInteger)hourOfDay
 {
     NSDateComponents *components = [[NSDate calendar] components:NSHourCalendarUnit fromDate:self];
-	return [components hour];
+    return [components hour];
 }
 
 - (NSUInteger)minuteOfHour
@@ -365,8 +365,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSDateComponents *)components
 {
-	NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-	return [[NSDate calendar] components:units fromDate:self];
+    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    return [[NSDate calendar] components:units fromDate:self];
 }
 
 
@@ -414,7 +414,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 - (NSDate *)oneYearNext
-{    
+{
     return [self dateByAddingYears:1 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:0];
 }
 
@@ -647,7 +647,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 
 - (NSInteger)daysSinceDate:(NSDate *)date
-{    
+{
     NSDateComponents *comps = [[NSDate calendar] components:NSDayCalendarUnit fromDate:date toDate:self options:0];
     NSInteger days = [comps day];
     return days;
@@ -899,7 +899,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     if ([self isOnOrAfter:[date startOfCurrentWeek]] && [self isOnOrBefore:[date endOfCurrentWeek]]) {
         return YES;
     }
-    return NO;    
+    return NO;
 }
 
 - (BOOL)isWithinSameDay:(NSDate *)date
@@ -919,12 +919,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 - (BOOL)isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2 {
-	if ([self isOnOrAfter:date1] && [self isOnOrBefore:date2])
-		return YES;
-	else if ([self isOnOrAfter:date2] && [self isOnOrBefore:date1])
-		return YES;
-	else
-		return NO;
+    if ([self isOnOrAfter:date1] && [self isOnOrBefore:date2])
+        return YES;
+    else if ([self isOnOrAfter:date2] && [self isOnOrBefore:date1])
+        return YES;
+    else
+        return NO;
 }
 
 
@@ -960,37 +960,37 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 - (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format {
-	if (format == MTDateHourFormat24Hour) {
-		return [self stringFromDateWithFormat:@"HH:mm"];
-	}
-	else {
-		return [self stringFromDateWithFormat:@"hh:mma"];
-	}
+    if (format == MTDateHourFormat24Hour) {
+        return [self stringFromDateWithFormat:@"HH:mm"];
+    }
+    else {
+        return [self stringFromDateWithFormat:@"hh:mma"];
+    }
 }
 
 - (NSString *)stringFromDateWithShortMonth {
-	return [self stringFromDateWithFormat:@"MMM"];
+    return [self stringFromDateWithFormat:@"MMM"];
 }
 
 - (NSString *)stringFromDateWithFullMonth {
-	return [self stringFromDateWithFormat:@"MMMM"];
+    return [self stringFromDateWithFormat:@"MMMM"];
 }
 
 - (NSString *)stringFromDateWithAMPMSymbol {
-	return [self stringFromDateWithFormat:@"a"];
+    return [self stringFromDateWithFormat:@"a"];
 }
 
 - (NSString *)stringFromDateWithShortWeekdayTitle {
-	return [self stringFromDateWithFormat:@"E"];
+    return [self stringFromDateWithFormat:@"E"];
 }
 
 - (NSString *)stringFromDateWithFullWeekdayTitle {
-	return [self stringFromDateWithFormat:@"EEEE"];
+    return [self stringFromDateWithFormat:@"EEEE"];
 }
 
 - (NSString *)stringFromDateWithFormat:(NSString *)format {
     NSDateFormatter *formatter = [NSDate sharedFormatter];
-	[formatter setDateFormat:format];
+    [formatter setDateFormat:format];
     return [formatter stringFromDate:self];
 }
 
@@ -1005,78 +1005,78 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval
 {
-	
-	NSMutableString *s = [NSMutableString string];
-	NSTimeInterval absInterval = interval > 0 ? interval : -interval;
 
-	NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
-	if (months > 0) {
-		[s appendFormat:@"%ld months, ", (long)months];
-		absInterval -= months * SECONDS_IN_MONTH;
-	}
-	
-	NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
-	if (days > 0) {
-		[s appendFormat:@"%ld days, ", (long)days];
-		absInterval -= days * SECONDS_IN_DAY;
-	}
-	
-	NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
-	if (hours > 0) {
-		[s appendFormat:@"%ld hours, ", (long)hours];
-		absInterval -= hours * SECONDS_IN_HOUR;
-	}
+    NSMutableString *s = [NSMutableString string];
+    NSTimeInterval absInterval = interval > 0 ? interval : -interval;
 
-	NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
-	if (minutes > 0) {
-		[s appendFormat:@"%ld minutes, ", (long)minutes];
-		absInterval -= minutes * SECONDS_IN_MINUTE;
-	}
-	
-	NSInteger seconds = absInterval;
-	if (seconds > 0) {
-		[s appendFormat:@"%ld seconds, ", (long)seconds];
-	}
-	
-	NSString *preString = [s stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ,"]];
-	return interval < 0 ? [NSString stringWithFormat:@"%@ before", preString] : [NSString stringWithFormat:@"%@ after", preString];
+    NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
+    if (months > 0) {
+        [s appendFormat:@"%ld months, ", (long)months];
+        absInterval -= months * SECONDS_IN_MONTH;
+    }
+
+    NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
+    if (days > 0) {
+        [s appendFormat:@"%ld days, ", (long)days];
+        absInterval -= days * SECONDS_IN_DAY;
+    }
+
+    NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
+    if (hours > 0) {
+        [s appendFormat:@"%ld hours, ", (long)hours];
+        absInterval -= hours * SECONDS_IN_HOUR;
+    }
+
+    NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
+    if (minutes > 0) {
+        [s appendFormat:@"%ld minutes, ", (long)minutes];
+        absInterval -= minutes * SECONDS_IN_MINUTE;
+    }
+
+    NSInteger seconds = absInterval;
+    if (seconds > 0) {
+        [s appendFormat:@"%ld seconds, ", (long)seconds];
+    }
+
+    NSString *preString = [s stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ,"]];
+    return interval < 0 ? [NSString stringWithFormat:@"%@ before", preString] : [NSString stringWithFormat:@"%@ after", preString];
 }
 
 - (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date
 {
-	NSMutableArray *s = [NSMutableArray array];
+    NSMutableArray *s = [NSMutableArray array];
     NSTimeInterval interval = [date timeIntervalSinceDate:self];
-	NSTimeInterval absInterval = interval > 0 ? interval : -interval;
+    NSTimeInterval absInterval = interval > 0 ? interval : -interval;
 
-	NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
-	if (months > 0) {
+    NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
+    if (months > 0) {
         NSString *formatString = months == 1 ? @"%ld month" : @"%ld months";
-		[s addObject:[NSString stringWithFormat:formatString, (long)months]];
-		absInterval -= months * SECONDS_IN_MONTH;
-	}
+        [s addObject:[NSString stringWithFormat:formatString, (long)months]];
+        absInterval -= months * SECONDS_IN_MONTH;
+    }
 
-	NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
-	if (days > 0) {
+    NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
+    if (days > 0) {
         NSString *formatString = days == 1 ? @"%ld day" : @"%ld days";
-		[s addObject:[NSString stringWithFormat:formatString, (long)days]];
-		absInterval -= days * SECONDS_IN_DAY;
-	}
+        [s addObject:[NSString stringWithFormat:formatString, (long)days]];
+        absInterval -= days * SECONDS_IN_DAY;
+    }
 
-	NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
-	if (hours > 0) {
+    NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
+    if (hours > 0) {
         NSString *formatString = hours == 1 ? @"%ld hour" : @"%ld hours";
-		[s addObject:[NSString stringWithFormat:formatString, (long)hours]];
-		absInterval -= hours * SECONDS_IN_HOUR;
-	}
+        [s addObject:[NSString stringWithFormat:formatString, (long)hours]];
+        absInterval -= hours * SECONDS_IN_HOUR;
+    }
 
-	NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
-	if (minutes > 0) {
+    NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
+    if (minutes > 0) {
         NSString *formatString = minutes == 1 ? @"%ld minute" : @"%ld minutes";
         [s addObject:[NSString stringWithFormat:formatString, (long)minutes]];
-	}
+    }
 
     NSString *preString = [s componentsJoinedByString:@", "];
-	return interval < 0 ? [NSString stringWithFormat:@"%@ Ago", preString] : [NSString stringWithFormat:@"In %@", preString];
+    return interval < 0 ? [NSString stringWithFormat:@"%@ Ago", preString] : [NSString stringWithFormat:@"In %@", preString];
 }
 
 
@@ -1142,11 +1142,11 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSDate *)inTimeZone:(NSTimeZone *)timezone
 {
-	NSTimeZone *current				= __timeZone ? __timeZone : [NSTimeZone defaultTimeZone];
-	NSTimeInterval currentOffset	= [current secondsFromGMTForDate:self];
-	NSTimeInterval toOffset			= [timezone secondsFromGMTForDate:self];
-	NSTimeInterval diff				= toOffset - currentOffset;
-	return [self dateByAddingTimeInterval:diff];
+    NSTimeZone *current             = __timeZone ? __timeZone : [NSTimeZone defaultTimeZone];
+    NSTimeInterval currentOffset    = [current secondsFromGMTForDate:self];
+    NSTimeInterval toOffset         = [timezone secondsFromGMTForDate:self];
+    NSTimeInterval diff             = toOffset - currentOffset;
+    return [self dateByAddingTimeInterval:diff];
 }
 
 
@@ -1158,15 +1158,15 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - Common Date Formats
 
-NSString *const MTDatesFormatDefault		= @"EE MMM dd yyyy HH:mm:ss";		// Sat Jun 09 2007 17:46:21
-NSString *const MTDatesFormatShortDate		= @"M/d/yy";						// 6/9/07
-NSString *const MTDatesFormatMediumDate		= @"MMM d, yyyy";					// Jun 9, 2007
-NSString *const MTDatesFormatLongDate		= @"MMMM d, yyyy";					// June 9, 2007
-NSString *const MTDatesFormatFullDate		= @"EEEE, MMMM d, yyyy";			// Saturday, June 9, 2007
-NSString *const MTDatesFormatShortTime		= @"h:mm a";						// 5:46 PM
-NSString *const MTDatesFormatMediumTime		= @"h:mm:ss a";						// 5:46:21 PM
-NSString *const MTDatesFormatLongTime		= @"h:mm:ss a zzz";					// 5:46:21 PM EST
-NSString *const MTDatesFormatISODate		= @"yyyy-MM-dd";					// 2007-06-09
-NSString *const MTDatesFormatISOTime		= @"HH:mm:ss";						// 17:46:21
-NSString *const MTDatesFormatISODateTime	= @"yyyy-MM-dd HH:mm:ss";			// 2007-06-09 17:46:21
-//NSString *const MTDatesFormatISOUTCDateTime	= @"yyyy-MM-dd'T'HH:mm:ss'Z'";		// 2007-06-09T22:46:21Z
+NSString *const MTDatesFormatDefault        = @"EE MMM dd yyyy HH:mm:ss";       // Sat Jun 09 2007 17:46:21
+NSString *const MTDatesFormatShortDate      = @"M/d/yy";                        // 6/9/07
+NSString *const MTDatesFormatMediumDate     = @"MMM d, yyyy";                   // Jun 9, 2007
+NSString *const MTDatesFormatLongDate       = @"MMMM d, yyyy";                  // June 9, 2007
+NSString *const MTDatesFormatFullDate       = @"EEEE, MMMM d, yyyy";            // Saturday, June 9, 2007
+NSString *const MTDatesFormatShortTime      = @"h:mm a";                        // 5:46 PM
+NSString *const MTDatesFormatMediumTime     = @"h:mm:ss a";                     // 5:46:21 PM
+NSString *const MTDatesFormatLongTime       = @"h:mm:ss a zzz";                 // 5:46:21 PM EST
+NSString *const MTDatesFormatISODate        = @"yyyy-MM-dd";                    // 2007-06-09
+NSString *const MTDatesFormatISOTime        = @"HH:mm:ss";                      // 17:46:21
+NSString *const MTDatesFormatISODateTime    = @"yyyy-MM-dd HH:mm:ss";           // 2007-06-09 17:46:21
+//NSString *const MTDatesFormatISOUTCDateTime   = @"yyyy-MM-dd'T'HH:mm:ss'Z'";      // 2007-06-09T22:46:21Z
