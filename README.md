@@ -21,7 +21,7 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
 
 [date year];                                                  // => 1986
 
-[date weekDayOfWeek];                                         // => 6
+[date weekdayOfWeek];                                         // => 6
 
 [date minuteOfHour];                                          // => 29
 
@@ -34,7 +34,7 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
 
 ### Creating Dates
 
-    [NSDate dateFromYear:1986 week:28 weekDay:6 hour:11 minute:29 second:0];
+    [NSDate dateFromYear:1986 week:28 weekday:6 hour:11 minute:29 second:0];
 
 ### Dates From Other Dates
 
@@ -89,9 +89,9 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
     + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day;
     + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute;
     + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
-    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay;
-    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay hour:(NSUInteger)hour minute:(NSUInteger)minute;
-    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
+    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday;
+    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute;
+    + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
     - (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months weeks:(NSInteger)weeks days:(NSInteger)days hours:(NSInteger)hours minutes:(NSInteger)minutes seconds:(NSInteger)seconds;
     + (NSDate *)dateFromComponents:(NSDateComponents *)components;
 
@@ -104,7 +104,7 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
 
     - (NSUInteger)year;
     - (NSUInteger)weekOfYear;
-    - (NSUInteger)weekDayOfWeek;
+    - (NSUInteger)weekdayOfWeek;
     - (NSUInteger)monthOfYear;
     - (NSUInteger)dayOfMonth;
     - (NSUInteger)hourOfDay;
