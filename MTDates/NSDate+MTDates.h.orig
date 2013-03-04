@@ -75,8 +75,12 @@ typedef enum {
 
 - (NSUInteger)year;
 - (NSUInteger)weekOfYear;
+<<<<<<< HEAD
 - (NSUInteger)weekdayOfWeek;
+=======
 - (NSUInteger)weekOfMonth;
+- (NSUInteger)weekDayOfWeek;
+>>>>>>> f9264cf1523d4e2de525c76ae68006cd5ceb0f6c
 - (NSUInteger)monthOfYear;
 - (NSUInteger)dayOfMonth;
 - (NSUInteger)hourOfDay;

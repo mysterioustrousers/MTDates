@@ -323,13 +323,17 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [comps weekOfYear];
 }
 
+<<<<<<< HEAD
+- (NSUInteger)weekdayOfWeek
+=======
 - (NSUInteger)weekOfMonth
 {
   NSDateComponents *components = [[NSDate calendar] components:NSWeekOfMonthCalendarUnit fromDate:self];
   return [components weekOfMonth];
 }
 
-- (NSUInteger)weekdayOfWeek
+- (NSUInteger)weekDayOfWeek
+>>>>>>> f9264cf1523d4e2de525c76ae68006cd5ceb0f6c
 {
     return [[NSDate calendar] ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
 }

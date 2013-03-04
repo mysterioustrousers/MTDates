@@ -173,13 +173,17 @@
   STAssertTrue([date weekOfYear] == 28, nil);
 }
 
+<<<<<<< HEAD
+- (void)test_weekdayOfWeek
+=======
 - (void)test_weekOfMonth
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
   STAssertTrue([date weekOfMonth] == 2, nil);
 }
 
-- (void)test_weekdayOfWeek
+- (void)test_weekDayOfWeek
+>>>>>>> f9264cf1523d4e2de525c76ae68006cd5ceb0f6c
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
   STAssertTrue([date weekdayOfWeek] == 6, nil);
