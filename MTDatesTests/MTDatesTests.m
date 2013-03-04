@@ -92,22 +92,22 @@
   STAssertTrue([[NSDate dateFromYear:1986 month:7 day:11 hour:11 minute:29 second:0] isEqualToDate:date], nil);
 }
 
-- (void)test_dateFromYear_week_weekDay
+- (void)test_dateFromYear_week_weekday
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 12:00am"];
-  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekDay:6] isEqualToDate:date], nil);
+  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekday:6] isEqualToDate:date], nil);
 }
 
-- (void)test_dateFromYear_week_weekDay_hour_minute
+- (void)test_dateFromYear_week_weekday_hour_minute
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekDay:6 hour:11 minute:29] isEqualToDate:date], nil);
+  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekday:6 hour:11 minute:29] isEqualToDate:date], nil);
 }
 
-- (void)test_dateFromYear_week_weekDay_hour_minute_second
+- (void)test_dateFromYear_week_weekday_hour_minute_second
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekDay:6 hour:11 minute:29 second:0] isEqualToDate:date], nil);
+  STAssertTrue([[NSDate dateFromYear:1986 week:28 weekday:6 hour:11 minute:29 second:0] isEqualToDate:date], nil);
 }
 
 - (void)test_dateByAddingYears_months_weeks_days_hours_minutes_seconds
@@ -173,10 +173,10 @@
   STAssertTrue([date weekOfYear] == 28, nil);
 }
 
-- (void)test_weekDayOfWeek
+- (void)test_weekdayOfWeek
 {
   NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-  STAssertTrue([date weekDayOfWeek] == 6, nil);
+  STAssertTrue([date weekdayOfWeek] == 6, nil);
 }
 
 - (void)test_monthOfYear
