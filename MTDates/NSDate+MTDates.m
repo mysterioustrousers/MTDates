@@ -216,36 +216,36 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [[NSDate calendar] dateFromComponents:comps];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday
 {
     NSDateComponents *comps = [NSDate components];
     [comps setYear:year];
     [comps setWeek:week];
-    [comps setWeekday:weekDay];
+    [comps setWeekday:weekday];
     [comps setHour:0];
     [comps setMinute:0];
     [comps setSecond:0];
     return [[NSDate calendar] dateFromComponents:comps];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay hour:(NSUInteger)hour minute:(NSUInteger)minute
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute
 {
     NSDateComponents *comps = [NSDate components];
     [comps setYear:year];
     [comps setWeek:week];
-    [comps setWeekday:weekDay];
+    [comps setWeekday:weekday];
     [comps setHour:hour];
     [comps setMinute:minute];
     [comps setSecond:0];
     return [[NSDate calendar] dateFromComponents:comps];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekDay:(NSUInteger)weekDay hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
 {
     NSDateComponents *comps = [NSDate components];
     [comps setYear:year];
     [comps setWeek:week];
-    [comps setWeekday:weekDay];
+    [comps setWeekday:weekday];
     [comps setHour:hour];
     [comps setMinute:minute];
     [comps setSecond:second];
@@ -323,7 +323,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [comps weekOfYear];
 }
 
-- (NSUInteger)weekDayOfWeek
+- (NSUInteger)weekdayOfWeek
 {
     return [[NSDate calendar] ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
 }
@@ -527,7 +527,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSDate *)startOfCurrentWeek
 {
-    NSInteger weekday = [self weekDayOfWeek];
+    NSInteger weekday = [self weekdayOfWeek];
     NSDate *date = [self dateDaysAfter:-(weekday - 1)];
     return [NSDate dateFromYear:[date year] month:[date monthOfYear] day:[date dayOfMonth] hour:0 minute:0 second:0];
 }
@@ -1122,7 +1122,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSUInteger)weekdayStartOfCurrentMonth
 {
-    return [[self startOfCurrentMonth] weekDayOfWeek];
+    return [[self startOfCurrentMonth] weekdayOfWeek];
 }
 
 - (NSUInteger)daysInCurrentMonth
