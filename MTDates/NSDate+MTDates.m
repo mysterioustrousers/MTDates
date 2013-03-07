@@ -182,26 +182,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day
 {
-    NSDateComponents *comps = [NSDate components];
-    [comps setYear:year];
-    [comps setMonth:month];
-    [comps setDay:day];
-    [comps setHour:0];
-    [comps setMinute:0];
-    [comps setSecond:0];
-    return [[NSDate calendar] dateFromComponents:comps];
+    return [self dateFromYear:year month:month day:day hour:0 minute:0];
 }
 
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute
 {
-    NSDateComponents *comps = [NSDate components];
-    [comps setYear:year];
-    [comps setMonth:month];
-    [comps setDay:day];
-    [comps setHour:hour];
-    [comps setMinute:minute];
-    [comps setSecond:0];
-    return [[NSDate calendar] dateFromComponents:comps];//@leaks
+    return [self dateFromYear:year month:month day:day hour:hour minute:minute second:0];//@leaks
 }
 
 + (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
@@ -218,26 +204,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday
 {
-    NSDateComponents *comps = [NSDate components];
-    [comps setYear:year];
-    [comps setWeek:week];
-    [comps setWeekday:weekday];
-    [comps setHour:0];
-    [comps setMinute:0];
-    [comps setSecond:0];
-    return [[NSDate calendar] dateFromComponents:comps];
+    return [self dateFromYear:year week:week weekday:weekday hour:0 minute:0];
 }
 
 + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute
 {
-    NSDateComponents *comps = [NSDate components];
-    [comps setYear:year];
-    [comps setWeek:week];
-    [comps setWeekday:weekday];
-    [comps setHour:hour];
-    [comps setMinute:minute];
-    [comps setSecond:0];
-    return [[NSDate calendar] dateFromComponents:comps];
+    return [self dateFromYear:year week:week weekday:weekday hour:hour minute:minute second:0];
 }
 
 + (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
