@@ -17,8 +17,8 @@
 
 @interface NSDateComponents (MTDates)
 
-+ (NSDateComponents *)componentsFromString:(NSString *)string;
-- (NSString *)stringValue;
-- (BOOL)isEqualToDateComponents:(NSDateComponents *)components;
++ (NSDateComponents *)mt_componentsFromString:(NSString *)string;
+- (NSString *)mt_stringValue;
+- (BOOL)mt_isEqualToDateComponents:(NSDateComponents *)components;
 
 @end
