@@ -21,4 +21,12 @@
 - (NSString *)mt_stringValue;
 - (BOOL)mt_isEqualToDateComponents:(NSDateComponents *)components;
 
+#if MTDATES_SHORTHAND
+
++ (NSDateComponents *)componentsFromString:(NSString *)string;
+- (NSString *)stringValue;
+- (BOOL)isEqualToDateComponents:(NSDateComponents *)components;
+
+#endif
+
 @end

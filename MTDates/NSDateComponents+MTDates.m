@@ -82,5 +82,26 @@
   return era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
+#if MTDATES_SHORTHAND
+
+#pragma mark - SHORTHAND
+
++ (NSDateComponents *)componentsFromString:(NSString *)string
+{
+    return [self mt_componentsFromString:string];
+}
+
+- (NSString *)stringValue
+{
+    return [self mt_stringValue];
+}
+
+- (BOOL)isEqualToDateComponents:(NSDateComponents *)components
+{
+    return [self mt_isEqualToDateComponents:components];
+}
+
+#endif
+
 
 @end
