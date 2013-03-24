@@ -204,8 +204,8 @@ typedef enum {
 - (NSDate *)mt_oneMinutePrevious;
 - (NSDate *)mt_oneMinuteNext;
 
-- (NSDate *)mt_dateMinutesBefore:(NSUInteger)minute;
-- (NSDate *)mt_dateMinutesAfter:(NSUInteger)minute;
+- (NSDate *)mt_dateMinutesBefore:(NSUInteger)minutes;
+- (NSDate *)mt_dateMinutesAfter:(NSUInteger)minutes;
 
 - (NSInteger)mt_minutesSinceDate:(NSDate *)date;
 - (NSInteger)mt_minutesUntilDate:(NSDate *)date;
@@ -275,6 +275,201 @@ typedef enum {
 + (NSInteger)mt_minValueForUnit:(NSCalendarUnit)unit;
 + (NSInteger)mt_maxValueForUnit:(NSCalendarUnit)unit;
 
+#if MTDATES_NO_PREFIX
+
+#pragma mark - NO PREFIX
+
++ (NSDateFormatter *)sharedFormatter;
+
++ (void)setCalendarIdentifier:(NSString *)identifier;
++ (void)setLocale:(NSLocale *)locale;
++ (void)setTimeZone:(NSTimeZone *)timeZone;
++ (void)setFirstDayOfWeek:(NSUInteger)firstDay;
++ (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system;
+
++ (NSDate *)dateFromISOString:(NSString *)ISOString;
++ (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format;
++ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day;
++ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute;
++ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday;
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute;
++ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
+- (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months weeks:(NSInteger)weeks days:(NSInteger)days hours:(NSInteger)hours minutes:(NSInteger)minutes seconds:(NSInteger)seconds;
++ (NSDate *)dateFromComponents:(NSDateComponents *)components;
+
++ (NSArray *)shortWeekdaySymbols;
++ (NSArray *)weekdaySymbols;
++ (NSArray *)veryShortWeekdaySymbols;
++ (NSArray *)shortMonthlySymbols;
++ (NSArray *)monthlySymbols;
++ (NSArray *)veryShortMonthlySymbols;
+
+- (NSUInteger)year;
+- (NSUInteger)weekOfYear;
+- (NSUInteger)weekdayOfWeek;
+- (NSUInteger)weekOfMonth;
+- (NSUInteger)monthOfYear;
+- (NSUInteger)dayOfMonth;
+- (NSUInteger)hourOfDay;
+- (NSUInteger)minuteOfHour;
+- (NSUInteger)secondOfMinute;
+- (NSTimeInterval)secondsIntoDay;
+- (NSDateComponents *)components;
+
+- (NSDate *)startOfPreviousYear;
+- (NSDate *)startOfCurrentYear;
+- (NSDate *)startOfNextYear;
+
+- (NSDate *)endOfPreviousYear;
+- (NSDate *)endOfCurrentYear;
+- (NSDate *)endOfNextYear;
+
+- (NSDate *)oneYearPrevious;
+- (NSDate *)oneYearNext;
+
+- (NSDate *)dateYearsBefore:(NSUInteger)years;
+- (NSDate *)dateYearsAfter:(NSUInteger)years;
+
+- (NSInteger)yearsSinceDate:(NSDate *)date;
+- (NSInteger)yearsUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousMonth;
+- (NSDate *)startOfCurrentMonth;
+- (NSDate *)startOfNextMonth;
+
+- (NSDate *)endOfPreviousMonth;
+- (NSDate *)endOfCurrentMonth;
+- (NSDate *)endOfNextMonth;
+
+- (NSDate *)oneMonthPrevious;
+- (NSDate *)oneMonthNext;
+
+- (NSDate *)dateMonthsBefore:(NSUInteger)months;
+- (NSDate *)dateMonthsAfter:(NSUInteger)months;
+
+- (NSInteger)monthsSinceDate:(NSDate *)date;
+- (NSInteger)monthsUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousWeek;
+- (NSDate *)startOfCurrentWeek;
+- (NSDate *)startOfNextWeek;
+
+- (NSDate *)endOfPreviousWeek;
+- (NSDate *)endOfCurrentWeek;
+- (NSDate *)endOfNextWeek;
+
+- (NSDate *)oneWeekPrevious;
+- (NSDate *)oneWeekNext;
+
+- (NSDate *)dateWeeksBefore:(NSUInteger)weeks;
+- (NSDate *)dateWeeksAfter:(NSUInteger)weeks;
+
+- (NSInteger)weeksSinceDate:(NSDate *)date;
+- (NSInteger)weeksUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousDay;
+- (NSDate *)startOfCurrentDay;
+- (NSDate *)startOfNextDay;
+
+- (NSDate *)endOfPreviousDay;
+- (NSDate *)endOfCurrentDay;
+- (NSDate *)endOfNextDay;
+
+- (NSDate *)oneDayPrevious;
+- (NSDate *)oneDayNext;
+
+- (NSDate *)dateDaysBefore:(NSUInteger)days;
+- (NSDate *)dateDaysAfter:(NSUInteger)days;
+
+- (NSInteger)daysSinceDate:(NSDate *)date;
+- (NSInteger)daysUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousHour;
+- (NSDate *)startOfCurrentHour;
+- (NSDate *)startOfNextHour;
+
+- (NSDate *)endOfPreviousHour;
+- (NSDate *)endOfCurrentHour;
+- (NSDate *)endOfNextHour;
+
+- (NSDate *)oneHourPrevious;
+- (NSDate *)oneHourNext;
+
+- (NSDate *)dateHoursBefore:(NSUInteger)hours;
+- (NSDate *)dateHoursAfter:(NSUInteger)hours;
+
+- (NSInteger)hoursSinceDate:(NSDate *)date;
+- (NSInteger)hoursUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousMinute;
+- (NSDate *)startOfCurrentMinute;
+- (NSDate *)startOfNextMinute;
+
+- (NSDate *)endOfPreviousMinute;
+- (NSDate *)endOfCurrentMinute;
+- (NSDate *)endOfNextMinute;
+
+- (NSDate *)oneMinutePrevious;
+- (NSDate *)oneMinuteNext;
+
+- (NSDate *)dateMinutesBefore:(NSUInteger)minute;
+- (NSDate *)dateMinutesAfter:(NSUInteger)minute;
+
+- (NSInteger)minutesSinceDate:(NSDate *)date;
+- (NSInteger)minutesUntilDate:(NSDate *)date;
+
+- (NSDate *)startOfPreviousSecond;
+- (NSDate *)startOfNextSecond;
+
+- (NSDate *)oneSecondPrevious;
+- (NSDate *)oneSecondNext;
+
+- (NSDate *)dateSecondsBefore:(NSUInteger)seconds;
+- (NSDate *)dateSecondsAfter:(NSUInteger)seconds;
+
+- (NSInteger)secondsSinceDate:(NSDate *)date;
+- (NSInteger)secondsUntilDate:(NSDate *)date;
+
+- (BOOL)isAfter:(NSDate *)date;
+- (BOOL)isBefore:(NSDate *)date;
+- (BOOL)isOnOrAfter:(NSDate *)date;
+- (BOOL)isOnOrBefore:(NSDate *)date;
+- (BOOL)isWithinSameMonth:(NSDate *)date;
+- (BOOL)isWithinSameWeek:(NSDate *)date;
+- (BOOL)isWithinSameDay:(NSDate *)date;
+- (BOOL)isWithinSameHour:(NSDate *)date;
+- (BOOL)isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2;
+
++ (void)setFormatterDateStyle:(NSDateFormatterStyle)style;
++ (void)setFormatterTimeStyle:(NSDateFormatterStyle)style;
+
+- (NSString *)stringValue;
+- (NSString *)stringValueWithDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle;
+- (NSString *)stringFromDateWithHourAndMinuteFormat:(MTDateHourFormat)format;
+- (NSString *)stringFromDateWithShortMonth;
+- (NSString *)stringFromDateWithFullMonth;
+- (NSString *)stringFromDateWithAMPMSymbol;
+- (NSString *)stringFromDateWithShortWeekdayTitle;
+- (NSString *)stringFromDateWithFullWeekdayTitle;
+- (NSString *)stringFromDateWithFormat:(NSString *)format localized:(BOOL)localized;    // http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
+- (NSString *)stringFromDateWithISODateTime;
+- (NSString *)stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;
+- (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date;
+
++ (NSArray *)datesCollectionFromDate:(NSDate *)startDate untilDate:(NSDate *)endDate;
+- (NSArray *)hoursInCurrentDayAsDatesCollection;
+- (BOOL)isInAM;
+- (BOOL)isStartOfAnHour;
+- (NSUInteger)weekdayStartOfCurrentMonth;
+- (NSUInteger)daysInCurrentMonth;
+- (NSUInteger)daysInPreviousMonth;
+- (NSUInteger)daysInNextMonth;
+- (NSDate *)inTimeZone:(NSTimeZone *)timezone;
++ (NSInteger)minValueForUnit:(NSCalendarUnit)unit;
++ (NSInteger)maxValueForUnit:(NSCalendarUnit)unit;
+
+#endif
 
 @end
 
