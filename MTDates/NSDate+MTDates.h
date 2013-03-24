@@ -275,9 +275,9 @@ typedef enum {
 + (NSInteger)mt_minValueForUnit:(NSCalendarUnit)unit;
 + (NSInteger)mt_maxValueForUnit:(NSCalendarUnit)unit;
 
-#if MTDATES_SHORTHAND
+#if MTDATES_NO_PREFIX
 
-#pragma mark - SHORTHAND
+#pragma mark - NO PREFIX
 
 + (NSDateFormatter *)sharedFormatter;
 

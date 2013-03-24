@@ -9,7 +9,7 @@ I'm sorry to anyone I've inconvenienced by adding the mt_ prefix to all category
 totally unreasonable to imagine Apple might add one of these methods to NSDate. I thought it to be the proper thing to do and I figured I'd better do it sooner
 than later. I hope you understand. Thanks for using the project and for your support.
 
-To use the library without the need to prefix the methods, add `MTDATES_SHORTHAND=1` to your Target's Preprocessor Macros in the Build Settings; or add `#define MTDATES_SHORTHAND 1` to your target's .pch file.
+To use the library without the need to prefix the methods, add `MTDATES_NO_PREFIX=1` to your Target's Preprocessor Macros in the Build Settings; or add `#define MTDATES_NO_PREFIX 1` to your target's .pch file.
 
 ### Installation
 

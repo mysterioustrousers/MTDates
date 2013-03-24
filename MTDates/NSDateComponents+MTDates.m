@@ -82,9 +82,9 @@
   return era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
-#if MTDATES_SHORTHAND
+#if MTDATES_NO_PREFIX
 
-#pragma mark - SHORTHAND
+#pragma mark - NO PREFIX
 
 + (NSDateComponents *)componentsFromString:(NSString *)string
 {
@@ -102,6 +102,5 @@
 }
 
 #endif
-
 
 @end

@@ -1214,16 +1214,16 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-#if MTDATES_SHORTHAND
+#if MTDATES_NO_PREFIX
 
-#pragma mark - SHORTHAND
+#pragma mark - NO PREFIX
 
 + (NSDateFormatter *)sharedFormatter
 {
     return [self mt_sharedFormatter];
 }
 
-#pragma mark - GLOBAL CONFIG (SHORTHAND)
+#pragma mark - GLOBAL CONFIG (NO PREFIX)
 
 + (void)setCalendarIdentifier:(NSString *)identifier
 {
@@ -1249,7 +1249,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [self mt_setWeekNumberingSystem:system];
 }
 
-#pragma mark - CONSTRUCTORS (SHORTHAND)
+#pragma mark - CONSTRUCTORS (NO PREFIX)
 
 + (NSDate *)dateFromISOString:(NSString *)ISOString
 {
@@ -1301,7 +1301,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_dateFromComponents:components];
 }
 
-#pragma mark - SYMBOLS (SHORTHAND)
+#pragma mark - SYMBOLS (NO PREFIX)
 
 + (NSArray *)shortWeekdaySymbols
 {
@@ -1333,7 +1333,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_veryShortMonthlySymbols];
 }
 
-#pragma mark - COMPONENTS (SHORTHAND)
+#pragma mark - COMPONENTS (NO PREFIX)
 
 - (NSUInteger)year
 {
@@ -1390,7 +1390,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_components];
 }
 
-#pragma mark - RELATIVES (SHORTHAND)
+#pragma mark - RELATIVES (NO PREFIX)
 
 
 #pragma mark years
@@ -1807,7 +1807,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_secondsUntilDate:date];
 }
 
-#pragma mark - COMPARES (SHORTHAND)
+#pragma mark - COMPARES (NO PREFIX)
 
 - (BOOL)isAfter:(NSDate *)date
 {
@@ -1854,7 +1854,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_isBetweenDate:date1 andDate:date2];
 }
 
-#pragma mark - STRINGS (SHORTHAND)
+#pragma mark - STRINGS (NO PREFIX)
 
 + (void)setFormatterDateStyle:(NSDateFormatterStyle)style
 {
@@ -1925,7 +1925,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_stringFromDateWithGreatestComponentsUntilDate:date];
 }
 
-#pragma mark - MISC (SHORTHAND)
+#pragma mark - MISC (NO PREFIX)
 
 + (NSArray *)datesCollectionFromDate:(NSDate *)startDate untilDate:(NSDate *)endDate
 {
