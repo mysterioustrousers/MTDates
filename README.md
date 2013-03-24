@@ -3,11 +3,13 @@ MTDates
 
 MTDates is an category on NSDate that makes common date calculations super easy.
 
-### Apology
+### Method Prefixing
 
 I'm sorry to anyone I've inconvenienced by adding the mt_ prefix to all category methods. I believe it's popular convention for category methods and it's not
 totally unreasonable to imagine Apple might add one of these methods to NSDate. I thought it to be the proper thing to do and I figured I'd better do it sooner
 than later. I hope you understand. Thanks for using the project and for your support.
+
+To use the library without the need to prefix the methods, add `MTDATES_NO_PREFIX=1` to your Target's Preprocessor Macros in the Build Settings; or add `#define MTDATES_NO_PREFIX 1` to your target's .pch file.
 
 ### Installation
 
