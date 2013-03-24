@@ -1921,7 +1921,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return [self mt_stringFromDateWithGreatestComponentsForSecondsPassed:interval];
 }
 
-- (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date {
+- (NSString *)stringFromDateWithGreatestComponentsUntilDate:(NSDate *)date
+{
     return [self mt_stringFromDateWithGreatestComponentsUntilDate:date];
 }
 
