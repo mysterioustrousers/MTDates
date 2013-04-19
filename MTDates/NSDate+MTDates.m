@@ -1456,7 +1456,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     }
 
     if (!__locale) {
-        __locale = [NSLocale currentLocale];
+        __locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     }
 
     if (!__timeZone) {
