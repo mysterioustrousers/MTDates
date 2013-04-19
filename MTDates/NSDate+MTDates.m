@@ -239,8 +239,47 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	}
 }
 
++ (NSDate*)mt_startOfToday
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_startOfCurrentDay];
+	}
+}
 
++ (NSDate*)mt_startOfYesterday
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_startOfPreviousDay];
+	}
+}
 
++ (NSDate*)mt_startOfTomorrow
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_startOfNextDay];
+	}
+}
+
++ (NSDate*)mt_endOfToday
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_endOfCurrentDay];
+	}
+}
+
++ (NSDate*)mt_endOfYesterday
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_endOfPreviousDay];
+	}
+}
+
++ (NSDate*)mt_endOfTomorrow
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate date] mt_endOfNextDay];
+	}
+}
 
 
 #pragma mark - SYMBOLS
@@ -1583,6 +1622,37 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
     return [self mt_dateFromComponents:components];
 }
+
++ (NSDate*)startOfToday
+{
+    return [self mt_startOfToday];
+}
+
++ (NSDate*)startOfYesterday
+{
+    return [self mt_startOfYesterday];
+}
+
++ (NSDate*)startOfTomorrow
+{
+    return [self mt_startOfTomorrow];
+}
+
++ (NSDate*)endOfToday
+{
+    return [self mt_endOfToday];
+}
+
++ (NSDate*)endOfYesterday
+{
+    return [self mt_endOfYesterday];
+}
+
++ (NSDate*)endOfTomorrow
+{
+    return [self mt_endOfTomorrow];
+}
+
 
 #pragma mark - SYMBOLS (NO PREFIX)
 

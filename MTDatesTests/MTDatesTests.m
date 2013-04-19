@@ -123,7 +123,44 @@
     STAssertTrue([[date3 mt_dateByAddingYears:0 months:0 weeks:2 days:0 hours:1 minutes:24 seconds:0] isEqualToDate:date], nil);
 }
 
+- (void)test_startOfToday
+{
+    NSDate *date = [NSDate date];
+    NSDateComponents *comps = [date mt_components];
+    STAssertTrue([[NSDate mt_startOfToday] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+}
 
+- (void)test_startOfYesterday
+{
+    NSDate *date = [[NSDate date] dateByAddingTimeInterval:-86400];
+    NSDateComponents *comps = [date mt_components];
+    STAssertTrue([[NSDate mt_startOfYesterday] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+}
+
+- (void)test_startOfTomorrow
+{
+    NSDate *date = [[NSDate date] dateByAddingTimeInterval:86400];
+    NSDateComponents *comps = [date mt_components];
+    STAssertTrue([[NSDate mt_startOfTomorrow] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+}
+
+- (void)test_endOfToday
+{
+    NSDate *date = [[NSDate mt_startOfTomorrow] dateByAddingTimeInterval:-1];
+    STAssertTrue([[NSDate mt_endOfToday] isEqualToDate:date], nil);
+}
+
+- (void)test_endOfTomorrow
+{
+    NSDate *date = [[NSDate mt_startOfTomorrow] dateByAddingTimeInterval:86400-1];
+    STAssertTrue([[NSDate mt_endOfTomorrow] isEqualToDate:date], nil);
+}
+
+- (void)test_endOfYesterday
+{
+    NSDate *date = [[NSDate mt_startOfToday] dateByAddingTimeInterval:-1];
+    STAssertTrue([[NSDate mt_endOfYesterday] isEqualToDate:date], nil);
+}
 
 
 #pragma mark - SYMBOLS
