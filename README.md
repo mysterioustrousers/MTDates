@@ -2,7 +2,7 @@ MTDates
 =======
 [![Build Status](https://travis-ci.org/mysterioustrousers/MTDates.png?branch=master)](https://travis-ci.org/mysterioustrousers/MTDates)
 
-MTDates is an category on NSDate that makes common date calculations super easy.
+MTDates is a category on NSDate that makes common date calculations super easy.
 
 ### Method Prefixing
 
