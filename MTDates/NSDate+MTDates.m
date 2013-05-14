@@ -347,6 +347,14 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	}
 }
 
+- (NSUInteger)mt_dayOfYear
+{
+    @synchronized([NSDate mt_lockObject]){
+        return [[NSDate mt_calendar] ordinalityOfUnit:NSDayCalendarUnit
+                                               inUnit:NSYearCalendarUnit forDate:self];
+	}
+}
+
 - (NSUInteger)mt_weekOfMonth
 {
 	@synchronized([NSDate mt_lockObject]){
@@ -1696,6 +1704,11 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSUInteger)weekOfYear
 {
     return [self mt_weekOfYear];
+}
+
+- (NSUInteger)dayOfYear
+{
+    return [self mt_dayOfYear];
 }
 
 - (NSUInteger)weekdayOfWeek

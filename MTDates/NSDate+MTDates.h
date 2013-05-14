@@ -81,6 +81,7 @@ typedef enum {
 
 - (NSUInteger)mt_year;
 - (NSUInteger)mt_weekOfYear;
+- (NSUInteger)mt_dayOfYear;
 - (NSUInteger)mt_weekdayOfWeek;
 - (NSUInteger)mt_weekOfMonth;
 - (NSUInteger)mt_monthOfYear;
@@ -318,6 +319,7 @@ typedef enum {
 
 - (NSUInteger)year;
 - (NSUInteger)weekOfYear;
+- (NSUInteger)dayOfYear;
 - (NSUInteger)weekdayOfWeek;
 - (NSUInteger)weekOfMonth;
 - (NSUInteger)monthOfYear;
