@@ -213,6 +213,15 @@
     STAssertTrue([date mt_weekOfYear] == 28, nil);
 }
 
+- (void)test_dayOfYear
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    STAssertTrue([date mt_dayOfYear] == 192, nil);
+    // test for leap year as well
+    date = [_formatter dateFromString:@"07/11/1988 11:29am"];
+    STAssertTrue([date mt_dayOfYear] == 193, nil);
+}
+
 - (void)test_weekOfMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
