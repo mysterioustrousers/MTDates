@@ -36,8 +36,8 @@ static NSDateFormatter              *__formatter            = nil;
 static NSString                     *__calendarType         = nil;
 static NSLocale                     *__locale               = nil;
 static NSTimeZone                   *__timeZone             = nil;
-static NSUInteger                   __firstWeekday          = 1;
-static MTDateWeekNumberingSystem    __weekNumberingSystem   = 1;
+static NSUInteger                   __firstWeekday          = 0;
+static MTDateWeekNumberingSystem    __weekNumberingSystem   = 0;
 
 static NSDateFormatterStyle         __dateStyle             = NSDateFormatterShortStyle;
 static NSDateFormatterStyle         __timeStyle             = NSDateFormatterShortStyle;
@@ -1459,8 +1459,18 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (void)mt_prepareDefaults
 {
+    NSCalendar *currentCalendar = (NSCalendar *)[NSCalendar currentCalendar];
+
     if (!__calendarType) {
-        __calendarType = [(NSCalendar *)[NSCalendar currentCalendar] calendarIdentifier];
+        __calendarType = [currentCalendar calendarIdentifier];
+    }
+
+    if (__weekNumberingSystem == 0) {
+        __weekNumberingSystem = [currentCalendar minimumDaysInFirstWeek];
+    }
+
+    if (__firstWeekday == 0) {
+        __firstWeekday = [currentCalendar firstWeekday];
     }
 
     if (!__locale) {
@@ -1517,7 +1527,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
         __calendar      = nil;
         __components    = nil;
         __formatter     = nil;
-	}
+  }
 }
 
 + (id)mt_lockObject
