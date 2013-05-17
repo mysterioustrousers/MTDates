@@ -172,12 +172,12 @@
 
 - (void)test_weekdaySymbols
 {
-    STAssertTrue([NSDate mt_shortWeekdaySymbols].count == 7, nil);
+    STAssertTrue([NSDate mt_weekdaySymbols].count == 7, nil);
 }
 
 - (void)test_veryShortWeekdaySymbols
 {
-    STAssertTrue([NSDate mt_shortWeekdaySymbols].count == 7, nil);
+    STAssertTrue([NSDate mt_veryShortWeekdaySymbols].count == 7, nil);
 }
 
 - (void)test_shortMonthlySymbols
@@ -187,12 +187,12 @@
 
 - (void)test_monthlySymbols
 {
-    STAssertTrue([NSDate mt_shortMonthlySymbols].count == 12, nil);
+    STAssertTrue([NSDate mt_monthlySymbols].count == 12, nil);
 }
 
 - (void)test_veryShortMonthlySymbols
 {
-    STAssertTrue([NSDate mt_shortMonthlySymbols].count == 12, nil);
+    STAssertTrue([NSDate mt_veryShortMonthlySymbols].count == 12, nil);
 }
 
 
