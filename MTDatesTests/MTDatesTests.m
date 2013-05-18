@@ -61,105 +61,105 @@
 {
     NSDate *date = [_GMTFormatter dateFromString:@"07/11/1986 5:29pm"];
     NSDate *date2 = [NSDate mt_dateFromISOString:@"1986-07-11 17:29:00"];
-    STAssertTrue([date isEqualToDate:date2], nil);
+    STAssertEqualObjects(date, date2, nil);
 
     NSDate *date3 = [NSDate mt_dateFromISOString:@"1986-07-11T17:29:00Z"];
-    STAssertTrue([date isEqualToDate:date3], nil);
+    STAssertEqualObjects(date, date3, nil);
 
     NSDate *date4 = [NSDate mt_dateFromISOString:@"1986-07-11 17:29:00 +0000"];
-    STAssertTrue([date isEqualToDate:date4], nil);
+    STAssertEqualObjects(date, date4, nil);
 }
 
 - (void)test_dateFromString_usingFormat
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [NSDate mt_dateFromString:@"11 July 1986 11-29-am" usingFormat:@"dd MMMM yyyy hh'-'mm'-'a"];
-    STAssertTrue([date isEqualToDate:date2], nil);
+    STAssertEqualObjects(date, date2, nil);
 }
 
 - (void)test_dateFromYear_month_day
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 12:00am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 month:7 day:11] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 month:7 day:11], date, nil);
 }
 
 - (void)test_dateFromYear_month_day_hour_minute
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 month:7 day:11 hour:11 minute:29] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 month:7 day:11 hour:11 minute:29], date, nil);
 }
 
 - (void)test_dateFromYear_month_day_hour_minute_second
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 month:7 day:11 hour:11 minute:29 second:0] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 month:7 day:11 hour:11 minute:29 second:0], date, nil);
 }
 
 - (void)test_dateFromYear_week_weekday
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 12:00am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 week:28 weekday:6] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 week:28 weekday:6], date, nil);
 }
 
 - (void)test_dateFromYear_week_weekday_hour_minute
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 week:28 weekday:6 hour:11 minute:29] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 week:28 weekday:6 hour:11 minute:29], date, nil);
 }
 
 - (void)test_dateFromYear_week_weekday_hour_minute_second
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[NSDate mt_dateFromYear:1986 week:28 weekday:6 hour:11 minute:29 second:0] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_dateFromYear:1986 week:28 weekday:6 hour:11 minute:29 second:0], date, nil);
 }
 
 - (void)test_dateByAddingYears_months_weeks_days_hours_minutes_seconds
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"02/05/1982 10:05am"];
-    STAssertTrue([[date2 mt_dateByAddingYears:4 months:5 weeks:0 days:6 hours:1 minutes:24 seconds:0] isEqualToDate:date], nil);
+    STAssertEqualObjects([date2 mt_dateByAddingYears:4 months:5 weeks:0 days:6 hours:1 minutes:24 seconds:0], date, nil);
 
     NSDate *date3 = [_formatter dateFromString:@"06/27/1986 10:05am"];
-    STAssertTrue([[date3 mt_dateByAddingYears:0 months:0 weeks:2 days:0 hours:1 minutes:24 seconds:0] isEqualToDate:date], nil);
+    STAssertEqualObjects([date3 mt_dateByAddingYears:0 months:0 weeks:2 days:0 hours:1 minutes:24 seconds:0], date, nil);
 }
 
 - (void)test_startOfToday
 {
     NSDate *date = [NSDate date];
     NSDateComponents *comps = [date mt_components];
-    STAssertTrue([[NSDate mt_startOfToday] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+    STAssertEqualObjects([NSDate mt_startOfToday], [NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]], nil);
 }
 
 - (void)test_startOfYesterday
 {
     NSDate *date = [[NSDate date] dateByAddingTimeInterval:-86400];
     NSDateComponents *comps = [date mt_components];
-    STAssertTrue([[NSDate mt_startOfYesterday] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+    STAssertEqualObjects([NSDate mt_startOfYesterday], [NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]], nil);
 }
 
 - (void)test_startOfTomorrow
 {
     NSDate *date = [[NSDate date] dateByAddingTimeInterval:86400];
     NSDateComponents *comps = [date mt_components];
-    STAssertTrue([[NSDate mt_startOfTomorrow] isEqualToDate:[NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]]], nil);
+    STAssertEqualObjects([NSDate mt_startOfTomorrow], [NSDate mt_dateFromYear:[comps year] month:[comps month] day:[comps day]], nil);
 }
 
 - (void)test_endOfToday
 {
     NSDate *date = [[NSDate mt_startOfTomorrow] dateByAddingTimeInterval:-1];
-    STAssertTrue([[NSDate mt_endOfToday] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_endOfToday], date, nil);
 }
 
 - (void)test_endOfTomorrow
 {
     NSDate *date = [[NSDate mt_startOfTomorrow] dateByAddingTimeInterval:86400-1];
-    STAssertTrue([[NSDate mt_endOfTomorrow] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_endOfTomorrow], date, nil);
 }
 
 - (void)test_endOfYesterday
 {
     NSDate *date = [[NSDate mt_startOfToday] dateByAddingTimeInterval:-1];
-    STAssertTrue([[NSDate mt_endOfYesterday] isEqualToDate:date], nil);
+    STAssertEqualObjects([NSDate mt_endOfYesterday], date, nil);
 }
 
 
@@ -285,21 +285,21 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"01/01/1985 12:00am"];
-    STAssertTrue([[date mt_startOfPreviousYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfPreviousYear], date2, nil);
 }
 
 - (void)test_startOfCurrentYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"01/01/1986 12:00am"];
-    STAssertTrue([[date mt_startOfCurrentYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfCurrentYear], date2, nil);
 }
 
 - (void)test_startOfNextYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"01/01/1987 12:00am"];
-    STAssertTrue([[date mt_startOfNextYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfNextYear], date2, nil);
 }
 
 
@@ -308,7 +308,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"12/31/1985 11:59:59pm"];
-    STAssertTrue([[date mt_endOfPreviousYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfPreviousYear], date2, nil);
 }
 
 - (void)test_endOfCurrentYear
@@ -316,7 +316,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"12/31/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfCurrentYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentYear], date2, nil);
 }
 
 - (void)test_endOfNextYear
@@ -324,7 +324,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"12/31/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfCurrentYear] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentYear], date2, nil);
 }
 
 
@@ -332,14 +332,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1985 11:29am"];
-    STAssertTrue([[date mt_oneYearPrevious] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneYearPrevious], date2, nil);
 }
 
 - (void)test_oneYearNext
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1987 11:29am"];
-    STAssertTrue([[date mt_oneYearNext] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneYearNext], date2, nil);
 }
 
 
@@ -347,14 +347,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1982 11:29am"];
-    STAssertTrue([[date mt_dateYearsBefore:4] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateYearsBefore:4], date2, nil);
 }
 
 - (void)test_dateYearsAfter
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1994 11:29am"];
-    STAssertTrue([[date mt_dateYearsAfter:8] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateYearsAfter:8], date2, nil);
 }
 
 
@@ -380,21 +380,21 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"06/01/1986 12:00am"];
-    STAssertTrue([[date mt_startOfPreviousMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfPreviousMonth], date2, nil);
 }
 
 - (void)test_startOfCurrentMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/01/1986 12:00am"];
-    STAssertTrue([[date mt_startOfCurrentMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfCurrentMonth], date2, nil);
 }
 
 - (void)test_startOfNextMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"08/01/1986 12:00am"];
-    STAssertTrue([[date mt_startOfNextMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfNextMonth], date2, nil);
 }
 
 
@@ -403,7 +403,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"06/30/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfPreviousMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfPreviousMonth], date2, nil);
 }
 
 - (void)test_endOfCurrentMonth
@@ -411,7 +411,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/31/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfCurrentMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentMonth], date2, nil);
 }
 
 - (void)test_endOfNextMonth
@@ -419,7 +419,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"08/31/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfNextMonth] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfNextMonth], date2, nil);
 }
 
 
@@ -427,14 +427,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"06/11/1986 11:29am"];
-    STAssertTrue([[date mt_oneMonthPrevious] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneMonthPrevious], date2, nil);
 }
 
 - (void)test_oneMonthNext
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"08/11/1986 11:29am"];
-    STAssertTrue([[date mt_oneMonthNext] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneMonthNext], date2, nil);
 }
 
 
@@ -442,14 +442,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"03/11/1986 11:29am"];
-    STAssertTrue([[date mt_dateMonthsBefore:4] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateMonthsBefore:4], date2, nil);
 }
 
 - (void)test_dateMonthsAfter
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"10/11/1986 11:29am"];
-    STAssertTrue([[date mt_dateMonthsAfter:3] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateMonthsAfter:3], date2, nil);
 }
 
 
@@ -476,21 +476,21 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"06/29/1986 12:00am"];
-    STAssertTrue([[date mt_startOfPreviousWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfPreviousWeek], date2, nil);
 }
 
 - (void)test_startOfCurrentWeek
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/06/1986 12:00am"];
-    STAssertTrue([[date mt_startOfCurrentWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfCurrentWeek], date2, nil);
 }
 
 - (void)test_startOfNextWeek
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/13/1986 12:00am"];
-    STAssertTrue([[date mt_startOfNextWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfNextWeek], date2, nil);
 }
 
 
@@ -499,7 +499,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/05/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfPreviousWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfPreviousWeek], date2, nil);
 }
 
 - (void)test_endOfCurrentWeek
@@ -507,7 +507,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfCurrentWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentWeek], date2, nil);
 }
 
 - (void)test_endOfNextWeek
@@ -515,7 +515,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/19/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfNextWeek] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfNextWeek], date2, nil);
 }
 
 
@@ -523,14 +523,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/04/1986 11:29am"];
-    STAssertTrue([[date mt_oneWeekPrevious] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneWeekPrevious], date2, nil);
 }
 
 - (void)test_oneWeekNext
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/18/1986 11:29am"];
-    STAssertTrue([[date mt_oneWeekNext] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneWeekNext], date2, nil);
 }
 
 
@@ -538,14 +538,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"02/07/1986 11:29am"];
-    STAssertTrue([[date mt_dateWeeksBefore:22] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateWeeksBefore:22], date2, nil);
 }
 
 - (void)test_dateWeeksAfter
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"11/21/1986 11:29am"];
-    STAssertTrue([[date mt_dateWeeksAfter:19] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateWeeksAfter:19], date2, nil);
 }
 
 
@@ -571,21 +571,21 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/10/1986 12:00am"];
-    STAssertTrue([[date mt_startOfPreviousDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfPreviousDay], date2, nil);
 }
 
 - (void)test_startOfCurrentDay
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:00am"];
-    STAssertTrue([[date mt_startOfCurrentDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfCurrentDay], date2, nil);
 }
 
 - (void)test_startOfNextDay
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 12:00am"];
-    STAssertTrue([[date mt_startOfNextDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfNextDay], date2, nil);
 }
 
 
@@ -594,7 +594,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/10/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfPreviousDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfPreviousDay], date2, nil);
 }
 
 - (void)test_endOfCurrentDay
@@ -602,7 +602,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfCurrentDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentDay], date2, nil);
 }
 
 - (void)test_endOfNextDay
@@ -610,7 +610,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 11:59:59pm"];
-    STAssertTrue([[date mt_endOfNextDay] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfNextDay], date2, nil);
 }
 
 
@@ -618,14 +618,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/10/1986 11:29am"];
-    STAssertTrue([[date mt_oneDayPrevious] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneDayPrevious], date2, nil);
 }
 
 - (void)test_oneDayNext
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 11:29am"];
-    STAssertTrue([[date mt_oneDayNext] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneDayNext], date2, nil);
 }
 
 
@@ -633,14 +633,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/05/1986 11:29am"];
-    STAssertTrue([[date mt_dateDaysBefore:6] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateDaysBefore:6], date2, nil);
 }
 
 - (void)test_dateDaysAfter
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/15/1986 11:29am"];
-    STAssertTrue([[date mt_dateDaysAfter:4] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateDaysAfter:4], date2, nil);
 }
 
 
@@ -667,21 +667,21 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 10:00am"];
-    STAssertTrue([[date mt_startOfPreviousHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfPreviousHour], date2, nil);
 }
 
 - (void)test_startOfCurrentHour
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 11:00am"];
-    STAssertTrue([[date mt_startOfCurrentHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfCurrentHour], date2, nil);
 }
 
 - (void)test_startOfNextHour
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:00pm"];
-    STAssertTrue([[date mt_startOfNextHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_startOfNextHour], date2, nil);
 }
 
 
@@ -690,7 +690,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 10:59:59am"];
-    STAssertTrue([[date mt_endOfPreviousHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfPreviousHour], date2, nil);
 }
 
 - (void)test_endOfCurrentHour
@@ -698,7 +698,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 11:59:59am"];
-    STAssertTrue([[date mt_endOfCurrentHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfCurrentHour], date2, nil);
 }
 
 - (void)test_endOfNextHour
@@ -706,7 +706,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:59:59pm"];
-    STAssertTrue([[date mt_endOfNextHour] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_endOfNextHour], date2, nil);
 }
 
 
@@ -714,14 +714,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 10:29am"];
-    STAssertTrue([[date mt_oneHourPrevious] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneHourPrevious], date2, nil);
 }
 
 - (void)test_oneHourNext
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:29pm"];
-    STAssertTrue([[date mt_oneHourNext] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_oneHourNext], date2, nil);
 }
 
 
@@ -729,14 +729,14 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 05:29am"];
-    STAssertTrue([[date mt_dateHoursBefore:6] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateHoursBefore:6], date2, nil);
 }
 
 - (void)test_dateHoursAfter
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 05:29pm"];
-    STAssertTrue([[date mt_dateHoursAfter:6] isEqualToDate:date2], nil);
+    STAssertEqualObjects([date mt_dateHoursAfter:6], date2, nil);
 }
 
 
@@ -851,7 +851,7 @@
     STAssertTrue(match, nil);
 
     [NSDate mt_setFormatterTimeStyle:NSDateFormatterNoStyle];
-    STAssertTrue([[date mt_stringValue] isEqualToString:@"July 11, 1986"], nil);
+    STAssertEqualObjects([date mt_stringValue], @"July 11, 1986", nil);
 }
 
 - (void)test_settingDateFormattingTimeStyle
@@ -864,7 +864,7 @@
     STAssertTrue(match, nil);
 
     [NSDate mt_setFormatterDateStyle:NSDateFormatterNoStyle];
-    STAssertTrue([[date mt_stringValue] isEqualToString:@"11:00:00 PM"], nil);
+    STAssertEqualObjects([date mt_stringValue], @"11:00:00 PM", nil);
 }
 
 - (void)test_stringValueWithDateStyleTimeStyle
@@ -879,63 +879,63 @@
 - (void)test_stringFromDateWithHourAndMinuteFormat
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
-    STAssertTrue([[date mt_stringFromDateWithHourAndMinuteFormat:MTDateHourFormat24Hour] isEqualToString:@"23:00"], nil);
-    STAssertTrue([[date mt_stringFromDateWithHourAndMinuteFormat:MTDateHourFormat12Hour] isEqualToString:@"11:00 PM"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithHourAndMinuteFormat:MTDateHourFormat24Hour], @"23:00", nil);
+    STAssertEqualObjects([date mt_stringFromDateWithHourAndMinuteFormat:MTDateHourFormat12Hour], @"11:00 PM", nil);
 }
 
 - (void)test_stringFromDatesShortMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithShortMonth] isEqualToString:@"Jul"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithShortMonth], @"Jul", nil);
 }
 
 - (void)test_stringFromDatesFullMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithFullMonth] isEqualToString:@"July"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFullMonth], @"July", nil);
 }
 
 - (void)test_stringWithAMPMSymbol
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithAMPMSymbol] isEqualToString:@"AM"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithAMPMSymbol], @"AM", nil);
 }
 
 - (void)test_stringWithShortWeekdayTitle
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Fri"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithShortWeekdayTitle], @"Fri", nil);
 }
 
 - (void)test_stringWithFullWeekdayTitle
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithFullWeekdayTitle] isEqualToString:@"Friday"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFullWeekdayTitle], @"Friday", nil);
 }
 
 - (void)test_stringFromDateWithFormat
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithFormat:@"MMM dd yyyy" localized:YES] isEqualToString:@"Jul 11, 1986"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:@"MMM dd yyyy" localized:YES], @"Jul 11, 1986", nil);
 }
 
 - (void)test_stringFromDateWithISODateTime
 {
     NSDate *date = [_GMTFormatter dateFromString:@"07/11/1986 5:29pm"];
-    STAssertTrue([[date mt_stringFromDateWithISODateTime] isEqualToString:@"1986-07-11 17:29:00 +0000"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithISODateTime], @"1986-07-11 17:29:00 +0000", nil);
 }
 
 - (void)test_stringFromDateWithGreatestComponentsForInterval
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    STAssertTrue([[date mt_stringFromDateWithGreatestComponentsForSecondsPassed:3002] isEqualToString:@"50 minutes, 2 seconds after"], nil);
+    STAssertEqualObjects([date mt_stringFromDateWithGreatestComponentsForSecondsPassed:3002], @"50 minutes, 2 seconds after", nil);
 }
 
 - (void)test_stringFromDateWithGreatestComponentsUntilDate
 {
     NSDate *date1 = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 12:33pm"];
-    STAssertTrue([[date1 mt_stringFromDateWithGreatestComponentsUntilDate:date2] isEqualToString:@"In 1 day, 1 hour, 4 minutes"], nil);
+    STAssertEqualObjects([date1 mt_stringFromDateWithGreatestComponentsUntilDate:date2], @"In 1 day, 1 hour, 4 minutes", nil);
 }
 
 
@@ -1003,7 +1003,7 @@
     NSDate *los_angeles = [_formatter dateFromString:@"07/11/1986 08:23am"];
 
     [NSDate mt_setTimeZone:[NSTimeZone defaultTimeZone]];
-    STAssertTrue([[salt_lake mt_inTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]] isEqualToDate:los_angeles], nil);
+    STAssertEqualObjects([salt_lake mt_inTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]], los_angeles, nil);
 }
 
 
@@ -1017,25 +1017,25 @@
     NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
 
     [NSDate mt_setFirstDayOfWeek:1];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Sun"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Sun", nil);
 
     [NSDate mt_setFirstDayOfWeek:2];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Mon"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Mon", nil);
 
     [NSDate mt_setFirstDayOfWeek:3];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Tue"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Tue", nil);
 
     [NSDate mt_setFirstDayOfWeek:4];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Wed"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Wed", nil);
 
     [NSDate mt_setFirstDayOfWeek:5];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Thu"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Thu", nil);
 
     [NSDate mt_setFirstDayOfWeek:6];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Fri"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Fri", nil);
 
     [NSDate mt_setFirstDayOfWeek:7];
-    STAssertTrue([[[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle] isEqualToString:@"Sat"], nil);
+    STAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Sat", nil);
 
     [NSDate mt_setFirstDayOfWeek:1];
 }
@@ -1138,7 +1138,7 @@
     [NSDate mt_setTimeZone:[NSTimeZone timeZoneWithName:@"America/Los_Angeles"]];
     NSDate *seattle = [NSDate mt_dateFromYear:2012 month:9 day:18 hour:18 minute:29];
 
-    STAssertTrue([saltLake isEqualToDate:seattle], nil);
+    STAssertEqualObjects(saltLake, seattle, nil);
 
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *septStartDenver = [_formatter dateFromString:@"09/01/2012 01:00:00am"];
@@ -1146,9 +1146,9 @@
 
     NSDate *losAngeles = [NSDate mt_dateFromYear:2012 month:9 day:20 hour:9 minute:49 second:11];
 
-    STAssertTrue([[losAngeles mt_startOfCurrentMonth] isEqualToDate:septStartDenver], nil);
+    STAssertEqualObjects([losAngeles mt_startOfCurrentMonth], septStartDenver, nil);
 
-    STAssertTrue([[losAngeles mt_endOfCurrentMonth] isEqualToDate:septEndDenver], nil);
+    STAssertEqualObjects([losAngeles mt_endOfCurrentMonth], septEndDenver, nil);
 
     STAssertTrue([losAngeles mt_daysInCurrentMonth] == 30, nil);
 
@@ -1167,8 +1167,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
     NSString *string = @"Sat, Jun 09, 2007, 17:46:21";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatDefault] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatDefault localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatDefault], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatDefault localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatShortDate
@@ -1176,8 +1176,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
     NSString *string = @"6/9/07";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatShortDate] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatShortDate localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatShortDate], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatShortDate localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatMediumDate
@@ -1185,8 +1185,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
     NSString *string = @"Jun 9, 2007";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatMediumDate] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatMediumDate localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatMediumDate], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatMediumDate localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatLongDate
@@ -1194,8 +1194,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
     NSString *string = @"June 9, 2007";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatLongDate] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatLongDate localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatLongDate], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatLongDate localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatFullDate
@@ -1203,8 +1203,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
     NSString *string = @"Saturday, June 9, 2007";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatFullDate] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatFullDate localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatFullDate], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatFullDate localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatShortTime
@@ -1213,8 +1213,8 @@
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46 PM";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatShortTime] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatShortTime localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatShortTime], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatShortTime localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatMediumTime
@@ -1224,8 +1224,8 @@
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46:21 PM";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatMediumTime] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatMediumTime localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatMediumTime], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatMediumTime localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatLongTime
@@ -1236,8 +1236,8 @@
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46:21 PM EST";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatLongTime] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatLongTime localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatLongTime], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatLongTime localized:YES], string, nil);
 
     [NSDate mt_setTimeZone:[NSTimeZone defaultTimeZone]];
 }
@@ -1247,8 +1247,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 12:00am"];
     NSString *string = @"2007-06-09";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatISODate] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatISODate localized:NO] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatISODate], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatISODate localized:NO], string, nil);
 }
 
 - (void)test_MTDatesFormatISOTime
@@ -1258,8 +1258,8 @@
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"17:46:21";
 
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatISOTime] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatISOTime localized:YES] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatISOTime], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatISOTime localized:YES], string, nil);
 }
 
 - (void)test_MTDatesFormatISODateTime
@@ -1268,8 +1268,8 @@
     NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
 
     NSString *string = @"2007-06-09 17:46:21";
-    STAssertTrue([[NSDate mt_dateFromString:string usingFormat:MTDatesFormatISODateTime] isEqualToDate:date], nil);
-    STAssertTrue([[date mt_stringFromDateWithFormat:MTDatesFormatISODateTime localized:NO] isEqualToString:string], nil);
+    STAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatISODateTime], date, nil);
+    STAssertEqualObjects([date mt_stringFromDateWithFormat:MTDatesFormatISODateTime localized:NO], string, nil);
 }
 
 - (void)test_MTDatesBlockInvoke {
