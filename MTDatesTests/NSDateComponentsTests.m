@@ -17,7 +17,7 @@
   NSDateComponents *comps = nil;
 
   comps = [NSDateComponents mt_componentsFromString:@"10 October 2009"];
-  STAssertTrue([[NSDate mt_dateFromComponents:comps] isEqualToDate:[NSDate mt_dateFromYear:2009 month:10 day:10]] , nil);
+  STAssertEqualObjects([NSDate mt_dateFromComponents:comps], [NSDate mt_dateFromYear:2009 month:10 day:10], nil);
   STAssertTrue([comps year] == 2009, nil);
   STAssertTrue([comps month] == 10, nil);
   STAssertTrue([comps day] == 10, nil);
@@ -49,22 +49,22 @@
   NSDateComponents *comps = nil;
 
   comps = [NSDateComponents mt_componentsFromString:@"10 October 2009"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"10 October 2009"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"10 October 2009", nil);
 
   comps = [NSDateComponents mt_componentsFromString:@"October 2009"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"October 2009"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"October 2009", nil);
 
   comps = [NSDateComponents mt_componentsFromString:@"2009"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"2009"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"2009", nil);
 
   comps = [NSDateComponents mt_componentsFromString:@"10 2009"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"October 2009"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"October 2009", nil);
 
   comps = [NSDateComponents mt_componentsFromString:@"10 July"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"10 July"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"10 July", nil);
 
   comps = [NSDateComponents mt_componentsFromString:@"10"];
-  STAssertTrue([[comps mt_stringValue] isEqualToString:@"October"], nil);
+  STAssertEqualObjects([comps mt_stringValue], @"October", nil);
 }
 
 @end
