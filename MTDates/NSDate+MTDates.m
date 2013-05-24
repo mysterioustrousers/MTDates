@@ -1492,20 +1492,20 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
         __calendar.minimumDaysInFirstWeek     = (NSUInteger)__weekNumberingSystem;
         __calendar.timeZone                   = __timeZone;
     }
-        
+
     return __calendar;
 }
 
 + (NSDateComponents *)mt_components
 {
     [self mt_prepareDefaults];
-    
+
     if (!__components) {
         __components = [[NSDateComponents alloc] init];
         __components.calendar = [self mt_calendar];
         if (__timeZone) __components.timeZone = __timeZone;
     }
-    
+
     [__components setEra:NSUndefinedDateComponent];
     [__components setYear:NSUndefinedDateComponent];
     [__components setMonth:NSUndefinedDateComponent];
@@ -1517,7 +1517,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [__components setWeekday:NSUndefinedDateComponent];
     [__components setWeekdayOrdinal:NSUndefinedDateComponent];
     [__components setQuarter:NSUndefinedDateComponent];
-    
+
     return __components;
 }
 
