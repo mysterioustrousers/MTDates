@@ -1,4 +1,4 @@
 [
   "-project", "MTDates.xcodeproj",
-  "-scheme", "MTDates"
+  "-scheme", "MTDates-iOS"
 ]
