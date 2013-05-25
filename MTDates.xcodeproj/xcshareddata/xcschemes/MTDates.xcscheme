@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ABA6EA15D48E92000A34A1"
                BuildableName = "libMTDates.a"
-               BlueprintName = "MTDates"
+               BlueprintName = "MTDates-iOS"
                ReferencedContainer = "container:MTDates.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
