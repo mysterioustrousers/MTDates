@@ -10,14 +10,19 @@
 		C20254BB1751027100B6F23C /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
 		C20254BC1751027100B6F23C /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
 		C20254BE1751027100B6F23C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
+		C21CB4D317512BFA0082CB97 /* MTDatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA70C15D48E93000A34A1 /* MTDatesTests.m */; };
+		C21CB4D417512BFA0082CB97 /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
+		C21CB4D517512BFA0082CB97 /* NSDateComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6EC1607893600F4221C /* NSDateComponentsTests.m */; };
+		C21CB4D617512BFA0082CB97 /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
+		C21CB4D817512BFA0082CB97 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */; };
+		C21CB4D917512BFA0082CB97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
+		C21CB4DB17512BFA0082CB97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2ABA70815D48E93000A34A1 /* InfoPlist.strings */; };
 		C295B6E91607892000F4221C /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
 		C295B6ED1607893600F4221C /* NSDateComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6EC1607893600F4221C /* NSDateComponentsTests.m */; };
 		C295B6EE16078C0600F4221C /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
 		C2ABA6EF15D48E93000A34A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
 		C2ABA6FE15D48E93000A34A1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */; };
-		C2ABA70015D48E93000A34A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6FF15D48E93000A34A1 /* UIKit.framework */; };
 		C2ABA70115D48E93000A34A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
-		C2ABA70415D48E93000A34A1 /* libMTDates.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EB15D48E92000A34A1 /* libMTDates.a */; };
 		C2ABA70A15D48E93000A34A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2ABA70815D48E93000A34A1 /* InfoPlist.strings */; };
 		C2ABA70D15D48E93000A34A1 /* MTDatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA70C15D48E93000A34A1 /* MTDatesTests.m */; };
 		C2ABA72415D490B4000A34A1 /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
@@ -25,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C21CB4D117512BFA0082CB97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2ABA6E215D48E92000A34A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2ABA6EA15D48E92000A34A1;
+			remoteInfo = MTDates;
+		};
 		C2ABA70215D48E93000A34A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C2ABA6E215D48E92000A34A1 /* Project object */;
@@ -57,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		C20254C31751027100B6F23C /* libMTDates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTDates.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MTDatesTests-OSX.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C295B6E71607892000F4221C /* NSDateComponents+MTDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateComponents+MTDates.h"; sourceTree = "<group>"; };
 		C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+MTDates.m"; sourceTree = "<group>"; };
 		C295B6EB1607893600F4221C /* NSDateComponentsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateComponentsTests.h; sourceTree = "<group>"; };
@@ -84,6 +97,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C21CB4D717512BFA0082CB97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C21CB4D817512BFA0082CB97 /* SenTestingKit.framework in Frameworks */,
+				C21CB4D917512BFA0082CB97 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2ABA6E815D48E92000A34A1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,9 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2ABA6FE15D48E93000A34A1 /* SenTestingKit.framework in Frameworks */,
-				C2ABA70015D48E93000A34A1 /* UIKit.framework in Frameworks */,
 				C2ABA70115D48E93000A34A1 /* Foundation.framework in Frameworks */,
-				C2ABA70415D48E93000A34A1 /* libMTDates.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +142,7 @@
 				C2ABA6EB15D48E92000A34A1 /* libMTDates.a */,
 				C2ABA6FC15D48E93000A34A1 /* MTDatesTests.octest */,
 				C20254C31751027100B6F23C /* libMTDates.a */,
+				C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +218,25 @@
 			productReference = C20254C31751027100B6F23C /* libMTDates.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		C21CB4CF17512BFA0082CB97 /* MTDatesTests-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C21CB4DD17512BFA0082CB97 /* Build configuration list for PBXNativeTarget "MTDatesTests-OSX" */;
+			buildPhases = (
+				C21CB4D217512BFA0082CB97 /* Sources */,
+				C21CB4D717512BFA0082CB97 /* Frameworks */,
+				C21CB4DA17512BFA0082CB97 /* Resources */,
+				C21CB4DC17512BFA0082CB97 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C21CB4D017512BFA0082CB97 /* PBXTargetDependency */,
+			);
+			name = "MTDatesTests-OSX";
+			productName = MTDatesTests;
+			productReference = C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		C2ABA6EA15D48E92000A34A1 /* MTDates-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2ABA71015D48E93000A34A1 /* Build configuration list for PBXNativeTarget "MTDates-iOS" */;
@@ -214,9 +254,9 @@
 			productReference = C2ABA6EB15D48E92000A34A1 /* libMTDates.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		C2ABA6FB15D48E93000A34A1 /* MTDatesTests */ = {
+		C2ABA6FB15D48E93000A34A1 /* MTDatesTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C2ABA71315D48E93000A34A1 /* Build configuration list for PBXNativeTarget "MTDatesTests" */;
+			buildConfigurationList = C2ABA71315D48E93000A34A1 /* Build configuration list for PBXNativeTarget "MTDatesTests-iOS" */;
 			buildPhases = (
 				C2ABA6F715D48E93000A34A1 /* Sources */,
 				C2ABA6F815D48E93000A34A1 /* Frameworks */,
@@ -228,7 +268,7 @@
 			dependencies = (
 				C2ABA70315D48E93000A34A1 /* PBXTargetDependency */,
 			);
-			name = MTDatesTests;
+			name = "MTDatesTests-iOS";
 			productName = MTDatesTests;
 			productReference = C2ABA6FC15D48E93000A34A1 /* MTDatesTests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -256,12 +296,21 @@
 			targets = (
 				C2ABA6EA15D48E92000A34A1 /* MTDates-iOS */,
 				C20254B91751027100B6F23C /* MTDates-OSX */,
-				C2ABA6FB15D48E93000A34A1 /* MTDatesTests */,
+				C2ABA6FB15D48E93000A34A1 /* MTDatesTests-iOS */,
+				C21CB4CF17512BFA0082CB97 /* MTDatesTests-OSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C21CB4DA17512BFA0082CB97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C21CB4DB17512BFA0082CB97 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2ABA6F915D48E93000A34A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,6 +322,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C21CB4DC17512BFA0082CB97 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		C2ABA6FA15D48E93000A34A1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +357,17 @@
 			files = (
 				C20254BB1751027100B6F23C /* NSDate+MTDates.m in Sources */,
 				C20254BC1751027100B6F23C /* NSDateComponents+MTDates.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C21CB4D217512BFA0082CB97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C21CB4D317512BFA0082CB97 /* MTDatesTests.m in Sources */,
+				C21CB4D417512BFA0082CB97 /* NSDate+MTDates.m in Sources */,
+				C21CB4D517512BFA0082CB97 /* NSDateComponentsTests.m in Sources */,
+				C21CB4D617512BFA0082CB97 /* NSDateComponents+MTDates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +394,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C21CB4D017512BFA0082CB97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2ABA6EA15D48E92000A34A1 /* MTDates-iOS */;
+			targetProxy = C21CB4D117512BFA0082CB97 /* PBXContainerItemProxy */;
+		};
 		C2ABA70315D48E93000A34A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C2ABA6EA15D48E92000A34A1 /* MTDates-iOS */;
@@ -368,6 +446,36 @@
 			};
 			name = Release;
 		};
+		C21CB4DE17512BFA0082CB97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
+				INFOPLIST_FILE = "MTDatesTests/MTDatesTests-Info.plist";
+				PRODUCT_NAME = "MTDatesTests-OSX";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C21CB4DF17512BFA0082CB97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
+				INFOPLIST_FILE = "MTDatesTests/MTDatesTests-Info.plist";
+				PRODUCT_NAME = "MTDatesTests-OSX";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		C2ABA70E15D48E93000A34A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -393,6 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -420,6 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -494,6 +604,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C21CB4DD17512BFA0082CB97 /* Build configuration list for PBXNativeTarget "MTDatesTests-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C21CB4DE17512BFA0082CB97 /* Debug */,
+				C21CB4DF17512BFA0082CB97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C2ABA6E515D48E92000A34A1 /* Build configuration list for PBXProject "MTDates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -512,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C2ABA71315D48E93000A34A1 /* Build configuration list for PBXNativeTarget "MTDatesTests" */ = {
+		C2ABA71315D48E93000A34A1 /* Build configuration list for PBXNativeTarget "MTDatesTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2ABA71415D48E93000A34A1 /* Debug */,

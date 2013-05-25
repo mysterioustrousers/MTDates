@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2ABA6FB15D48E93000A34A1"
-               BuildableName = "MTDatesTests.octest"
-               BlueprintName = "MTDatesTests"
+               BuildableName = "MTDatesTests-iOS.octest"
+               BlueprintName = "MTDatesTests-iOS"
                ReferencedContainer = "container:MTDates.xcodeproj">
             </BuildableReference>
          </TestableReference>
