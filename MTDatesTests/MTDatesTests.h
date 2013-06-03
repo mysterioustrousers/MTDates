@@ -9,6 +9,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 @interface MTDatesTests : SenTestCase
+@property (strong, nonatomic) NSCalendar *calendar;
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSDateFormatter *GMTFormatter;
 @end

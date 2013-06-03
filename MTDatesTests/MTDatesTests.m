@@ -13,14 +13,25 @@
 
 - (void)setUp
 {
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"America/Denver"];
+    _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+    [NSDate mt_setLocale:locale];
+    [NSDate mt_setCalendarIdentifier:_calendar.calendarIdentifier];
+    [NSDate mt_setFirstDayOfWeek:_calendar.firstWeekday];
+    [NSDate mt_setWeekNumberingSystem:_calendar.minimumDaysInFirstWeek];
+
     _formatter = [[NSDateFormatter alloc] init];
     _formatter.dateFormat = @"MM/dd/yyyy hh:mma";
+    _formatter.locale = locale;
 
     _GMTFormatter = [[NSDateFormatter alloc] init];
     _GMTFormatter.dateFormat = @"MM/dd/yyyy hh:mma";
     _GMTFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    _GMTFormatter.locale = locale;
 
-    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithName:@"America/Denver"]];
+    [NSTimeZone setDefaultTimeZone:timeZone];
 
     [super setUp];
 }
@@ -35,6 +46,8 @@
 
 - (NSInteger)dateFormatterDefaultYear {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.calendar = _calendar;
+
     dateFormatter.dateFormat = @"hh:mm";
     NSDate *defaultDate = [dateFormatter dateFromString:@"00:00"];
 
