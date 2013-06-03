@@ -118,6 +118,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	@synchronized([NSDate mt_lockObject]){
         if (ISOString == nil || (NSNull *)ISOString == [NSNull null]) return nil;
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
         [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
         NSArray *formatsToTry = @[ @"yyyy-MM-dd HH:mm:ss ZZZ", @"yyyy-MM-dd HH:mm:ss Z", @"yyyy-MM-dd HH:mm:ss", @"yyyy-MM-dd'T'HH:mm:ss'Z'" ];
@@ -1261,6 +1262,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	@synchronized([NSDate mt_lockObject]){
         NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
         [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         NSString* result = [formatter stringFromDate:self];
@@ -1474,7 +1476,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     }
 
     if (!__locale) {
-        __locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        __locale = [NSLocale currentLocale];
     }
 
     if (!__timeZone) {
