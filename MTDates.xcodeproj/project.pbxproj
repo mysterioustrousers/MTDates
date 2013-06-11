@@ -77,7 +77,7 @@
 		C2ABA6EB15D48E92000A34A1 /* libMTDates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTDates.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ABA6EE15D48E93000A34A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C2ABA6F215D48E93000A34A1 /* MTDates-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTDates-Prefix.pch"; sourceTree = "<group>"; };
-		C2ABA6FC15D48E93000A34A1 /* MTDatesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MTDatesTests.octest; path = "MTDatesTests-iOS.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2ABA6FC15D48E93000A34A1 /* MTDatesTests-iOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MTDatesTests-iOS.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2ABA6FF15D48E93000A34A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2ABA70715D48E93000A34A1 /* MTDatesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTDatesTests-Info.plist"; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				C2ABA6EB15D48E92000A34A1 /* libMTDates.a */,
-				C2ABA6FC15D48E93000A34A1 /* MTDatesTests.octest */,
+				C2ABA6FC15D48E93000A34A1 /* MTDatesTests-iOS.octest */,
 				C20254C31751027100B6F23C /* libMTDates.a */,
 				C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */,
 			);
@@ -270,7 +270,7 @@
 			);
 			name = "MTDatesTests-iOS";
 			productName = MTDatesTests;
-			productReference = C2ABA6FC15D48E93000A34A1 /* MTDatesTests.octest */;
+			productReference = C2ABA6FC15D48E93000A34A1 /* MTDatesTests-iOS.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
