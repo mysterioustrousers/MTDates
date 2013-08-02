@@ -1,4 +1,6 @@
 [
   "-project", "MTDates.xcodeproj",
-  "-scheme", "MTDates-iOS"
+  "-scheme", "MTDates-iOS",
+  "-sdk", "iphonesimulator",
+  "-test-sdk", "iphonesimulator"
 ]
