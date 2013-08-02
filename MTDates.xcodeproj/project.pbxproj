@@ -82,7 +82,6 @@
 		C2ABA6FF15D48E93000A34A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2ABA70715D48E93000A34A1 /* MTDatesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTDatesTests-Info.plist"; sourceTree = "<group>"; };
 		C2ABA70915D48E93000A34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2ABA70B15D48E93000A34A1 /* MTDatesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDatesTests.h; sourceTree = "<group>"; };
 		C2ABA70C15D48E93000A34A1 /* MTDatesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDatesTests.m; sourceTree = "<group>"; };
 		C2ABA72215D490B4000A34A1 /* NSDate+MTDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MTDates.h"; sourceTree = "<group>"; };
 		C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MTDates.m"; sourceTree = "<group>"; };
@@ -180,7 +179,6 @@
 		C2ABA70515D48E93000A34A1 /* MTDatesTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2ABA70B15D48E93000A34A1 /* MTDatesTests.h */,
 				C2ABA70C15D48E93000A34A1 /* MTDatesTests.m */,
 				C295B6EB1607893600F4221C /* NSDateComponentsTests.h */,
 				C295B6EC1607893600F4221C /* NSDateComponentsTests.m */,
