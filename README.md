@@ -12,6 +12,8 @@ than later. I hope you understand. Thanks for using the project and for your sup
 
 To use the library without the need to prefix the methods, add `MTDATES_NO_PREFIX=1` to your Target's Preprocessor Macros in the Build Settings; or add `#define MTDATES_NO_PREFIX 1` to your target's .pch file.
 
+You can use the post_install hook explained here: http://stackoverflow.com/questions/18503620/specifying-gcc-preprocessor-definitions-for-a-cocoapod-from-podfile
+
 ### Installation
 
 In your Podfile, add this line:
