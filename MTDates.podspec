@@ -8,4 +8,5 @@ Pod::Spec.new do |s|
   s.source       	= { :git => "https://github.com/mysterioustrousers/MTDates.git", :tag => "#{s.version}" }
   s.source_files 	= 'MTDates/*.{h,m}'
   s.requires_arc 	= true
+  s.prefix_header_contents = "#define MTDATES_NO_PREFIX (TRUE)"
 end
