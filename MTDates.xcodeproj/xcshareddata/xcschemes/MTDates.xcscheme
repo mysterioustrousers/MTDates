@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C20254B91751027100B6F23C"
                BuildableName = "libMTDates.a"
-               BlueprintName = "MTDates-OSX"
+               BlueprintName = "MTDates"
                ReferencedContainer = "container:MTDates.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C21CB4CF17512BFA0082CB97"
                BuildableName = "MTDatesTests-OSX.octest"
-               BlueprintName = "MTDatesTests-OSX"
+               BlueprintName = "MTDatesTests"
                ReferencedContainer = "container:MTDates.xcodeproj">
             </BuildableReference>
          </TestableReference>

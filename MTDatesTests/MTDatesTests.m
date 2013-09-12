@@ -1227,7 +1227,7 @@
 
 - (void)test_MTDatesFormatShortTime
 {
-    NSString *dateString = [NSString stringWithFormat:@"01/01/%ld 05:46pm", (long)[self dateFormatterDefaultYear]];
+    NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46pm", (int)[self dateFormatterDefaultYear]];
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46 PM";
 
@@ -1238,7 +1238,7 @@
 - (void)test_MTDatesFormatMediumTime
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
-    NSString *dateString = [NSString stringWithFormat:@"01/01/%ld 05:46:21pm", (long)[self dateFormatterDefaultYear]];
+    NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm", (int)[self dateFormatterDefaultYear]];
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46:21 PM";
 
@@ -1250,7 +1250,7 @@
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa zzz";
     [NSDate mt_setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EST"]];
-    NSString *dateString = [NSString stringWithFormat:@"01/01/%ld 05:46:21pm EST", (long)[self dateFormatterDefaultYear]];
+    NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm EST", (int)[self dateFormatterDefaultYear]];
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"5:46:21 PM EST";
 
@@ -1272,7 +1272,7 @@
 - (void)test_MTDatesFormatISOTime
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
-    NSString *dateString = [NSString stringWithFormat:@"01/01/%ld 05:46:21pm", (long)[self dateFormatterDefaultYear]];
+    NSString *dateString = [NSString stringWithFormat:@"01/01/%d 05:46:21pm", (int)[self dateFormatterDefaultYear]];
     NSDate *date = [_formatter dateFromString:dateString];
     NSString *string = @"17:46:21";
 
@@ -1296,6 +1296,7 @@
         NSDate * date = [NSDate mt_dateFromYear:2013 month:1 day:1];
         STAssertNotNil(date, nil);
     });
+    dispatch_release(queue);
 }
 
 - (void)test_japaneseCalendar
