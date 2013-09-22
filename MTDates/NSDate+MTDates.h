@@ -8,14 +8,14 @@
 
 
 // Week Numbering System
-typedef enum {
+typedef enum MTDateWeekNumberingSystem : NSUInteger {
     MTDateWeekNumberingSystemUS       = 1,      // First week contains January 1st.
     MTDateWeekNumberingSystemISO      = 4,      // First week contains January 4th.
     //  MTDateWeekNumberingSystemSimple = 8     // First week starts on January 1st, next on Jan 8th, etc.
 } MTDateWeekNumberingSystem;
 
 // Hour Format
-typedef enum {
+typedef enum MTDateHourFormat : NSUInteger{
     MTDateHourFormat24Hour,                     // 23:00
     MTDateHourFormat12Hour                      // 11:00PM
 } MTDateHourFormat;
