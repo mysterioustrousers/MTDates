@@ -11,9 +11,9 @@
 
 
 @interface MTDatesTests : SenTestCase
-@property (strong, nonatomic) NSCalendar *calendar;
-@property (strong, nonatomic) NSDateFormatter *formatter;
-@property (strong, nonatomic) NSDateFormatter *GMTFormatter;
+@property (nonatomic, copy) NSCalendar      *calendar;
+@property (nonatomic, copy) NSDateFormatter *formatter;
+@property (nonatomic, copy) NSDateFormatter *GMTFormatter;
 @end
 
 
