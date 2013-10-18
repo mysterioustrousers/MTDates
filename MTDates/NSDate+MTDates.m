@@ -251,6 +251,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (NSDate *)mt_dateFromComponents:(NSDateComponents *)components
 {
+    if (!components) return nil;
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [[NSDate mt_calendar] dateFromComponents:components];
 	[[NSDate sharedRecursiveLock] unlock];
@@ -1277,7 +1278,9 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return isWithinSameHour;
 }
 
-- (BOOL)mt_isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2 {
+- (BOOL)mt_isBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2
+{
+	[[NSDate sharedRecursiveLock] lock];
     BOOL isBetweenDates = NO;
     if ([self mt_isOnOrAfter:date1] && [self mt_isOnOrBefore:date2]) {
         isBetweenDates = YES;
