@@ -1540,7 +1540,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (BOOL)mt_isStartOfAnHour
 {
 	[[NSDate sharedRecursiveLock] lock];
-    BOOL isStartOfAnHour = [self mt_minuteOfHour] == [NSDate mt_minValueForUnit:NSHourCalendarUnit] && [self mt_secondOfMinute] == [NSDate mt_minValueForUnit:NSSecondCalendarUnit];
+    BOOL isStartOfAnHour = [self mt_minuteOfHour] == [NSDate mt_minValueForUnit:NSMinuteCalendarUnit] && [self mt_secondOfMinute] == [NSDate mt_minValueForUnit:NSSecondCalendarUnit];
 	[[NSDate sharedRecursiveLock] unlock];
     return isStartOfAnHour;
 }
