@@ -1333,7 +1333,7 @@
 
 int minimum(int a,int b,int c)
 {
-	int min=a;
+ NSInteger min=a;
 	if(b<min)
 		min=b;
 	if(c<min)
@@ -1344,9 +1344,9 @@ int minimum(int a,int b,int c)
 
 - (int)levenshteinDistanceWithString:(NSString *)string fromString:(NSString *)string2
 {
-	int *d; // distance vector
-	int i,j,k; // indexes
-	int cost, distance;
+ NSInteger *d; // distance vector
+ NSInteger i,j,k; // indexes
+ NSInteger cost, distance;
 
 	NSUInteger n = [string2 length];
 	NSUInteger m = [string length];
