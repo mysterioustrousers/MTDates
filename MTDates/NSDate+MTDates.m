@@ -1548,7 +1548,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSUInteger)mt_weekdayStartOfCurrentMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
-    BOOL weekdayStartOfCurrentMonth = [[self mt_startOfCurrentMonth] mt_weekdayOfWeek];
+    NSUInteger weekdayStartOfCurrentMonth = [[self mt_startOfCurrentMonth] mt_weekdayOfWeek];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekdayStartOfCurrentMonth;
 }
