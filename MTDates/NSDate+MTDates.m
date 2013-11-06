@@ -370,7 +370,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
     [[NSDate sharedRecursiveLock] lock];
     NSUInteger dayOfYear = [[NSDate mt_calendar] ordinalityOfUnit:NSDayCalendarUnit
-                                                   inUnit:NSYearCalendarUnit forDate:self];
+                                                           inUnit:NSYearCalendarUnit
+                                                          forDate:self];
 	[[NSDate sharedRecursiveLock] unlock];
     return dayOfYear;
 }
@@ -387,7 +388,9 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSUInteger)mt_weekdayOfWeek
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+    NSUInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSWeekdayCalendarUnit
+                                                               inUnit:NSWeekCalendarUnit
+                                                              forDate:self];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekdayOfWeek;
 }
@@ -691,11 +694,11 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSInteger weekday = [self mt_weekdayOfWeek];
     NSDate *date = [self mt_dateDaysAfter:-(weekday - 1)];
     NSDate *startOfCurrentWeek = [NSDate mt_dateFromYear:[date mt_year]
-                                     month:[date mt_monthOfYear]
-                                       day:[date mt_dayOfMonth]
-                                      hour:[NSDate mt_minValueForUnit:NSHourCalendarUnit]
-                                    minute:[NSDate mt_minValueForUnit:NSMinuteCalendarUnit]
-                                    second:[NSDate mt_minValueForUnit:NSSecondCalendarUnit]];
+                                                   month:[date mt_monthOfYear]
+                                                     day:[date mt_dayOfMonth]
+                                                    hour:[NSDate mt_minValueForUnit:NSHourCalendarUnit]
+                                                  minute:[NSDate mt_minValueForUnit:NSMinuteCalendarUnit]
+                                                  second:[NSDate mt_minValueForUnit:NSSecondCalendarUnit]];
 	[[NSDate sharedRecursiveLock] unlock];
     return startOfCurrentWeek;
 }
