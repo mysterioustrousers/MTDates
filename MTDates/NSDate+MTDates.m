@@ -10,20 +10,6 @@
 #import "NSDate+MTDates.h"
 
 
-#define SECONDS_IN_MINUTE   60
-#define MINUTES_IN_HOUR     60
-#define DAYS_IN_WEEK        7
-#define SECONDS_IN_HOUR     (SECONDS_IN_MINUTE * MINUTES_IN_HOUR)
-#define HOURS_IN_DAY        24
-#define SECONDS_IN_DAY      (HOURS_IN_DAY * SECONDS_IN_HOUR)
-#define SECONDS_IN_WEEK     (DAYS_IN_WEEK * SECONDS_IN_DAY)
-#define SECONDS_IN_MONTH    (30 * SECONDS_IN_DAY)
-
-
-
-
-
-
 
 
 @implementation NSDate (MTDates)
@@ -1417,28 +1403,28 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSMutableString *s = [NSMutableString string];
     NSTimeInterval absInterval = interval > 0 ? interval : -interval;
 
-    NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
+    NSInteger months = floor(absInterval / (float)MTDateConstantSecondsInMonth);
     if (months > 0) {
         [s appendFormat:@"%ld months, ", (long)months];
-        absInterval -= months * SECONDS_IN_MONTH;
+        absInterval -= months * MTDateConstantSecondsInMonth;
     }
 
-    NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
+    NSInteger days = floor(absInterval / (float)MTDateConstantSecondsInDay);
     if (days > 0) {
         [s appendFormat:@"%ld days, ", (long)days];
-        absInterval -= days * SECONDS_IN_DAY;
+        absInterval -= days * MTDateConstantSecondsInDay;
     }
 
-    NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
+    NSInteger hours = floor(absInterval / (float)MTDateConstantSecondsInHour);
     if (hours > 0) {
         [s appendFormat:@"%ld hours, ", (long)hours];
-        absInterval -= hours * SECONDS_IN_HOUR;
+        absInterval -= hours * MTDateConstantSecondsInHour;
     }
 
-    NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
+    NSInteger minutes = floor(absInterval / (float)MTDateConstantSecondsInMinute);
     if (minutes > 0) {
         [s appendFormat:@"%ld minutes, ", (long)minutes];
-        absInterval -= minutes * SECONDS_IN_MINUTE;
+        absInterval -= minutes * MTDateConstantSecondsInMinute;
     }
 
     NSInteger seconds = absInterval;
@@ -1447,7 +1433,9 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     }
 
     NSString *preString = [s stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" ,"]];
-    NSString *str = interval < 0 ? [NSString stringWithFormat:@"%@ before", preString] : [NSString stringWithFormat:@"%@ after", preString];
+    NSString *str = (interval < 0 ?
+                     [NSString stringWithFormat:@"%@ before", preString] :
+                     [NSString stringWithFormat:@"%@ after", preString]);
 	[[NSDate sharedRecursiveLock] unlock];
     return str;
 }
@@ -1459,28 +1447,28 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSTimeInterval interval = [date timeIntervalSinceDate:self];
     NSTimeInterval absInterval = interval > 0 ? interval : -interval;
 
-    NSInteger months = floor(absInterval / (float)SECONDS_IN_MONTH);
+    NSInteger months = floor(absInterval / (float)MTDateConstantSecondsInMonth);
     if (months > 0) {
         NSString *formatString = months == 1 ? @"%ld month" : @"%ld months";
         [s addObject:[NSString stringWithFormat:formatString, (long)months]];
-        absInterval -= months * SECONDS_IN_MONTH;
+        absInterval -= months * MTDateConstantSecondsInMonth;
     }
 
-    NSInteger days = floor(absInterval / (float)SECONDS_IN_DAY);
+    NSInteger days = floor(absInterval / (float)MTDateConstantSecondsInDay);
     if (days > 0) {
         NSString *formatString = days == 1 ? @"%ld day" : @"%ld days";
         [s addObject:[NSString stringWithFormat:formatString, (long)days]];
-        absInterval -= days * SECONDS_IN_DAY;
+        absInterval -= days * MTDateConstantSecondsInDay;
     }
 
-    NSInteger hours = floor(absInterval / (float)SECONDS_IN_HOUR);
+    NSInteger hours = floor(absInterval / (float)MTDateConstantSecondsInHour);
     if (hours > 0) {
         NSString *formatString = hours == 1 ? @"%ld hour" : @"%ld hours";
         [s addObject:[NSString stringWithFormat:formatString, (long)hours]];
-        absInterval -= hours * SECONDS_IN_HOUR;
+        absInterval -= hours * MTDateConstantSecondsInHour;
     }
 
-    NSInteger minutes = floor(absInterval / (float)SECONDS_IN_MINUTE);
+    NSInteger minutes = floor(absInterval / (float)MTDateConstantSecondsInMinute);
     if (minutes > 0) {
         NSString *formatString = minutes == 1 ? @"%ld minute" : @"%ld minutes";
         [s addObject:[NSString stringWithFormat:formatString, (long)minutes]];
