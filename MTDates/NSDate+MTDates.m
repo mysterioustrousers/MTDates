@@ -2513,7 +2513,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - Common Date Formats
 
-NSString *const MTDatesFormatDefault        = @"EE, MMM dd, yyyy, HH:mm:ss";       // Sat Jun 09 2007 17:46:21
+NSString *const MTDatesFormatDefault        = @"EE, MMM dd, yyyy, HH:mm:ss";    // Sat Jun 09 2007 17:46:21
 NSString *const MTDatesFormatShortDate      = @"M/d/yy";                        // 6/9/07
 NSString *const MTDatesFormatMediumDate     = @"MMM d, yyyy";                   // Jun 9, 2007
 NSString *const MTDatesFormatLongDate       = @"MMMM d, yyyy";                  // June 9, 2007
