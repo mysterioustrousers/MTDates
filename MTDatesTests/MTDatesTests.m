@@ -813,6 +813,17 @@
     STAssertTrue([date3 mt_isOnOrBefore:date], nil);
 }
 
+- (void)test_isWithinSameYear
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"03/28/1986 07:29am"];
+    STAssertTrue([date2 mt_isWithinSameYear:date], nil);
+    NSDate *date3 = [_formatter dateFromString:@"01/01/1987 00:00am"];
+    STAssertFalse([date3 mt_isWithinSameYear:date], nil);
+    NSDate *date4 = [_formatter dateFromString:@"12/31/1985 11:59pm"];
+    STAssertFalse([date4 mt_isWithinSameYear:date], nil);
+}
+
 - (void)test_isWithinSameMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];

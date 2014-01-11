@@ -202,6 +202,7 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
 - (BOOL)mt_isBefore:(NSDate *)date;
 - (BOOL)mt_isOnOrAfter:(NSDate *)date;
 - (BOOL)mt_isOnOrBefore:(NSDate *)date;
+- (BOOL)mt_isWithinSameYear:(NSDate *)date;
 - (BOOL)mt_isWithinSameMonth:(NSDate *)date;
 - (BOOL)mt_isWithinSameWeek:(NSDate *)date;
 - (BOOL)mt_isWithinSameDay:(NSDate *)date;
