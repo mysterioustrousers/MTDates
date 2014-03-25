@@ -14,9 +14,9 @@
 		C21CB4D417512BFA0082CB97 /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
 		C21CB4D517512BFA0082CB97 /* NSDateComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6EC1607893600F4221C /* NSDateComponentsTests.m */; };
 		C21CB4D617512BFA0082CB97 /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
-		C21CB4D817512BFA0082CB97 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */; };
 		C21CB4D917512BFA0082CB97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
 		C21CB4DB17512BFA0082CB97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2ABA70815D48E93000A34A1 /* InfoPlist.strings */; };
+		C26C5BCE18E20C66005687F0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26C5BCD18E20C66005687F0 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,14 +33,13 @@
 
 /* Begin PBXFileReference section */
 		C20254C31751027100B6F23C /* libMTDates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTDates.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MTDatesTests-OSX.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MTDatesTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C26C5BCD18E20C66005687F0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C295B6E71607892000F4221C /* NSDateComponents+MTDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateComponents+MTDates.h"; sourceTree = "<group>"; };
 		C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+MTDates.m"; sourceTree = "<group>"; };
-		C295B6EB1607893600F4221C /* NSDateComponentsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateComponentsTests.h; sourceTree = "<group>"; };
 		C295B6EC1607893600F4221C /* NSDateComponentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateComponentsTests.m; sourceTree = "<group>"; };
 		C2ABA6EE15D48E93000A34A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C2ABA6F215D48E93000A34A1 /* MTDates-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTDates-Prefix.pch"; sourceTree = "<group>"; };
-		C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2ABA6FF15D48E93000A34A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2ABA70715D48E93000A34A1 /* MTDatesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTDatesTests-Info.plist"; sourceTree = "<group>"; };
 		C2ABA70915D48E93000A34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -62,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21CB4D817512BFA0082CB97 /* SenTestingKit.framework in Frameworks */,
+				C26C5BCE18E20C66005687F0 /* XCTest.framework in Frameworks */,
 				C21CB4D917512BFA0082CB97 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C20254C31751027100B6F23C /* libMTDates.a */,
-				C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */,
+				C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,8 +91,8 @@
 		C2ABA6ED15D48E93000A34A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C26C5BCD18E20C66005687F0 /* XCTest.framework */,
 				C2ABA6EE15D48E93000A34A1 /* Foundation.framework */,
-				C2ABA6FD15D48E93000A34A1 /* SenTestingKit.framework */,
 				C2ABA6FF15D48E93000A34A1 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -123,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				C2ABA70C15D48E93000A34A1 /* MTDatesTests.m */,
-				C295B6EB1607893600F4221C /* NSDateComponentsTests.h */,
 				C295B6EC1607893600F4221C /* NSDateComponentsTests.m */,
 				C2ABA70615D48E93000A34A1 /* Supporting Files */,
 			);
@@ -174,8 +172,8 @@
 			);
 			name = MTDatesTests;
 			productName = MTDatesTests;
-			productReference = C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -183,7 +181,8 @@
 		C2ABA6E215D48E92000A34A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Mysterious Trousers";
 			};
 			buildConfigurationList = C2ABA6E515D48E92000A34A1 /* Build configuration list for PBXProject "MTDates" */;
@@ -291,38 +290,37 @@
 		C21CB4DE17512BFA0082CB97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
 				INFOPLIST_FILE = "MTDatesTests/MTDatesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "MTDatesTests-OSX";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		C21CB4DF17512BFA0082CB97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
 				INFOPLIST_FILE = "MTDatesTests/MTDatesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "MTDatesTests-OSX";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 		C2ABA70E15D48E93000A34A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -344,11 +342,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 			};
@@ -357,8 +352,7 @@
 		C2ABA70F15D48E93000A34A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -374,10 +368,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 				VALIDATE_PRODUCT = YES;
