@@ -882,8 +882,8 @@
     NSString *s = [date mt_stringValue];
     XCTAssertTrue([self levenshteinDistanceWithString:s fromString:@"July 11, 1986 11:00 PM"] < 4);
 
-//    [NSDate mt_setFormatterTimeStyle:NSDateFormatterNoStyle];
-//    XCTAssertEqualObjects([date mt_stringValue], @"July 11, 1986");
+    [NSDate mt_setFormatterTimeStyle:NSDateFormatterNoStyle];
+    XCTAssertEqualObjects([date mt_stringValue], @"July 11, 1986");
 }
 
 - (void)test_settingDateFormattingTimeStyle
@@ -926,8 +926,8 @@
 
 - (void)test_stringWithAMPMSymbol
 {
-//    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-//    XCTAssertEqualObjects([date mt_stringFromDateWithAMPMSymbol], @"AM");
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    XCTAssertEqualObjects([date mt_stringFromDateWithAMPMSymbol], @"AM");
 }
 
 - (void)test_stringWithShortWeekdayTitle
