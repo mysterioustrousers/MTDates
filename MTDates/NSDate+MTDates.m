@@ -1605,17 +1605,18 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 + (void)mt_prepareDefaults
 {
-    NSCalendar *currentCalendar = (NSCalendar *)[NSCalendar currentCalendar];
-
     if (!__calendarType) {
+        NSCalendar *currentCalendar = (NSCalendar *)[NSCalendar currentCalendar];
         __calendarType = [currentCalendar calendarIdentifier];
     }
 
     if (__weekNumberingSystem == 0) {
+        NSCalendar *currentCalendar = (NSCalendar *)[NSCalendar currentCalendar];
         __weekNumberingSystem = [currentCalendar minimumDaysInFirstWeek];
     }
 
     if (__firstWeekday == 0) {
+        NSCalendar *currentCalendar = (NSCalendar *)[NSCalendar currentCalendar];
         __firstWeekday = [currentCalendar firstWeekday];
     }
 
@@ -1633,10 +1634,10 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [self mt_prepareDefaults];
 
     if (!__calendar) {
-        __calendar                            = [[NSCalendar alloc] initWithCalendarIdentifier:__calendarType];
-        __calendar.firstWeekday               = __firstWeekday;
-        __calendar.minimumDaysInFirstWeek     = (NSUInteger)__weekNumberingSystem;
-        __calendar.timeZone                   = __timeZone;
+        __calendar                          = [[NSCalendar alloc] initWithCalendarIdentifier:__calendarType];
+        __calendar.firstWeekday             = __firstWeekday;
+        __calendar.minimumDaysInFirstWeek   = (NSUInteger)__weekNumberingSystem;
+        __calendar.timeZone                 = __timeZone;
     }
 
     return __calendar;
