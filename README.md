@@ -1,7 +1,6 @@
 MTDates
 =======
 [![Build Status](https://travis-ci.org/mysterioustrousers/MTDates.png)](https://travis-ci.org/mysterioustrousers/MTDates)
-
 [![Version](http://cocoapod-badges.herokuapp.com/v/MTDates/badge.png)](http://cocoadocs.org/docsets/MTDates)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/MTDates/badge.png)](http://cocoadocs.org/docsets/MTDates)
 
