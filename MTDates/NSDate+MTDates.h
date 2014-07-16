@@ -15,7 +15,7 @@
 /**
  *  Week numbering systems.
  */
-typedef NS_ENUM(NSUInteger, MTDateWeekNumberingSystem) {
+typedef NS_ENUM(NSInteger, MTDateWeekNumberingSystem) {
     /**
      *  First week contains January 1st.
      */
@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, MTDateWeekNumberingSystem) {
 /**
  *  Hour format
  */
-typedef NS_ENUM(NSUInteger, MTDateHourFormat) {
+typedef NS_ENUM(NSInteger, MTDateHourFormat) {
     /**
      *  e.g. 23:00
      */
@@ -55,28 +55,28 @@ typedef NS_ENUM(NSUInteger, MTDateHourFormat) {
  */
 
 // This is exact.
-static NSUInteger const MTDateConstantSecondsInMinute   = 60;
+static NSInteger const MTDateConstantSecondsInMinute   = 60;
 
 // This is exact.
-static NSUInteger const MTDateConstantSecondsInHour     = 60 * 60;
+static NSInteger const MTDateConstantSecondsInHour     = 60 * 60;
 
 // This is not always true. Leap year/DST.
-static NSUInteger const MTDateConstantSecondsInDay      = 60 * 60 * 24;
+static NSInteger const MTDateConstantSecondsInDay      = 60 * 60 * 24;
 
 // This is not always true. Leap year/DST.
-static NSUInteger const MTDateConstantSecondsInWeek     = 60 * 60 * 24 * 7;
+static NSInteger const MTDateConstantSecondsInWeek     = 60 * 60 * 24 * 7;
 
 // This is an approximation and rarely true.
-static NSUInteger const MTDateConstantSecondsInMonth    = 60 * 60 * 24 * 7 * 30;
+static NSInteger const MTDateConstantSecondsInMonth    = 60 * 60 * 24 * 7 * 30;
 
 // This is true 3 out of 4 years. Leap years have 366 days.
-static NSUInteger const MTDateConstantSecondsInYear     = 60 * 60 * 24 * 7 * 365;
+static NSInteger const MTDateConstantSecondsInYear     = 60 * 60 * 24 * 7 * 365;
 
 // This is exact.
-static NSUInteger const MTDateConstantDaysInWeek        = 7;
+static NSInteger const MTDateConstantDaysInWeek        = 7;
 
 // This is not always true. Daylight savings time can increate/decrease a days hours by 1.
-static NSUInteger const MTDateConstantHoursInDay        = 24;
+static NSInteger const MTDateConstantHoursInDay        = 24;
 
 
 
@@ -95,7 +95,7 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 + (void)mt_setCalendarIdentifier:(NSString *)identifier;
 + (void)mt_setLocale:(NSLocale *)locale;
 + (void)mt_setTimeZone:(NSTimeZone *)timeZone;
-+ (void)mt_setFirstDayOfWeek:(NSUInteger)firstDay; // Sunday: 1, Saturday: 7
++ (void)mt_setFirstDayOfWeek:(NSInteger)firstDay; // Sunday: 1, Saturday: 7
 + (void)mt_setWeekNumberingSystem:(MTDateWeekNumberingSystem)system;
 
 
@@ -105,12 +105,12 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 
 + (NSDate *)mt_dateFromISOString:(NSString *)ISOString;
 + (NSDate *)mt_dateFromString:(NSString *)string usingFormat:(NSString *)format;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute;
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute;
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday;
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute;
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
 - (NSDate *)mt_dateByAddingYears:(NSInteger)years months:(NSInteger)months weeks:(NSInteger)weeks days:(NSInteger)days hours:(NSInteger)hours minutes:(NSInteger)minutes seconds:(NSInteger)seconds;
 + (NSDate *)mt_dateFromComponents:(NSDateComponents *)components;
 
@@ -136,16 +136,16 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 
 #pragma mark - COMPONENTS
 
-- (NSUInteger)mt_year;
-- (NSUInteger)mt_weekOfYear;
-- (NSUInteger)mt_dayOfYear;
-- (NSUInteger)mt_weekdayOfWeek;
-- (NSUInteger)mt_weekOfMonth;
-- (NSUInteger)mt_monthOfYear;
-- (NSUInteger)mt_dayOfMonth;
-- (NSUInteger)mt_hourOfDay;
-- (NSUInteger)mt_minuteOfHour;
-- (NSUInteger)mt_secondOfMinute;
+- (NSInteger)mt_year;
+- (NSInteger)mt_weekOfYear;
+- (NSInteger)mt_dayOfYear;
+- (NSInteger)mt_weekdayOfWeek;
+- (NSInteger)mt_weekOfMonth;
+- (NSInteger)mt_monthOfYear;
+- (NSInteger)mt_dayOfMonth;
+- (NSInteger)mt_hourOfDay;
+- (NSInteger)mt_minuteOfHour;
+- (NSInteger)mt_secondOfMinute;
 - (NSTimeInterval)mt_secondsIntoDay;
 - (NSDateComponents *)mt_components;
 
@@ -168,8 +168,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneYearPrevious;
 - (NSDate *)mt_oneYearNext;
 
-- (NSDate *)mt_dateYearsBefore:(NSUInteger)years;
-- (NSDate *)mt_dateYearsAfter:(NSUInteger)years;
+- (NSDate *)mt_dateYearsBefore:(NSInteger)years;
+- (NSDate *)mt_dateYearsAfter:(NSInteger)years;
 
 - (NSInteger)mt_yearsSinceDate:(NSDate *)date;
 - (NSInteger)mt_yearsUntilDate:(NSDate *)date;
@@ -188,8 +188,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneMonthPrevious;
 - (NSDate *)mt_oneMonthNext;
 
-- (NSDate *)mt_dateMonthsBefore:(NSUInteger)months;
-- (NSDate *)mt_dateMonthsAfter:(NSUInteger)months;
+- (NSDate *)mt_dateMonthsBefore:(NSInteger)months;
+- (NSDate *)mt_dateMonthsAfter:(NSInteger)months;
 
 - (NSInteger)mt_monthsSinceDate:(NSDate *)date;
 - (NSInteger)mt_monthsUntilDate:(NSDate *)date;
@@ -208,8 +208,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneWeekPrevious;
 - (NSDate *)mt_oneWeekNext;
 
-- (NSDate *)mt_dateWeeksBefore:(NSUInteger)weeks;
-- (NSDate *)mt_dateWeeksAfter:(NSUInteger)weeks;
+- (NSDate *)mt_dateWeeksBefore:(NSInteger)weeks;
+- (NSDate *)mt_dateWeeksAfter:(NSInteger)weeks;
 
 - (NSInteger)mt_weeksSinceDate:(NSDate *)date;
 - (NSInteger)mt_weeksUntilDate:(NSDate *)date;
@@ -228,8 +228,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneDayPrevious;
 - (NSDate *)mt_oneDayNext;
 
-- (NSDate *)mt_dateDaysBefore:(NSUInteger)days;
-- (NSDate *)mt_dateDaysAfter:(NSUInteger)days;
+- (NSDate *)mt_dateDaysBefore:(NSInteger)days;
+- (NSDate *)mt_dateDaysAfter:(NSInteger)days;
 
 - (NSInteger)mt_daysSinceDate:(NSDate *)date;
 - (NSInteger)mt_daysUntilDate:(NSDate *)date;
@@ -248,8 +248,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneHourPrevious;
 - (NSDate *)mt_oneHourNext;
 
-- (NSDate *)mt_dateHoursBefore:(NSUInteger)hours;
-- (NSDate *)mt_dateHoursAfter:(NSUInteger)hours;
+- (NSDate *)mt_dateHoursBefore:(NSInteger)hours;
+- (NSDate *)mt_dateHoursAfter:(NSInteger)hours;
 
 - (NSInteger)mt_hoursSinceDate:(NSDate *)date;
 - (NSInteger)mt_hoursUntilDate:(NSDate *)date;
@@ -267,8 +267,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneMinutePrevious;
 - (NSDate *)mt_oneMinuteNext;
 
-- (NSDate *)mt_dateMinutesBefore:(NSUInteger)minutes;
-- (NSDate *)mt_dateMinutesAfter:(NSUInteger)minutes;
+- (NSDate *)mt_dateMinutesBefore:(NSInteger)minutes;
+- (NSDate *)mt_dateMinutesAfter:(NSInteger)minutes;
 
 - (NSInteger)mt_minutesSinceDate:(NSDate *)date;
 - (NSInteger)mt_minutesUntilDate:(NSDate *)date;
@@ -281,8 +281,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_oneSecondPrevious;
 - (NSDate *)mt_oneSecondNext;
 
-- (NSDate *)mt_dateSecondsBefore:(NSUInteger)seconds;
-- (NSDate *)mt_dateSecondsAfter:(NSUInteger)seconds;
+- (NSDate *)mt_dateSecondsBefore:(NSInteger)seconds;
+- (NSDate *)mt_dateSecondsAfter:(NSInteger)seconds;
 
 - (NSInteger)mt_secondsSinceDate:(NSDate *)date;
 - (NSInteger)mt_secondsUntilDate:(NSDate *)date;
@@ -331,10 +331,10 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSArray *)mt_hoursInCurrentDayAsDatesCollection;
 - (BOOL)mt_isInAM;
 - (BOOL)mt_isStartOfAnHour;
-- (NSUInteger)mt_weekdayStartOfCurrentMonth;
-- (NSUInteger)mt_daysInCurrentMonth;
-- (NSUInteger)mt_daysInPreviousMonth;
-- (NSUInteger)mt_daysInNextMonth;
+- (NSInteger)mt_weekdayStartOfCurrentMonth;
+- (NSInteger)mt_daysInCurrentMonth;
+- (NSInteger)mt_daysInPreviousMonth;
+- (NSInteger)mt_daysInNextMonth;
 - (NSDate *)mt_inTimeZone:(NSTimeZone *)timezone;
 + (NSInteger)mt_minValueForUnit:(NSCalendarUnit)unit;
 + (NSInteger)mt_maxValueForUnit:(NSCalendarUnit)unit;
@@ -348,17 +348,17 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 + (void)setCalendarIdentifier:(NSString *)identifier;
 + (void)setLocale:(NSLocale *)locale;
 + (void)setTimeZone:(NSTimeZone *)timeZone;
-+ (void)setFirstDayOfWeek:(NSUInteger)firstDay;
++ (void)setFirstDayOfWeek:(NSInteger)firstDay;
 + (void)setWeekNumberingSystem:(MTDateWeekNumberingSystem)system;
 
 + (NSDate *)dateFromISOString:(NSString *)ISOString;
 + (NSDate *)dateFromString:(NSString *)string usingFormat:(NSString *)format;
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day;
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute;
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday;
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute;
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second;
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute;
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday;
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute;
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
 - (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months weeks:(NSInteger)weeks days:(NSInteger)days hours:(NSInteger)hours minutes:(NSInteger)minutes seconds:(NSInteger)seconds;
 + (NSDate *)dateFromComponents:(NSDateComponents *)components;
 + (NSDate*)startOfToday;
@@ -375,16 +375,16 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 + (NSArray *)monthlySymbols;
 + (NSArray *)veryShortMonthlySymbols;
 
-- (NSUInteger)year;
-- (NSUInteger)weekOfYear;
-- (NSUInteger)dayOfYear;
-- (NSUInteger)weekdayOfWeek;
-- (NSUInteger)weekOfMonth;
-- (NSUInteger)monthOfYear;
-- (NSUInteger)dayOfMonth;
-- (NSUInteger)hourOfDay;
-- (NSUInteger)minuteOfHour;
-- (NSUInteger)secondOfMinute;
+- (NSInteger)year;
+- (NSInteger)weekOfYear;
+- (NSInteger)dayOfYear;
+- (NSInteger)weekdayOfWeek;
+- (NSInteger)weekOfMonth;
+- (NSInteger)monthOfYear;
+- (NSInteger)dayOfMonth;
+- (NSInteger)hourOfDay;
+- (NSInteger)minuteOfHour;
+- (NSInteger)secondOfMinute;
 - (NSTimeInterval)secondsIntoDay;
 - (NSDateComponents *)components;
 
@@ -399,8 +399,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneYearPrevious;
 - (NSDate *)oneYearNext;
 
-- (NSDate *)dateYearsBefore:(NSUInteger)years;
-- (NSDate *)dateYearsAfter:(NSUInteger)years;
+- (NSDate *)dateYearsBefore:(NSInteger)years;
+- (NSDate *)dateYearsAfter:(NSInteger)years;
 
 - (NSInteger)yearsSinceDate:(NSDate *)date;
 - (NSInteger)yearsUntilDate:(NSDate *)date;
@@ -416,8 +416,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneMonthPrevious;
 - (NSDate *)oneMonthNext;
 
-- (NSDate *)dateMonthsBefore:(NSUInteger)months;
-- (NSDate *)dateMonthsAfter:(NSUInteger)months;
+- (NSDate *)dateMonthsBefore:(NSInteger)months;
+- (NSDate *)dateMonthsAfter:(NSInteger)months;
 
 - (NSInteger)monthsSinceDate:(NSDate *)date;
 - (NSInteger)monthsUntilDate:(NSDate *)date;
@@ -433,8 +433,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneWeekPrevious;
 - (NSDate *)oneWeekNext;
 
-- (NSDate *)dateWeeksBefore:(NSUInteger)weeks;
-- (NSDate *)dateWeeksAfter:(NSUInteger)weeks;
+- (NSDate *)dateWeeksBefore:(NSInteger)weeks;
+- (NSDate *)dateWeeksAfter:(NSInteger)weeks;
 
 - (NSInteger)weeksSinceDate:(NSDate *)date;
 - (NSInteger)weeksUntilDate:(NSDate *)date;
@@ -450,8 +450,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneDayPrevious;
 - (NSDate *)oneDayNext;
 
-- (NSDate *)dateDaysBefore:(NSUInteger)days;
-- (NSDate *)dateDaysAfter:(NSUInteger)days;
+- (NSDate *)dateDaysBefore:(NSInteger)days;
+- (NSDate *)dateDaysAfter:(NSInteger)days;
 
 - (NSInteger)daysSinceDate:(NSDate *)date;
 - (NSInteger)daysUntilDate:(NSDate *)date;
@@ -467,8 +467,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneHourPrevious;
 - (NSDate *)oneHourNext;
 
-- (NSDate *)dateHoursBefore:(NSUInteger)hours;
-- (NSDate *)dateHoursAfter:(NSUInteger)hours;
+- (NSDate *)dateHoursBefore:(NSInteger)hours;
+- (NSDate *)dateHoursAfter:(NSInteger)hours;
 
 - (NSInteger)hoursSinceDate:(NSDate *)date;
 - (NSInteger)hoursUntilDate:(NSDate *)date;
@@ -484,8 +484,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneMinutePrevious;
 - (NSDate *)oneMinuteNext;
 
-- (NSDate *)dateMinutesBefore:(NSUInteger)minute;
-- (NSDate *)dateMinutesAfter:(NSUInteger)minute;
+- (NSDate *)dateMinutesBefore:(NSInteger)minute;
+- (NSDate *)dateMinutesAfter:(NSInteger)minute;
 
 - (NSInteger)minutesSinceDate:(NSDate *)date;
 - (NSInteger)minutesUntilDate:(NSDate *)date;
@@ -496,8 +496,8 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)oneSecondPrevious;
 - (NSDate *)oneSecondNext;
 
-- (NSDate *)dateSecondsBefore:(NSUInteger)seconds;
-- (NSDate *)dateSecondsAfter:(NSUInteger)seconds;
+- (NSDate *)dateSecondsBefore:(NSInteger)seconds;
+- (NSDate *)dateSecondsAfter:(NSInteger)seconds;
 
 - (NSInteger)secondsSinceDate:(NSDate *)date;
 - (NSInteger)secondsUntilDate:(NSDate *)date;
@@ -533,10 +533,10 @@ static NSUInteger const MTDateConstantHoursInDay        = 24;
 - (NSArray *)hoursInCurrentDayAsDatesCollection;
 - (BOOL)isInAM;
 - (BOOL)isStartOfAnHour;
-- (NSUInteger)weekdayStartOfCurrentMonth;
-- (NSUInteger)daysInCurrentMonth;
-- (NSUInteger)daysInPreviousMonth;
-- (NSUInteger)daysInNextMonth;
+- (NSInteger)weekdayStartOfCurrentMonth;
+- (NSInteger)daysInCurrentMonth;
+- (NSInteger)daysInPreviousMonth;
+- (NSInteger)daysInNextMonth;
 - (NSDate *)inTimeZone:(NSTimeZone *)timezone;
 + (NSInteger)minValueForUnit:(NSCalendarUnit)unit;
 + (NSInteger)maxValueForUnit:(NSCalendarUnit)unit;

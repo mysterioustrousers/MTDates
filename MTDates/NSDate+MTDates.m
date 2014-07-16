@@ -22,7 +22,7 @@ static NSDateFormatter              *__formatter            = nil;
 static NSString                     *__calendarType         = nil;
 static NSLocale                     *__locale               = nil;
 static NSTimeZone                   *__timeZone             = nil;
-static NSUInteger                   __firstWeekday          = 0;
+static NSInteger                   __firstWeekday          = 0;
 static MTDateWeekNumberingSystem    __weekNumberingSystem   = 0;
 
 static NSDateFormatterStyle         __dateStyle             = NSDateFormatterShortStyle;
@@ -81,7 +81,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	[[NSDate sharedRecursiveLock] unlock];
 }
 
-+ (void)mt_setFirstDayOfWeek:(NSUInteger)firstDay
++ (void)mt_setFirstDayOfWeek:(NSInteger)firstDay
 {
 	[[NSDate sharedRecursiveLock] lock];
     __firstWeekday = firstDay;
@@ -140,7 +140,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateFromYear:year
@@ -152,7 +152,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateFromYear:year
@@ -165,7 +165,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
++ (NSDate *)mt_dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *comps = [NSDate mt_components];
@@ -180,7 +180,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateFromYear:year
@@ -192,7 +192,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateFromYear:year
@@ -205,7 +205,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-+ (NSDate *)mt_dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
++ (NSDate *)mt_dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *comps = [NSDate mt_components];
@@ -349,94 +349,94 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - COMPONENTS
 
-- (NSUInteger)mt_year
+- (NSInteger)mt_year
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSYearCalendarUnit fromDate:self];
-    NSUInteger year = [components year];
+    NSInteger year = [components year];
 	[[NSDate sharedRecursiveLock] unlock];
     return year;
 }
 
-- (NSUInteger)mt_weekOfYear
+- (NSInteger)mt_weekOfYear
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *comps = [[NSDate mt_calendar] components:NSWeekOfYearCalendarUnit | NSYearCalendarUnit fromDate:self];
-    NSUInteger weekOfYear = [comps weekOfYear];
+    NSInteger weekOfYear = [comps weekOfYear];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekOfYear;
 }
 
-- (NSUInteger)mt_dayOfYear
+- (NSInteger)mt_dayOfYear
 {
     [[NSDate sharedRecursiveLock] lock];
-    NSUInteger dayOfYear = [[NSDate mt_calendar] ordinalityOfUnit:NSDayCalendarUnit
+    NSInteger dayOfYear = [[NSDate mt_calendar] ordinalityOfUnit:NSDayCalendarUnit
                                                            inUnit:NSYearCalendarUnit
                                                           forDate:self];
 	[[NSDate sharedRecursiveLock] unlock];
     return dayOfYear;
 }
 
-- (NSUInteger)mt_weekOfMonth
+- (NSInteger)mt_weekOfMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSWeekOfMonthCalendarUnit fromDate:self];
-    NSUInteger weekOfMonth = [components weekOfMonth];
+    NSInteger weekOfMonth = [components weekOfMonth];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekOfMonth;
 }
 
-- (NSUInteger)mt_weekdayOfWeek
+- (NSInteger)mt_weekdayOfWeek
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSWeekdayCalendarUnit
+    NSInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSWeekdayCalendarUnit
                                                                inUnit:NSWeekCalendarUnit
                                                               forDate:self];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekdayOfWeek;
 }
 
-- (NSUInteger)mt_monthOfYear
+- (NSInteger)mt_monthOfYear
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSMonthCalendarUnit fromDate:self];
-    NSUInteger monthOfYear = [components month];
+    NSInteger monthOfYear = [components month];
 	[[NSDate sharedRecursiveLock] unlock];
     return monthOfYear;
 }
 
-- (NSUInteger)mt_dayOfMonth
+- (NSInteger)mt_dayOfMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSDayCalendarUnit fromDate:self];
-    NSUInteger dayOfMonth = [components day];
+    NSInteger dayOfMonth = [components day];
 	[[NSDate sharedRecursiveLock] unlock];
     return dayOfMonth;
 }
 
-- (NSUInteger)mt_hourOfDay
+- (NSInteger)mt_hourOfDay
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSHourCalendarUnit fromDate:self];
-    NSUInteger hourOfDay = [components hour];
+    NSInteger hourOfDay = [components hour];
 	[[NSDate sharedRecursiveLock] unlock];
     return hourOfDay;
 }
 
-- (NSUInteger)mt_minuteOfHour
+- (NSInteger)mt_minuteOfHour
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSMinuteCalendarUnit fromDate:self];
-    NSUInteger minuteOfHour = [components minute];
+    NSInteger minuteOfHour = [components minute];
 	[[NSDate sharedRecursiveLock] unlock];
     return minuteOfHour;
 }
 
-- (NSUInteger)mt_secondOfMinute
+- (NSInteger)mt_secondOfMinute
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSSecondCalendarUnit fromDate:self];
-    NSUInteger secondOfMinute = [components second];
+    NSInteger secondOfMinute = [components second];
 	[[NSDate sharedRecursiveLock] unlock];
     return secondOfMinute;
 }
@@ -444,7 +444,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSTimeInterval)mt_secondsIntoDay
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger date = [self timeIntervalSinceDate:[self mt_startOfCurrentDay]];
+    NSInteger date = [self timeIntervalSinceDate:[self mt_startOfCurrentDay]];
 	[[NSDate sharedRecursiveLock] unlock];
     return date;
 }
@@ -534,7 +534,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateYearsBefore:(NSUInteger)years
+- (NSDate *)mt_dateYearsBefore:(NSInteger)years
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:-years months:0 weeks:0 days:0 hours:0 minutes:0 seconds:0];
@@ -542,7 +542,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateYearsAfter:(NSUInteger)years
+- (NSDate *)mt_dateYearsAfter:(NSInteger)years
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:years months:0 weeks:0 days:0 hours:0 minutes:0 seconds:0];
@@ -642,7 +642,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateMonthsBefore:(NSUInteger)months
+- (NSDate *)mt_dateMonthsBefore:(NSInteger)months
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:-months weeks:0 days:0 hours:0 minutes:0 seconds:0];
@@ -650,7 +650,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateMonthsAfter:(NSUInteger)months
+- (NSDate *)mt_dateMonthsAfter:(NSInteger)months
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:months weeks:0 days:0 hours:0 minutes:0 seconds:0];
@@ -754,7 +754,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateWeeksBefore:(NSUInteger)weeks
+- (NSDate *)mt_dateWeeksBefore:(NSInteger)weeks
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:-weeks days:0 hours:0 minutes:0 seconds:0];
@@ -762,7 +762,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateWeeksAfter:(NSUInteger)weeks
+- (NSDate *)mt_dateWeeksAfter:(NSInteger)weeks
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:weeks days:0 hours:0 minutes:0 seconds:0];
@@ -863,7 +863,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateDaysBefore:(NSUInteger)days
+- (NSDate *)mt_dateDaysBefore:(NSInteger)days
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:-days hours:0 minutes:0 seconds:0];
@@ -871,7 +871,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateDaysAfter:(NSUInteger)days
+- (NSDate *)mt_dateDaysAfter:(NSInteger)days
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:days hours:0 minutes:0 seconds:0];
@@ -972,7 +972,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateHoursBefore:(NSUInteger)hours
+- (NSDate *)mt_dateHoursBefore:(NSInteger)hours
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:-hours minutes:0 seconds:0];
@@ -980,7 +980,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateHoursAfter:(NSUInteger)hours
+- (NSDate *)mt_dateHoursAfter:(NSInteger)hours
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:hours minutes:0 seconds:0];
@@ -1081,7 +1081,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateMinutesBefore:(NSUInteger)minutes
+- (NSDate *)mt_dateMinutesBefore:(NSInteger)minutes
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:-minutes seconds:0];
@@ -1089,7 +1089,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateMinutesAfter:(NSUInteger)minutes
+- (NSDate *)mt_dateMinutesAfter:(NSInteger)minutes
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:minutes seconds:0];
@@ -1152,7 +1152,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
-- (NSDate *)mt_dateSecondsBefore:(NSUInteger)seconds
+- (NSDate *)mt_dateSecondsBefore:(NSInteger)seconds
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-seconds];
@@ -1160,7 +1160,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     return date;
 }
 
-- (NSDate *)mt_dateSecondsAfter:(NSUInteger)seconds
+- (NSDate *)mt_dateSecondsAfter:(NSInteger)seconds
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:seconds];
@@ -1532,39 +1532,39 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (BOOL)mt_isStartOfAnHour
 {
 	[[NSDate sharedRecursiveLock] lock];
-    BOOL isStartOfAnHour = [self mt_minuteOfHour] == [NSDate mt_minValueForUnit:NSMinuteCalendarUnit] && [self mt_secondOfMinute] == [NSDate mt_minValueForUnit:NSSecondCalendarUnit];
+    BOOL isStartOfAnHour = [self mt_minuteOfHour] == (NSInteger)[NSDate mt_minValueForUnit:NSMinuteCalendarUnit] && [self mt_secondOfMinute] == (NSInteger)[NSDate mt_minValueForUnit:NSSecondCalendarUnit];
 	[[NSDate sharedRecursiveLock] unlock];
     return isStartOfAnHour;
 }
 
-- (NSUInteger)mt_weekdayStartOfCurrentMonth
+- (NSInteger)mt_weekdayStartOfCurrentMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger weekdayStartOfCurrentMonth = [[self mt_startOfCurrentMonth] mt_weekdayOfWeek];
+    NSInteger weekdayStartOfCurrentMonth = [[self mt_startOfCurrentMonth] mt_weekdayOfWeek];
 	[[NSDate sharedRecursiveLock] unlock];
     return weekdayStartOfCurrentMonth;
 }
 
-- (NSUInteger)mt_daysInCurrentMonth
+- (NSInteger)mt_daysInCurrentMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger daysInCurrentMonth = [[self mt_endOfCurrentMonth] mt_dayOfMonth];
+    NSInteger daysInCurrentMonth = [[self mt_endOfCurrentMonth] mt_dayOfMonth];
 	[[NSDate sharedRecursiveLock] unlock];
     return daysInCurrentMonth;
 }
 
-- (NSUInteger)mt_daysInPreviousMonth
+- (NSInteger)mt_daysInPreviousMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger daysInPreviousMonth = [[self mt_endOfPreviousMonth] mt_dayOfMonth];
+    NSInteger daysInPreviousMonth = [[self mt_endOfPreviousMonth] mt_dayOfMonth];
 	[[NSDate sharedRecursiveLock] unlock];
     return daysInPreviousMonth;
 }
 
-- (NSUInteger)mt_daysInNextMonth
+- (NSInteger)mt_daysInNextMonth
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSUInteger daysInNextMonth = [[self mt_endOfNextMonth] mt_dayOfMonth];
+    NSInteger daysInNextMonth = [[self mt_endOfNextMonth] mt_dayOfMonth];
 	[[NSDate sharedRecursiveLock] unlock];
     return daysInNextMonth;
 }
@@ -1636,7 +1636,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     if (!__calendar) {
         __calendar                            = [[NSCalendar alloc] initWithCalendarIdentifier:__calendarType];
         __calendar.firstWeekday               = __firstWeekday;
-        __calendar.minimumDaysInFirstWeek     = (NSUInteger)__weekNumberingSystem;
+        __calendar.minimumDaysInFirstWeek     = (NSInteger)__weekNumberingSystem;
         __calendar.timeZone                   = __timeZone;
     }
 
@@ -1726,7 +1726,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [self mt_setTimeZone:timeZone];
 }
 
-+ (void)setFirstDayOfWeek:(NSUInteger)firstDay
++ (void)setFirstDayOfWeek:(NSInteger)firstDay
 {
     [self mt_setFirstDayOfWeek:firstDay];
 }
@@ -1747,32 +1747,32 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_dateFromString:string usingFormat:format];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
 {
     NSDate *date = [self mt_dateFromYear:year month:month day:day];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute
 {
     NSDate *date = [self mt_dateFromYear:year month:month day:day hour:hour minute:minute];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year month:(NSUInteger)month day:(NSUInteger)day hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
++ (NSDate *)dateFromYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second
 {
     NSDate *date = [self mt_dateFromYear:year month:month day:day hour:hour minute:minute second:second];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday
 {
     NSDate *date = [self mt_dateFromYear:year week:week weekday:weekday];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute
 {
     NSDate *date = [self mt_dateFromYear:year week:week weekday:weekday hour:hour minute:minute];
 }
 
-+ (NSDate *)dateFromYear:(NSUInteger)year week:(NSUInteger)week weekday:(NSUInteger)weekday hour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second
++ (NSDate *)dateFromYear:(NSInteger)year week:(NSInteger)week weekday:(NSInteger)weekday hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second
 {
     NSDate *date = [self mt_dateFromYear:year week:week weekday:weekday hour:hour minute:minute second:second];
 }
@@ -1852,52 +1852,52 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 #pragma mark - COMPONENTS (NO PREFIX)
 
-- (NSUInteger)year
+- (NSInteger)year
 {
     NSDate *date = [self mt_year];
 }
 
-- (NSUInteger)weekOfYear
+- (NSInteger)weekOfYear
 {
     NSDate *date = [self mt_weekOfYear];
 }
 
-- (NSUInteger)dayOfYear
+- (NSInteger)dayOfYear
 {
     NSDate *date = [self mt_dayOfYear];
 }
 
-- (NSUInteger)weekdayOfWeek
+- (NSInteger)weekdayOfWeek
 {
     NSDate *date = [self mt_weekdayOfWeek];
 }
 
-- (NSUInteger)weekOfMonth
+- (NSInteger)weekOfMonth
 {
     NSDate *date = [self mt_weekOfMonth];
 }
 
-- (NSUInteger)monthOfYear
+- (NSInteger)monthOfYear
 {
     NSDate *date = [self mt_monthOfYear];
 }
 
-- (NSUInteger)dayOfMonth
+- (NSInteger)dayOfMonth
 {
     NSDate *date = [self mt_dayOfMonth];
 }
 
-- (NSUInteger)hourOfDay
+- (NSInteger)hourOfDay
 {
     NSDate *date = [self mt_hourOfDay];
 }
 
-- (NSUInteger)minuteOfHour
+- (NSInteger)minuteOfHour
 {
     NSDate *date = [self mt_minuteOfHour];
 }
 
-- (NSUInteger)secondOfMinute
+- (NSInteger)secondOfMinute
 {
     NSDate *date = [self mt_secondOfMinute];
 }
@@ -1957,12 +1957,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneYearNext];
 }
 
-- (NSDate *)dateYearsBefore:(NSUInteger)years
+- (NSDate *)dateYearsBefore:(NSInteger)years
 {
     NSDate *date = [self mt_dateYearsBefore:years];
 }
 
-- (NSDate *)dateYearsAfter:(NSUInteger)years
+- (NSDate *)dateYearsAfter:(NSInteger)years
 {
     NSDate *date = [self mt_dateYearsAfter:years];
 }
@@ -2019,12 +2019,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneMonthNext];
 }
 
-- (NSDate *)dateMonthsBefore:(NSUInteger)months
+- (NSDate *)dateMonthsBefore:(NSInteger)months
 {
     NSDate *date = [self mt_dateMonthsBefore:months];
 }
 
-- (NSDate *)dateMonthsAfter:(NSUInteger)months
+- (NSDate *)dateMonthsAfter:(NSInteger)months
 {
     NSDate *date = [self mt_dateMonthsAfter:months];
 }
@@ -2081,12 +2081,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneWeekNext];
 }
 
-- (NSDate *)dateWeeksBefore:(NSUInteger)weeks
+- (NSDate *)dateWeeksBefore:(NSInteger)weeks
 {
     NSDate *date = [self mt_dateWeeksBefore:weeks];
 }
 
-- (NSDate *)dateWeeksAfter:(NSUInteger)weeks
+- (NSDate *)dateWeeksAfter:(NSInteger)weeks
 {
     NSDate *date = [self mt_dateWeeksAfter:weeks];
 }
@@ -2143,12 +2143,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneDayNext];
 }
 
-- (NSDate *)dateDaysBefore:(NSUInteger)days
+- (NSDate *)dateDaysBefore:(NSInteger)days
 {
     NSDate *date = [self mt_dateDaysBefore:days];
 }
 
-- (NSDate *)dateDaysAfter:(NSUInteger)days
+- (NSDate *)dateDaysAfter:(NSInteger)days
 {
     NSDate *date = [self mt_dateDaysAfter:days];
 }
@@ -2205,12 +2205,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneHourNext];
 }
 
-- (NSDate *)dateHoursBefore:(NSUInteger)hours
+- (NSDate *)dateHoursBefore:(NSInteger)hours
 {
     NSDate *date = [self mt_dateHoursBefore:hours];
 }
 
-- (NSDate *)dateHoursAfter:(NSUInteger)hours
+- (NSDate *)dateHoursAfter:(NSInteger)hours
 {
     NSDate *date = [self mt_dateHoursAfter:hours];
 }
@@ -2267,12 +2267,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneMinuteNext];
 }
 
-- (NSDate *)dateMinutesBefore:(NSUInteger)minutes
+- (NSDate *)dateMinutesBefore:(NSInteger)minutes
 {
     NSDate *date = [self mt_dateMinutesBefore:minutes];
 }
 
-- (NSDate *)dateMinutesAfter:(NSUInteger)minutes
+- (NSDate *)dateMinutesAfter:(NSInteger)minutes
 {
     NSDate *date = [self mt_dateMinutesAfter:minutes];
 }
@@ -2309,12 +2309,12 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_oneSecondNext];
 }
 
-- (NSDate *)dateSecondsBefore:(NSUInteger)seconds
+- (NSDate *)dateSecondsBefore:(NSInteger)seconds
 {
     NSDate *date = [self mt_dateSecondsBefore:seconds];
 }
 
-- (NSDate *)dateSecondsAfter:(NSUInteger)seconds
+- (NSDate *)dateSecondsAfter:(NSInteger)seconds
 {
     NSDate *date = [self mt_dateSecondsAfter:seconds];
 }
@@ -2475,22 +2475,22 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDate *date = [self mt_isStartOfAnHour];
 }
 
-- (NSUInteger)weekdayStartOfCurrentMonth
+- (NSInteger)weekdayStartOfCurrentMonth
 {
     NSDate *date = [self mt_weekdayStartOfCurrentMonth];
 }
 
-- (NSUInteger)daysInCurrentMonth
+- (NSInteger)daysInCurrentMonth
 {
     NSDate *date = [self mt_daysInCurrentMonth];
 }
 
-- (NSUInteger)daysInPreviousMonth
+- (NSInteger)daysInPreviousMonth
 {
     NSDate *date = [self mt_daysInPreviousMonth];
 }
 
-- (NSUInteger)daysInNextMonth
+- (NSInteger)daysInNextMonth
 {
     NSDate *date = [self mt_daysInNextMonth];
 }
