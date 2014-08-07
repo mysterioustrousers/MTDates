@@ -218,7 +218,7 @@ NSDate *date = [formatter dateFromString:@"07/11/1986 11:29am"];
 - (NSString *)mt_stringFromDateWithAMPMSymbol;
 - (NSString *)mt_stringFromDateWithShortWeekdayTitle;
 - (NSString *)mt_stringFromDateWithFullWeekdayTitle;
-- (NSString *)mt_stringFromDateWithFormat:(NSString *)format; // http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
+- (NSString *)mt_stringFromDateWithFormat:(NSString *)format localized:(BOOL)localized // http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
 - (NSString *)mt_stringFromDateWithISODateTime;
 - (NSString *)mt_stringFromDateWithGreatestComponentsForSecondsPassed:(NSTimeInterval)interval;
 
