@@ -210,7 +210,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *comps = [NSDate mt_components];
     [comps setYear:year];
-    [comps setWeek:week];
+    [comps setWeekOfYear:week];
     [comps setWeekday:weekday];
     [comps setHour:hour];
     [comps setMinute:minute];
@@ -226,7 +226,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSDateComponents *comps = [NSDate mt_components];
     if (years)      [comps setYear:years];
     if (months)     [comps setMonth:months];
-    if (weeks)      [comps setWeek:weeks];
+    if (weeks)      [comps setWeekOfYear:weeks];
     if (days)       [comps setDay:days];
     if (hours)      [comps setHour:hours];
     if (minutes)    [comps setMinute:minutes];
@@ -776,7 +776,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSWeekCalendarUnit fromDate:date toDate:self options:0];
-    NSInteger weeks = [components week];
+    NSInteger weeks = [components weekOfYear];
 	[[NSDate sharedRecursiveLock] unlock];
     return weeks;
 }
@@ -785,7 +785,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateComponents *components = [[NSDate mt_calendar] components:NSWeekCalendarUnit fromDate:self toDate:date options:0];
-    NSInteger weeks = [components week];
+    NSInteger weeks = [components weekOfYear];
 	[[NSDate sharedRecursiveLock] unlock];
     return weeks;
 }
@@ -1661,7 +1661,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     [__components setHour:NSUndefinedDateComponent];
     [__components setMinute:NSUndefinedDateComponent];
     [__components setSecond:NSUndefinedDateComponent];
-    [__components setWeek:NSUndefinedDateComponent];
+    [__components setWeekOfYear:NSUndefinedDateComponent];
     [__components setWeekday:NSUndefinedDateComponent];
     [__components setWeekdayOrdinal:NSUndefinedDateComponent];
     [__components setQuarter:NSUndefinedDateComponent];
