@@ -72,14 +72,13 @@
   BOOL hour   = self.hour               == components.hour;
   BOOL min    = self.minute             == components.minute;
   BOOL sec    = self.second             == components.second;
-  BOOL week   = self.week               == components.week;
   BOOL wkday  = self.weekday            == components.weekday;
   BOOL wkOrd  = self.weekdayOrdinal     == components.weekdayOrdinal;
   BOOL quart  = self.quarter            == components.quarter;
   BOOL wkofM  = self.weekOfMonth        == components.weekOfMonth;
   BOOL wkofY  = self.weekOfYear         == components.weekOfYear;
   BOOL YfWoY  = self.yearForWeekOfYear  == components.yearForWeekOfYear;
-  return era && year && month && month && day && hour && min && sec && week && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
+  return era && year && month && month && day && hour && min && sec && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
 #if MTDATES_NO_PREFIX
