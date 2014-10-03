@@ -774,7 +774,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSInteger)mt_weeksSinceDate:(NSDate *)date
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSDateComponents *components = [[NSDate mt_calendar] components:NSWeekCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [[NSDate mt_calendar] components:NSCalendarUnitWeekOfYear fromDate:date toDate:self options:0];
     NSInteger weeks = [components weekOfYear];
 	[[NSDate sharedRecursiveLock] unlock];
     return weeks;
@@ -783,7 +783,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSInteger)mt_weeksUntilDate:(NSDate *)date
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSDateComponents *components = [[NSDate mt_calendar] components:NSWeekCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [[NSDate mt_calendar] components:NSCalendarUnitWeekOfYear fromDate:self toDate:date options:0];
     NSInteger weeks = [components weekOfYear];
 	[[NSDate sharedRecursiveLock] unlock];
     return weeks;
