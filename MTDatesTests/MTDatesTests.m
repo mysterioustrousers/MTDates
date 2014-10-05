@@ -878,9 +878,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
     [NSDate mt_setFormatterDateStyle:NSDateFormatterLongStyle];
-    
-    NSString *s = [date mt_stringValue];
-    XCTAssertTrue([self levenshteinDistanceWithString:s fromString:@"July 11, 1986 11:00 PM"] < 4);
+    XCTAssertEqualObjects([date mt_stringValue], @"July 11, 1986 at 11:00 PM");
 
     [NSDate mt_setFormatterTimeStyle:NSDateFormatterNoStyle];
     XCTAssertEqualObjects([date mt_stringValue], @"July 11, 1986");
@@ -890,9 +888,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
     [NSDate mt_setFormatterTimeStyle:NSDateFormatterMediumStyle];
-    
-    NSString *s = [date mt_stringValue];
-    XCTAssertTrue([self levenshteinDistanceWithString:s fromString:@"July 11, 1986 11:00:00 PM"] < 4);
+    XCTAssertEqualObjects([date mt_stringValue], @"July 11, 1986 at 11:00:00 PM");
 
     [NSDate mt_setFormatterDateStyle:NSDateFormatterNoStyle];
     XCTAssertEqualObjects([date mt_stringValue], @"11:00:00 PM");
@@ -902,7 +898,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:00pm"];
     NSString *s = [date mt_stringValueWithDateStyle:NSDateFormatterFullStyle timeStyle:NSDateFormatterShortStyle];
-    XCTAssertTrue([self levenshteinDistanceWithString:s fromString:@"Friday, July 11, 1986 11:00 PM"] < 4);
+    XCTAssertEqualObjects(s, @"Friday, July 11, 1986 at 11:00 PM");
 }
 
 - (void)test_stringFromDateWithHourAndMinuteFormat
@@ -1198,7 +1194,7 @@
 
     XCTAssertEqualObjects([NSDate mt_dateFromString:string usingFormat:MTDatesFormatDefault], date);
     NSString *formatted = [date mt_stringFromDateWithFormat:MTDatesFormatDefault localized:YES];
-    XCTAssertTrue([self levenshteinDistanceWithString:formatted fromString:formatted] < 2);
+    XCTAssertEqualObjects(formatted, string);
 }
 
 - (void)test_MTDatesFormatShortDate
@@ -1333,60 +1329,6 @@
     XCTAssertTrue([date2 mt_dayOfMonth]   == 1);
 
     [NSDate mt_setCalendarIdentifier:NSGregorianCalendar];
-}
-
-
-
-
-#pragma mark - Private
-
-// calculate the distance between two string treating them eash as a single word
-// credit: https://github.com/pigoz/imal/blob/master/NSString+Levenshtein.m
-
-int minimum(int a,int b,int c)
-{
-    NSInteger min=a;
-	if(b<min)
-		min=b;
-	if(c<min)
-		min=c;
-	return min;
-}
-
-
-- (int)levenshteinDistanceWithString:(NSString *)string fromString:(NSString *)string2
-{
-    NSInteger *d; // distance vector
-    NSInteger i,j,k; // indexes
-    NSInteger cost, distance;
-    
-	NSUInteger n = [string2 length];
-	NSUInteger m = [string length];
-    
-	if( n!=0 && m!=0 ){
-        
-		d = malloc( sizeof(int) * (++n) * (++m) );
-        
-		for( k=0 ; k<n ; k++ )
-			d[k] = k;
-		for( k=0 ; k<m ; k++ )
-			d[k*n] = k;
-        
-		for( i=1; i<n ; i++ ) {
-			for( j=1 ;j<m ; j++ ) {
-				if( [string2 characterAtIndex:i-1]  == [string characterAtIndex:j-1])
-					cost = 0;
-				else
-					cost = 1;
-				d[j*n+i]=minimum(d[(j-1)*n+i]+1,d[j*n+i-1]+1,d[(j-1)*n+i-1]+cost);
-			}
-		}
-		distance = d[n*m-1];
-		free(d);
-		return distance;
-	}
-    
-	return -1; // error
 }
 
 @end
