@@ -189,32 +189,32 @@
 
 - (void)test_shortWeekdaySymbols
 {
-    XCTAssertTrue([NSDate mt_shortWeekdaySymbols].count == 7);
+    XCTAssertEqual([NSDate mt_shortWeekdaySymbols].count, 7);
 }
 
 - (void)test_weekdaySymbols
 {
-    XCTAssertTrue([NSDate mt_weekdaySymbols].count == 7);
+    XCTAssertEqual([NSDate mt_weekdaySymbols].count, 7);
 }
 
 - (void)test_veryShortWeekdaySymbols
 {
-    XCTAssertTrue([NSDate mt_veryShortWeekdaySymbols].count == 7);
+    XCTAssertEqual([NSDate mt_veryShortWeekdaySymbols].count, 7);
 }
 
 - (void)test_shortMonthlySymbols
 {
-    XCTAssertTrue([NSDate mt_shortMonthlySymbols].count == 12);
+    XCTAssertEqual([NSDate mt_shortMonthlySymbols].count, 12);
 }
 
 - (void)test_monthlySymbols
 {
-    XCTAssertTrue([NSDate mt_monthlySymbols].count == 12);
+    XCTAssertEqual([NSDate mt_monthlySymbols].count, 12);
 }
 
 - (void)test_veryShortMonthlySymbols
 {
-    XCTAssertTrue([NSDate mt_veryShortMonthlySymbols].count == 12);
+    XCTAssertEqual([NSDate mt_veryShortMonthlySymbols].count, 12);
 }
 
 
@@ -226,72 +226,72 @@
 - (void)test_year
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_year] == 1986);
+    XCTAssertEqual([date mt_year], 1986);
 }
 
 - (void)test_weekOfYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_weekOfYear] == 28);
+    XCTAssertEqual([date mt_weekOfYear], 28);
 }
 
 - (void)test_dayOfYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_dayOfYear] == 192);
+    XCTAssertEqual([date mt_dayOfYear], 192);
     // test for leap year as well
     date = [_formatter dateFromString:@"07/11/1988 11:29am"];
-    XCTAssertTrue([date mt_dayOfYear] == 193);
+    XCTAssertEqual([date mt_dayOfYear], 193);
 }
 
 - (void)test_weekOfMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_weekOfMonth] == 2);
+    XCTAssertEqual([date mt_weekOfMonth], 2);
 }
 
 - (void)test_weekdayOfWeek
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_weekdayOfWeek] == 6);
+    XCTAssertEqual([date mt_weekdayOfWeek], 6);
 }
 
 - (void)test_monthOfYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_monthOfYear] == 7);
+    XCTAssertEqual([date mt_monthOfYear], 7);
 }
 
 - (void)test_dayOfMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_dayOfMonth] == 11);
+    XCTAssertEqual([date mt_dayOfMonth], 11);
 }
 
 - (void)test_hourOfDay
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_hourOfDay] == 11);
+    XCTAssertEqual([date mt_hourOfDay], 11);
 }
 
 - (void)test_minuteOfHour
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
-    XCTAssertTrue([date mt_minuteOfHour] == 29);
+    XCTAssertEqual([date mt_minuteOfHour], 29);
 }
 
 - (void)test_secondOfMinute
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:33am"];
-    XCTAssertTrue([date mt_secondOfMinute] == 33);
+    XCTAssertEqual([date mt_secondOfMinute], 33);
 }
 
 - (void)test_secondsIntoDay
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29:33am"];
-    XCTAssertTrue([date mt_secondsIntoDay] == 41373);
+    XCTAssertEqual([date mt_secondsIntoDay], 41373);
 }
 
 
@@ -384,7 +384,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1994 11:29am"];
-    XCTAssertTrue([date2 mt_yearsSinceDate:date] == 8);
+    XCTAssertEqual([date2 mt_yearsSinceDate:date], 8);
 }
 
 
@@ -392,7 +392,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1994 11:29am"];
-    XCTAssertTrue([date mt_yearsUntilDate:date2] == 8);
+    XCTAssertEqual([date mt_yearsUntilDate:date2], 8);
 }
 
 
@@ -479,7 +479,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"10/11/1986 11:29am"];
-    XCTAssertTrue([date2 mt_monthsSinceDate:date] == 3);
+    XCTAssertEqual([date2 mt_monthsSinceDate:date], 3);
 }
 
 
@@ -487,7 +487,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"10/11/1986 11:29am"];
-    XCTAssertTrue([date mt_monthsUntilDate:date2] == 3);
+    XCTAssertEqual([date mt_monthsUntilDate:date2], 3);
 }
 
 
@@ -575,7 +575,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"02/07/1986 11:29am"];
-    XCTAssertTrue([date mt_weeksSinceDate:date2] == 22);
+    XCTAssertEqual([date mt_weeksSinceDate:date2], 22);
 }
 
 
@@ -583,7 +583,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"02/07/1986 11:29am"];
-    XCTAssertTrue([date2 mt_weeksUntilDate:date] == 22);
+    XCTAssertEqual([date2 mt_weeksUntilDate:date], 22);
 }
 
 
@@ -670,7 +670,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/15/1986 11:29am"];
-    XCTAssertTrue([date2 mt_daysSinceDate:date] == 4);
+    XCTAssertEqual([date2 mt_daysSinceDate:date], 4);
 }
 
 
@@ -678,7 +678,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/15/1986 11:29am"];
-    XCTAssertTrue([date mt_daysUntilDate:date2] == 4);
+    XCTAssertEqual([date mt_daysUntilDate:date2], 4);
 }
 
 
@@ -766,7 +766,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 07:29am"];
-    XCTAssertTrue([date mt_hoursSinceDate:date2] == 4);
+    XCTAssertEqual([date mt_hoursSinceDate:date2], 4);
 }
 
 
@@ -774,7 +774,7 @@
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 07:29am"];
-    XCTAssertTrue([date2 mt_hoursUntilDate:date] == 4);
+    XCTAssertEqual([date2 mt_hoursUntilDate:date], 4);
 }
 
 
@@ -978,13 +978,13 @@
     NSDate *date = [_formatter dateFromString:@"07/02/1986 12:00am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:00am"];
     NSArray *dates = [NSDate mt_datesCollectionFromDate:date untilDate:date2];
-    XCTAssertTrue(dates.count == 9);
+    XCTAssertEqual(dates.count, 9);
 }
 
 - (void)test_hoursInCurrentDayAsDatesCollection
 {
     NSDate *date = [_formatter dateFromString:@"07/02/1986 12:00am"];
-    XCTAssertTrue([date mt_hoursInCurrentDayAsDatesCollection].count == 24);
+    XCTAssertEqual([date mt_hoursInCurrentDayAsDatesCollection].count, 24);
 }
 
 - (void)test_isInAM
@@ -1002,25 +1002,25 @@
 - (void)test_weekdayStartOfCurrentMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
-    XCTAssertTrue([date mt_weekdayStartOfCurrentMonth] == 3);
+    XCTAssertEqual([date mt_weekdayStartOfCurrentMonth], 3);
 }
 
 - (void)test_daysInCurrentMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
-    XCTAssertTrue([date mt_daysInCurrentMonth] == 31);
+    XCTAssertEqual([date mt_daysInCurrentMonth], 31);
 }
 
 - (void)test_daysInPreviousMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
-    XCTAssertTrue([date mt_daysInPreviousMonth] == 30);
+    XCTAssertEqual([date mt_daysInPreviousMonth], 30);
 }
 
 - (void)test_daysInNextMonth
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
-    XCTAssertTrue([date mt_daysInNextMonth] == 31);
+    XCTAssertEqual([date mt_daysInNextMonth], 31);
 }
 
 - (void)test_toTimeZone
@@ -1078,77 +1078,77 @@
     
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 52);
+    XCTAssertEqual([date mt_weekOfYear], 52);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a monday
     date = [_formatter dateFromString:@"01/01/2001 12:00am"];
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a tuesday
     date = [_formatter dateFromString:@"01/01/2002 12:00am"];
     
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a wednesday
     date = [_formatter dateFromString:@"01/01/2003 12:00am"];
     
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a thursday
     date = [_formatter dateFromString:@"01/01/2004 12:00am"];
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a friday
     date = [_formatter dateFromString:@"01/01/2010 12:00am"];
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 53);
+    XCTAssertEqual([date mt_weekOfYear], 53);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // Jan 1st is a saturday
     date = [_formatter dateFromString:@"01/01/2011 12:00am"];
     
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemISO];
     [NSDate mt_setFirstDayOfWeek:2];
-    XCTAssertTrue([date mt_weekOfYear] == 52);
+    XCTAssertEqual([date mt_weekOfYear], 52);
 
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
     [NSDate mt_setFirstDayOfWeek:1];
-    XCTAssertTrue([date mt_weekOfYear] == 1);
+    XCTAssertEqual([date mt_weekOfYear], 1);
 
     // reset for other tests
     [NSDate mt_setWeekNumberingSystem:MTDateWeekNumberingSystemUS];
@@ -1179,7 +1179,7 @@
 
     XCTAssertEqualObjects([losAngeles mt_endOfCurrentMonth], septEndDenver);
 
-    XCTAssertTrue([losAngeles mt_daysInCurrentMonth] == 30);
+    XCTAssertEqual([losAngeles mt_daysInCurrentMonth], 30);
 
     [NSDate mt_setTimeZone:[NSTimeZone defaultTimeZone]];
 }
@@ -1318,19 +1318,19 @@
     
     [NSDate mt_setCalendarIdentifier:NSJapaneseCalendar];
 
-    XCTAssertTrue([date mt_year]         == 19);
-    XCTAssertTrue([date mt_monthOfYear]  == 6);
-    XCTAssertTrue([date mt_dayOfMonth]   == 9);
+    XCTAssertEqual([date mt_year],         19);
+    XCTAssertEqual([date mt_monthOfYear],  6);
+    XCTAssertEqual([date mt_dayOfMonth],   9);
 
     NSDate *date1 = [date mt_startOfCurrentMonth];
-    XCTAssertTrue([date1 mt_year]         == 19);
-    XCTAssertTrue([date1 mt_monthOfYear]  == 6);
-    XCTAssertTrue([date1 mt_dayOfMonth]   == 1);
+    XCTAssertEqual([date1 mt_year],        19);
+    XCTAssertEqual([date1 mt_monthOfYear], 6);
+    XCTAssertEqual([date1 mt_dayOfMonth],  1);
 
     NSDate *date2 = [date mt_startOfCurrentYear];
-    XCTAssertTrue([date2 mt_year]         == 19);
-    XCTAssertTrue([date2 mt_monthOfYear]  == 1);
-    XCTAssertTrue([date2 mt_dayOfMonth]   == 1);
+    XCTAssertEqual([date2 mt_year],        19);
+    XCTAssertEqual([date2 mt_monthOfYear], 1);
+    XCTAssertEqual([date2 mt_dayOfMonth],  1);
 
     [NSDate mt_setCalendarIdentifier:NSGregorianCalendar];
 }
