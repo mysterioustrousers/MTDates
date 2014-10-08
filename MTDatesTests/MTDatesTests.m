@@ -1365,7 +1365,7 @@ int minimum(int a,int b,int c)
     
 	if( n!=0 && m!=0 ){
         
-		d = malloc( sizeof(int) * (++n) * (++m) );
+		d = malloc( sizeof(NSInteger) * (++n) * (++m) );
         
 		for( k=0 ; k<n ; k++ )
 			d[k] = k;
