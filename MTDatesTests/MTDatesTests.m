@@ -23,7 +23,7 @@
 {
     NSLocale *locale        = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     NSTimeZone *timeZone    = [NSTimeZone timeZoneWithName:@"America/Denver"];
-    _calendar               = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    _calendar               = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     [NSDate mt_setLocale:locale];
     [NSDate mt_setCalendarIdentifier:_calendar.calendarIdentifier];
@@ -1316,7 +1316,7 @@
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
     NSDate *date = [_formatter dateFromString:@"06/09/2007 05:46:21pm"];
     
-    [NSDate mt_setCalendarIdentifier:NSJapaneseCalendar];
+    [NSDate mt_setCalendarIdentifier:NSCalendarIdentifierJapanese];
 
     XCTAssertTrue([date mt_year]         == 19);
     XCTAssertTrue([date mt_monthOfYear]  == 6);
@@ -1332,7 +1332,7 @@
     XCTAssertTrue([date2 mt_monthOfYear]  == 1);
     XCTAssertTrue([date2 mt_dayOfMonth]   == 1);
 
-    [NSDate mt_setCalendarIdentifier:NSGregorianCalendar];
+    [NSDate mt_setCalendarIdentifier:NSCalendarIdentifierGregorian];
 }
 
 
