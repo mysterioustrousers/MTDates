@@ -692,9 +692,16 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 
 - (NSDate *)mt_startOfCurrentWeek
 {
-	[[NSDate sharedRecursiveLock] lock];
+    [[NSDate sharedRecursiveLock] lock];
     NSInteger weekday = [self mt_weekdayOfWeek];
-    NSDate *date = [self mt_dateDaysAfter:-(weekday - [[NSDate mt_calendar] firstWeekday])];
+    NSInteger firstWeekday = [NSDate mt_calendar].firstWeekday;
+    NSDate *date;
+    if (firstWeekday > weekday) {
+        date = [self mt_dateDaysBefore:7 - (firstWeekday - weekday)];
+    }
+    else {
+        date = [self mt_dateDaysBefore:weekday - firstWeekday];
+    }
     NSDate *startOfCurrentWeek = [NSDate mt_dateFromYear:[date mt_year]
                                                    month:[date mt_monthOfYear]
                                                      day:[date mt_dayOfMonth]
