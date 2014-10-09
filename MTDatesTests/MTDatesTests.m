@@ -256,6 +256,32 @@
     XCTAssertEqual([date mt_weekdayOfWeek], 6);
 }
 
+- (void)test_weekdayOfWeekRemainsTheSameInSpiteOfFirstDayOfAWeek
+{
+    NSDate *date = [_formatter dateFromString:@"10/09/2014 05:00am"]; // Thursday
+
+    [NSDate mt_setFirstDayOfWeek:1];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:2];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:3];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:4];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:5];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:6];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:7];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+}
+
 - (void)test_monthOfYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];

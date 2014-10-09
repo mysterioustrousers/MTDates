@@ -392,8 +392,8 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     NSInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSCalendarUnitWeekday
                                                                inUnit:NSCalendarUnitWeekOfYear
                                                               forDate:self];
-	weekdayOfWeek += [[NSDate mt_calendar] firstWeekday] - 1;
-	[[NSDate sharedRecursiveLock] unlock];
+    weekdayOfWeek = (weekdayOfWeek + [[NSDate mt_calendar] firstWeekday] - 1) % 7;
+    [[NSDate sharedRecursiveLock] unlock];
     return weekdayOfWeek;
 }
 
