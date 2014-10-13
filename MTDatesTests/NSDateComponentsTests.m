@@ -31,20 +31,20 @@
   comps = [NSDateComponents mt_componentsFromString:@"October 2009"];
   XCTAssertTrue([comps year] == 2009);
   XCTAssertTrue([comps month] == 10);
-  XCTAssertTrue([comps day] == NSUndefinedDateComponent);
+  XCTAssertTrue([comps day] == NSDateComponentUndefined);
 
   comps = [NSDateComponents mt_componentsFromString:@"2009"];
   XCTAssertTrue([comps year] == 2009);
-  XCTAssertTrue([comps month] == NSUndefinedDateComponent);
-  XCTAssertTrue([comps day] == NSUndefinedDateComponent);
+  XCTAssertTrue([comps month] == NSDateComponentUndefined);
+  XCTAssertTrue([comps day] == NSDateComponentUndefined);
 
   comps = [NSDateComponents mt_componentsFromString:@"10 2009"];
   XCTAssertTrue([comps year] == 2009);
   XCTAssertTrue([comps month] == 10);
-  XCTAssertTrue([comps day] == NSUndefinedDateComponent);
+  XCTAssertTrue([comps day] == NSDateComponentUndefined);
 
   comps = [NSDateComponents mt_componentsFromString:@"10 July"];
-  XCTAssertTrue([comps year] == NSUndefinedDateComponent);
+  XCTAssertTrue([comps year] == NSDateComponentUndefined);
   XCTAssertTrue([comps month] == 7);
   XCTAssertTrue([comps day] == 10);
 

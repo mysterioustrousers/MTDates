@@ -1653,17 +1653,17 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
         if (__timeZone) __components.timeZone = __timeZone;
     }
 
-    [__components setEra:NSUndefinedDateComponent];
-    [__components setYear:NSUndefinedDateComponent];
-    [__components setMonth:NSUndefinedDateComponent];
-    [__components setDay:NSUndefinedDateComponent];
-    [__components setHour:NSUndefinedDateComponent];
-    [__components setMinute:NSUndefinedDateComponent];
-    [__components setSecond:NSUndefinedDateComponent];
-    [__components setWeekOfYear:NSUndefinedDateComponent];
-    [__components setWeekday:NSUndefinedDateComponent];
-    [__components setWeekdayOrdinal:NSUndefinedDateComponent];
-    [__components setQuarter:NSUndefinedDateComponent];
+    [__components setEra:NSDateComponentUndefined];
+    [__components setYear:NSDateComponentUndefined];
+    [__components setMonth:NSDateComponentUndefined];
+    [__components setDay:NSDateComponentUndefined];
+    [__components setHour:NSDateComponentUndefined];
+    [__components setMinute:NSDateComponentUndefined];
+    [__components setSecond:NSDateComponentUndefined];
+    [__components setWeekOfYear:NSDateComponentUndefined];
+    [__components setWeekday:NSDateComponentUndefined];
+    [__components setWeekdayOrdinal:NSDateComponentUndefined];
+    [__components setQuarter:NSDateComponentUndefined];
 
     return __components;
 }

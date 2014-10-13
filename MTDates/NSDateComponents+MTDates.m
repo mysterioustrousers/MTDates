@@ -34,9 +34,9 @@
   }
 
   // if the day was set but the month wasn't, interpret the two digits as the month
-  if ([comps month] == NSUndefinedDateComponent && [comps day] != NSUndefinedDateComponent) {
+  if ([comps month] == NSDateComponentUndefined && [comps day] != NSDateComponentUndefined) {
     [comps setMonth:MIN([comps day], 12)];
-    [comps setDay:NSUndefinedDateComponent];
+    [comps setDay:NSDateComponentUndefined];
   }
 
   return comps;
@@ -46,18 +46,18 @@
 {
   NSMutableArray *partsArray = [NSMutableArray array];
   NSDateComponents *required = [self copy];
-  required.year = self.year   == NSUndefinedDateComponent ? 1970  : self.year;
-  required.month  = self.month  == NSUndefinedDateComponent ? 1   : self.month;
-  required.day  = self.day    == NSUndefinedDateComponent ? 1   : self.day;
+  required.year = self.year   == NSDateComponentUndefined ? 1970  : self.year;
+  required.month  = self.month  == NSDateComponentUndefined ? 1   : self.month;
+  required.day  = self.day    == NSDateComponentUndefined ? 1   : self.day;
   NSDate *date = [NSDate mt_dateFromComponents:required];
 
-  if ([self day] != NSUndefinedDateComponent) {
+  if ([self day] != NSDateComponentUndefined) {
     [partsArray addObject:[date mt_stringFromDateWithFormat:@"dd" localized:NO]];
   }
-  if ([self month] != NSUndefinedDateComponent) {
+  if ([self month] != NSDateComponentUndefined) {
     [partsArray addObject:[date mt_stringFromDateWithFormat:@"MMMM" localized:NO]];
   }
-  if ([self year] != NSUndefinedDateComponent) {
+  if ([self year] != NSDateComponentUndefined) {
     [partsArray addObject:[date mt_stringFromDateWithFormat:@"yyyy" localized:NO]];
   }
   return [partsArray componentsJoinedByString:@" "];
