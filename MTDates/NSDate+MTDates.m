@@ -111,7 +111,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     }
 
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
+    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
     NSArray *formatsToTry = @[ @"yyyy-MM-dd'T'HH:mm.ss.SSS'Z'", @"yyyy-MM-dd HH:mm:ss ZZZ", @"yyyy-MM-dd HH:mm:ss Z", @"yyyy-MM-dd HH:mm:ss", @"yyyy-MM-dd'T'HH:mm:ss'Z'", @"yyyy-MM-dd" ];
@@ -1392,7 +1392,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
+    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSString* result = [formatter stringFromDate:self];

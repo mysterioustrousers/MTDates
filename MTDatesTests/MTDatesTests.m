@@ -23,7 +23,7 @@
 {
     NSLocale *locale        = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     NSTimeZone *timeZone    = [NSTimeZone timeZoneWithName:@"America/Denver"];
-    _calendar               = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    _calendar               = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     [NSDate mt_setLocale:locale];
     [NSDate mt_setCalendarIdentifier:_calendar.calendarIdentifier];
@@ -1328,7 +1328,7 @@
     XCTAssertEqual([date2 mt_monthOfYear], 1);
     XCTAssertEqual([date2 mt_dayOfMonth],  1);
 
-    [NSDate mt_setCalendarIdentifier:NSGregorianCalendar];
+    [NSDate mt_setCalendarIdentifier:NSCalendarIdentifierGregorian];
 }
 
 @end
