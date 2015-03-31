@@ -161,6 +161,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfCurrentYear;
 - (NSDate *)mt_startOfNextYear;
 
+- (NSDate *)mt_middleOfPreviousYear;
+- (NSDate *)mt_middleOfCurrentYear;
+- (NSDate *)mt_middleOfNextYear;
+
 - (NSDate *)mt_endOfPreviousYear;
 - (NSDate *)mt_endOfCurrentYear;
 - (NSDate *)mt_endOfNextYear;
@@ -180,6 +184,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfPreviousMonth;
 - (NSDate *)mt_startOfCurrentMonth;
 - (NSDate *)mt_startOfNextMonth;
+
+- (NSDate *)mt_middleOfPreviousMonth;
+- (NSDate *)mt_middleOfCurrentMonth;
+- (NSDate *)mt_middleOfNextMonth;
 
 - (NSDate *)mt_endOfPreviousMonth;
 - (NSDate *)mt_endOfCurrentMonth;
@@ -201,6 +209,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfCurrentWeek;
 - (NSDate *)mt_startOfNextWeek;
 
+- (NSDate *)mt_middleOfPreviousWeek;
+- (NSDate *)mt_middleOfCurrentWeek;
+- (NSDate *)mt_middleOfNextWeek;
+
 - (NSDate *)mt_endOfPreviousWeek;
 - (NSDate *)mt_endOfCurrentWeek;
 - (NSDate *)mt_endOfNextWeek;
@@ -220,6 +232,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfPreviousDay;
 - (NSDate *)mt_startOfCurrentDay;
 - (NSDate *)mt_startOfNextDay;
+
+- (NSDate *)mt_middleOfPreviousDay;
+- (NSDate *)mt_middleOfCurrentDay;
+- (NSDate *)mt_middleOfNextDay;
 
 - (NSDate *)mt_endOfPreviousDay;
 - (NSDate *)mt_endOfCurrentDay;
@@ -241,6 +257,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfCurrentHour;
 - (NSDate *)mt_startOfNextHour;
 
+- (NSDate *)mt_middleOfPreviousHour;
+- (NSDate *)mt_middleOfCurrentHour;
+- (NSDate *)mt_middleOfNextHour;
+
 - (NSDate *)mt_endOfPreviousHour;
 - (NSDate *)mt_endOfCurrentHour;
 - (NSDate *)mt_endOfNextHour;
@@ -259,6 +279,10 @@ static NSInteger const MTDateConstantHoursInDay        = 24;
 - (NSDate *)mt_startOfPreviousMinute;
 - (NSDate *)mt_startOfCurrentMinute;
 - (NSDate *)mt_startOfNextMinute;
+
+- (NSDate *)mt_middleOfPreviousMinute;
+- (NSDate *)mt_middleOfCurrentMinute;
+- (NSDate *)mt_middleOfNextMinute;
 
 - (NSDate *)mt_endOfPreviousMinute;
 - (NSDate *)mt_endOfCurrentMinute;

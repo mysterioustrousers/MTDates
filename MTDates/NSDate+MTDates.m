@@ -492,6 +492,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
+- (NSDate *)mt_middleOfPreviousYear
+{
+	[[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousYear] mt_middleOfCurrentYear];
+	[[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentYear
+{
+	[[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentYear];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentYear] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+	[[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextYear
+{
+	[[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextYear] mt_middleOfCurrentYear];
+	[[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
 - (NSDate *)mt_endOfPreviousYear
 {
 	[[NSDate sharedRecursiveLock] lock];
@@ -596,6 +623,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [[self mt_startOfCurrentMonth] mt_oneMonthNext];
 	[[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
+- (NSDate *)mt_middleOfPreviousMonth
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousMonth] mt_middleOfCurrentMonth];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentMonth
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentMonth];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentMonth] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextMonth
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextMonth] mt_middleOfCurrentMonth];
+    [[NSDate sharedRecursiveLock] unlock];
     return date;
 }
 
@@ -713,6 +767,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
+- (NSDate *)mt_middleOfPreviousWeek
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousWeek] mt_middleOfCurrentWeek];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentWeek
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentWeek];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentWeek] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextWeek
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextWeek] mt_middleOfCurrentWeek];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
 - (NSDate *)mt_endOfPreviousWeek
 {
 	[[NSDate sharedRecursiveLock] lock];
@@ -817,6 +898,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	[[NSDate sharedRecursiveLock] lock];
     NSDate *date = [[self mt_startOfCurrentDay] mt_oneDayNext];
 	[[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
+- (NSDate *)mt_middleOfPreviousDay
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousDay] mt_middleOfCurrentDay];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentDay
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentDay];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentDay] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextDay
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextDay] mt_middleOfCurrentDay];
+    [[NSDate sharedRecursiveLock] unlock];
     return date;
 }
 
@@ -931,6 +1039,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
+- (NSDate *)mt_middleOfPreviousHour
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousHour] mt_middleOfCurrentHour];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentHour
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentHour];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentHour] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextHour
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextHour] mt_middleOfCurrentHour];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
 - (NSDate *)mt_endOfPreviousHour
 {
 	[[NSDate sharedRecursiveLock] lock];
@@ -1040,6 +1175,33 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 }
 
 
+- (NSDate *)mt_middleOfPreviousMinute
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfPreviousMinute] mt_middleOfCurrentMinute];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfCurrentMinute
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *start = [self mt_startOfCurrentMinute];
+    NSTimeInterval timeInterval = [[self mt_endOfCurrentMinute] timeIntervalSinceDate:start];
+    NSDate *date = [start dateByAddingTimeInterval:timeInterval / 2.0];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+- (NSDate *)mt_middleOfNextMinute
+{
+    [[NSDate sharedRecursiveLock] lock];
+    NSDate *date = [[self mt_startOfNextMinute] mt_middleOfCurrentMinute];
+    [[NSDate sharedRecursiveLock] unlock];
+    return date;
+}
+
+
 - (NSDate *)mt_endOfPreviousMinute
 {
 	[[NSDate sharedRecursiveLock] lock];
@@ -1116,6 +1278,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 	[[NSDate sharedRecursiveLock] unlock];
     return minutes;
 }
+
 
 #pragma mark seconds
 

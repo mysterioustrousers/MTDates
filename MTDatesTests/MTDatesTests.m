@@ -325,6 +325,28 @@
 }
 
 
+- (void)test_middleOfPreviousYear
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/02/1985 12:59pm"];
+    XCTAssertEqualObjects([[date mt_middleOfPreviousYear] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfCurrentYear
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/02/1986 12:59pm"];
+    XCTAssertEqualObjects([[date mt_middleOfCurrentYear] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfNextYear
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/02/1987 12:59pm"];
+    XCTAssertEqualObjects([[date mt_middleOfNextYear] mt_startOfCurrentMinute], date2);
+}
+
+
 - (void)test_endOfPreviousYear
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
@@ -417,6 +439,28 @@
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"08/01/1986 12:00am"];
     XCTAssertEqualObjects([date mt_startOfNextMonth], date2);
+}
+
+
+- (void)test_middleOfPreviousMonth
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"06/15/1986 11:59pm"];
+    XCTAssertEqualObjects([[date mt_middleOfPreviousMonth] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfCurrentMonth
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/16/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfCurrentMonth] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfNextMonth
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"08/16/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfNextMonth] mt_startOfCurrentMinute], date2);
 }
 
 
@@ -516,6 +560,28 @@
 }
 
 
+- (void)test_middleOfPreviousWeek
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"7/2/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfPreviousWeek] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfCurrentWeek
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"7/09/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfCurrentWeek] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfNextWeek
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"7/16/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfNextWeek] mt_startOfCurrentMinute], date2);
+}
+
+
 - (void)test_endOfPreviousWeek
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
@@ -608,6 +674,28 @@
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/12/1986 12:00am"];
     XCTAssertEqualObjects([date mt_startOfNextDay], date2);
+}
+
+
+- (void)test_middleOfPreviousDay
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/10/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfPreviousDay] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfCurrentDay
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/11/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfCurrentDay] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfNextDay
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/12/1986 11:59am"];
+    XCTAssertEqualObjects([[date mt_middleOfNextDay] mt_startOfCurrentMinute], date2);
 }
 
 
@@ -704,6 +792,28 @@
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
     NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:00pm"];
     XCTAssertEqualObjects([date mt_startOfNextHour], date2);
+}
+
+
+- (void)test_middleOfPreviousHour
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/11/1986 10:29am"];
+    XCTAssertEqualObjects([[date mt_middleOfPreviousHour] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfCurrentHour
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    XCTAssertEqualObjects([[date mt_middleOfCurrentHour] mt_startOfCurrentMinute], date2);
+}
+
+- (void)test_middleOfNextHour
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
+    NSDate *date2 = [_formatter dateFromString:@"07/11/1986 12:29pm"];
+    XCTAssertEqualObjects([[date mt_middleOfNextHour] mt_startOfCurrentMinute], date2);
 }
 
 
