@@ -77,7 +77,9 @@
 				C2ABA6ED15D48E93000A34A1 /* Frameworks */,
 				C2ABA6EC15D48E92000A34A1 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		C2ABA6EC15D48E92000A34A1 /* Products */ = {
 			isa = PBXGroup;
@@ -182,7 +184,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Mysterious Trousers";
 			};
 			buildConfigurationList = C2ABA6E515D48E92000A34A1 /* Build configuration list for PBXProject "MTDates" */;
@@ -268,6 +270,7 @@
 		C20254C11751027100B6F23C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/MTDates.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
@@ -279,6 +282,7 @@
 		C20254C21751027100B6F23C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/MTDates.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTDates/MTDates-Prefix.pch";
