@@ -833,6 +833,15 @@
     XCTAssertEqualObjects([date mt_endOfCurrentHour], date2);
 }
 
+//- (void)test_endOfCurrentHourDST
+//{
+//    _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
+//    _formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+//    NSDate *date = [_formatter dateFromString:@"11/01/2015 02:30:00am"];
+//    NSDate *date2 = [_formatter dateFromString:@"11/01/2015 02:59:59am"];
+//    XCTAssertEqualObjects([date mt_endOfCurrentHour], date2);
+//}
+
 - (void)test_endOfNextHour
 {
     _formatter.dateFormat = @"MM/dd/yyyy hh:mm:ssa";
