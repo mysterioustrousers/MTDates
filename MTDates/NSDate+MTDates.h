@@ -19,11 +19,11 @@ typedef NS_ENUM(NSInteger, MTDateWeekNumberingSystem) {
     /**
      *  First week contains January 1st.
      */
-    MTDateWeekNumberingSystemUS       = 1,
+    MTDateWeekNumberingSystemUS = 1,
     /**
      *  First week contains january 4th.
      */
-    MTDateWeekNumberingSystemISO      = 4,
+    MTDateWeekNumberingSystemISO = 4,
     /**
      *  First week starts on January 1st, next on Jan 8th, etc.
      */
