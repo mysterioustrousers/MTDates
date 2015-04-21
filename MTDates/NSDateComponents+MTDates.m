@@ -81,25 +81,4 @@
   return era && year && month && month && day && hour && min && sec && wkday && wkOrd && quart && wkofM && wkofY && YfWoY;
 }
 
-#if MTDATES_NO_PREFIX
-
-#pragma mark - NO PREFIX
-
-+ (NSDateComponents *)componentsFromString:(NSString *)string
-{
-    return [self mt_componentsFromString:string];
-}
-
-- (NSString *)stringValue
-{
-    return [self mt_stringValue];
-}
-
-- (BOOL)isEqualToDateComponents:(NSDateComponents *)components
-{
-    return [self mt_isEqualToDateComponents:components];
-}
-
-#endif
-
 @end

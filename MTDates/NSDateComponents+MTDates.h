@@ -21,14 +21,4 @@
 - (NSString *)mt_stringValue;
 - (BOOL)mt_isEqualToDateComponents:(NSDateComponents *)components;
 
-#if MTDATES_NO_PREFIX
-
-#pragma mark - NO PREFIX
-
-+ (NSDateComponents *)componentsFromString:(NSString *)string;
-- (NSString *)stringValue;
-- (BOOL)isEqualToDateComponents:(NSDateComponents *)components;
-
-#endif
-
 @end
