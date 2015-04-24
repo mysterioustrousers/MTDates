@@ -4,18 +4,7 @@ MTDates
 [![Version](http://cocoapod-badges.herokuapp.com/v/MTDates/badge.png)](http://cocoadocs.org/docsets/MTDates)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/MTDates/badge.png)](http://cocoadocs.org/docsets/MTDates)
 
-
 MTDates is a category on NSDate that makes common date calculations super easy.
-
-### Method Prefixing
-
-I'm sorry to anyone I've inconvenienced by adding the `mt_` prefix to all category methods. I believe it's popular convention for category methods and it's not
-totally unreasonable to imagine Apple might add one of these methods to NSDate. I thought it to be the proper thing to do and I figured I'd better do it sooner
-than later. I hope you understand. Thanks for using the project and for your support.
-
-To use the library without the need to prefix the methods, add `MTDATES_NO_PREFIX=1` to your Target's Preprocessor Macros in the Build Settings; or add `#define MTDATES_NO_PREFIX 1` to your target's .pch file.
-
-You can use the `post_install` hook to modify the xcconfig on `pod install` to include this macro explained here: http://stackoverflow.com/questions/18503620/specifying-gcc-preprocessor-definitions-for-a-cocoapod-from-podfile
 
 ### Installation
 
