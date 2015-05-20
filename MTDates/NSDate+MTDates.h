@@ -6,6 +6,7 @@
 //  Copyright 2011 Mysterious Trousers, LLC. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 
 /**
  *  Week numbering systems.
