@@ -896,7 +896,12 @@
     XCTAssertEqual([date2 mt_hoursUntilDate:date], 4);
 }
 
+#pragma mark - SECONDS
 
+- (void)test_oneSecondNext {
+    NSDate *date = [NSDate date];
+    XCTAssertEqual([date.mt_oneSecondNext timeIntervalSinceDate:date], 1);
+}
 
 #pragma mark - COMPARES
 

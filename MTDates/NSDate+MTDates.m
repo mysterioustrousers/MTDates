@@ -1302,7 +1302,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 - (NSDate *)mt_oneSecondNext
 {
 	[[NSDate sharedRecursiveLock] lock];
-    NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:-1];
+    NSDate *date = [self mt_dateByAddingYears:0 months:0 weeks:0 days:0 hours:0 minutes:0 seconds:1];
 	[[NSDate sharedRecursiveLock] unlock];
     return date;
 }
