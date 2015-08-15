@@ -49,28 +49,28 @@ typedef NS_ENUM(NSInteger, MTDateHourFormat) {
  */
 
 // This is exact.
-static NSInteger const MTDateConstantSecondsInMinute   = 60;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInMinute;
 
 // This is exact.
-static NSInteger const MTDateConstantSecondsInHour     = 60 * 60;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInHour;
 
 // This is not always true. Leap year/DST.
-static NSInteger const MTDateConstantSecondsInDay      = 60 * 60 * 24;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInDay;
 
 // This is not always true. Leap year/DST.
-static NSInteger const MTDateConstantSecondsInWeek     = 60 * 60 * 24 * 7;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInWeek;
 
 // This is an approximation and rarely true.
-static NSInteger const MTDateConstantSecondsInMonth    = 60 * 60 * 24 * 7 * 30;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInMonth;
 
 // This is true 3 out of 4 years. Leap years have 366 days.
-static NSInteger const MTDateConstantSecondsInYear     = 60 * 60 * 24 * 7 * 365;
+FOUNDATION_EXPORT NSInteger const MTDateConstantSecondsInYear;
 
 // This is exact.
-static NSInteger const MTDateConstantDaysInWeek        = 7;
+FOUNDATION_EXPORT NSInteger const MTDateConstantDaysInWeek;
 
 // This is not always true. Daylight savings time can increate/decrease a days hours by 1.
-static NSInteger const MTDateConstantHoursInDay        = 24;
+FOUNDATION_EXPORT NSInteger const MTDateConstantHoursInDay;
 
 
 

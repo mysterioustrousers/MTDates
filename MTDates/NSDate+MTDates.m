@@ -26,6 +26,14 @@ static MTDateWeekNumberingSystem    __weekNumberingSystem   = 0;
 static NSDateFormatterStyle         __dateStyle             = NSDateFormatterShortStyle;
 static NSDateFormatterStyle         __timeStyle             = NSDateFormatterShortStyle;
 
+NSInteger const MTDateConstantSecondsInMinute   = 60;
+NSInteger const MTDateConstantSecondsInHour     = 60 * 60;
+NSInteger const MTDateConstantSecondsInDay      = 60 * 60 * 24;
+NSInteger const MTDateConstantSecondsInWeek     = 60 * 60 * 24 * 7;
+NSInteger const MTDateConstantSecondsInMonth    = 60 * 60 * 24 * 7 * 30;
+NSInteger const MTDateConstantSecondsInYear     = 60 * 60 * 24 * 7 * 365;
+NSInteger const MTDateConstantDaysInWeek        = 7;
+NSInteger const MTDateConstantHoursInDay        = 24;
 
 + (NSDateFormatter *)mt_sharedFormatter
 {
