@@ -9,5 +9,6 @@ Pod::Spec.new do |s|
   s.source_files 	= 'MTDates/*.{h,m}'
   s.ios.deployment_target = "7.0"
   s.osx.deployment_target = "10.8"
+  s.tvos.deployment_target = "9.0"
   s.requires_arc 	= true
 end
