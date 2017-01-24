@@ -1189,6 +1189,62 @@
     [NSDate mt_setFirstDayOfWeek:1];
 }
 
+- (void)test_firstDayOfWeek2
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
+    
+    [NSDate mt_setFirstDayOfWeek:1];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:2];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:3];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:4];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:5];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:6];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:7];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:1];
+}
+
 - (void)test_firstWeekOfYear
 {
     NSDate *date = nil;

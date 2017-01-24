@@ -388,6 +388,7 @@ NSInteger const MTDateConstantHoursInDay        = 24;
     NSInteger weekdayOfWeek = [[NSDate mt_calendar] ordinalityOfUnit:NSCalendarUnitWeekday
                                                                inUnit:NSCalendarUnitWeekOfYear
                                                               forDate:self];
+	weekdayOfWeek += [[NSDate mt_calendar] firstWeekday] - 1;
 	[[NSDate sharedRecursiveLock] unlock];
     return weekdayOfWeek;
 }
@@ -748,7 +749,7 @@ NSInteger const MTDateConstantHoursInDay        = 24;
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSInteger weekday = [self mt_weekdayOfWeek];
-    NSDate *date = [self mt_dateDaysAfter:-(weekday - 1)];
+    NSDate *date = [self mt_dateDaysAfter:-(weekday - [[NSDate mt_calendar] firstWeekday])];
     NSDate *startOfCurrentWeek = [NSDate mt_dateFromYear:[date mt_year]
                                                    month:[date mt_monthOfYear]
                                                      day:[date mt_dayOfMonth]
