@@ -256,6 +256,32 @@
     XCTAssertEqual([date mt_weekdayOfWeek], 6);
 }
 
+- (void)test_weekdayOfWeekRemainsTheSameInSpiteOfFirstDayOfAWeek
+{
+    NSDate *date = [_formatter dateFromString:@"10/09/2014 05:00am"]; // Thursday
+
+    [NSDate mt_setFirstDayOfWeek:1];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:2];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:3];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:4];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:5];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:6];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+
+    [NSDate mt_setFirstDayOfWeek:7];
+    XCTAssertEqual([date mt_weekdayOfWeek], 5);
+}
+
 - (void)test_monthOfYear
 {
     NSDate *date = [_formatter dateFromString:@"07/11/1986 11:29am"];
@@ -1163,29 +1189,102 @@
 
 - (void)test_firstDayOfWeek
 {
-    NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
+    /*
+     *     August 2012
+     * Su Mo Tu We Th Fr Sa
+     *           1  2  3  4
+     *  5  6  7  8  9 10 11
+     * 12 13 14 15 16 17 18
+     * 19 20 21 22 23 24 25
+     * 26 27 28 29 30 31
+     */
+
+    NSDate *date = [_formatter dateFromString:@"08/20/2012 09:23am"];
     
     [NSDate mt_setFirstDayOfWeek:1];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Sun");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:19]);
 
     [NSDate mt_setFirstDayOfWeek:2];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Mon");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:20]);
 
     [NSDate mt_setFirstDayOfWeek:3];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Tue");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:14]);
 
     [NSDate mt_setFirstDayOfWeek:4];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Wed");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:15]);
 
     [NSDate mt_setFirstDayOfWeek:5];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Thu");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:16]);
 
     [NSDate mt_setFirstDayOfWeek:6];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Fri");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:17]);
 
     [NSDate mt_setFirstDayOfWeek:7];
     XCTAssertEqualObjects([[date mt_startOfCurrentWeek] mt_stringFromDateWithShortWeekdayTitle], @"Sat");
+    XCTAssertEqualObjects([date mt_startOfCurrentWeek], [NSDate mt_dateFromYear:2012 month:8 day:18]);
 
+    [NSDate mt_setFirstDayOfWeek:1];
+}
+
+- (void)test_firstDayOfWeek2
+{
+    NSDate *date = [_formatter dateFromString:@"07/11/1986 09:23am"];
+    
+    [NSDate mt_setFirstDayOfWeek:1];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:2];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:3];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:4];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:5];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:6];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
+    [NSDate mt_setFirstDayOfWeek:7];
+    XCTAssertEqualObjects([NSDate mt_dateFromYear:[date mt_year]
+                                            week:[date mt_weekOfYear]
+                                         weekday:[date mt_weekdayOfWeek]
+                                            hour:[date mt_hourOfDay]
+                                          minute:[date mt_minuteOfHour]], date);
+    
     [NSDate mt_setFirstDayOfWeek:1];
 }
 
