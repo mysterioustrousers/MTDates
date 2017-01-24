@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37F0404F1E37B7C500548C03 /* MTDates.h in Headers */ = {isa = PBXBuildFile; fileRef = 37F0404D1E37B7C500548C03 /* MTDates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37F040531E37B80B00548C03 /* NSDate+MTDates.h in Headers */ = {isa = PBXBuildFile; fileRef = C2ABA72215D490B4000A34A1 /* NSDate+MTDates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37F040541E37B80B00548C03 /* NSDateComponents+MTDates.h in Headers */ = {isa = PBXBuildFile; fileRef = C295B6E71607892000F4221C /* NSDateComponents+MTDates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37F040551E37B81D00548C03 /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
+		37F040561E37B81D00548C03 /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
+		37F040581E37B82B00548C03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F040571E37B82B00548C03 /* Foundation.framework */; };
 		C20254BB1751027100B6F23C /* NSDate+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ABA72315D490B4000A34A1 /* NSDate+MTDates.m */; };
 		C20254BC1751027100B6F23C /* NSDateComponents+MTDates.m in Sources */ = {isa = PBXBuildFile; fileRef = C295B6E81607892000F4221C /* NSDateComponents+MTDates.m */; };
 		C20254BE1751027100B6F23C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ABA6EE15D48E93000A34A1 /* Foundation.framework */; };
@@ -32,6 +38,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		37F0404B1E37B7C500548C03 /* MTDates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MTDates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F0404D1E37B7C500548C03 /* MTDates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDates.h; sourceTree = "<group>"; };
+		37F0404E1E37B7C500548C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37F040571E37B82B00548C03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C20254C31751027100B6F23C /* libMTDates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTDates.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MTDatesTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26C5BCD18E20C66005687F0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -49,6 +59,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37F040471E37B7C500548C03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F040581E37B82B00548C03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C20254BD1751027100B6F23C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,11 +87,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37F0404C1E37B7C500548C03 /* MTDates-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				37F0404D1E37B7C500548C03 /* MTDates.h */,
+				37F0404E1E37B7C500548C03 /* Info.plist */,
+			);
+			path = "MTDates-iOS";
+			sourceTree = "<group>";
+		};
 		C2ABA6E015D48E92000A34A1 = {
 			isa = PBXGroup;
 			children = (
 				C2ABA6F015D48E93000A34A1 /* MTDates */,
 				C2ABA70515D48E93000A34A1 /* MTDatesTests */,
+				37F0404C1E37B7C500548C03 /* MTDates-iOS */,
 				C2ABA6ED15D48E93000A34A1 /* Frameworks */,
 				C2ABA6EC15D48E92000A34A1 /* Products */,
 			);
@@ -86,6 +114,7 @@
 			children = (
 				C20254C31751027100B6F23C /* libMTDates.a */,
 				C21CB4E017512BFA0082CB97 /* MTDatesTests-OSX.xctest */,
+				37F0404B1E37B7C500548C03 /* MTDates.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +122,7 @@
 		C2ABA6ED15D48E93000A34A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37F040571E37B82B00548C03 /* Foundation.framework */,
 				C26C5BCD18E20C66005687F0 /* XCTest.framework */,
 				C2ABA6EE15D48E93000A34A1 /* Foundation.framework */,
 				C2ABA6FF15D48E93000A34A1 /* UIKit.framework */,
@@ -141,7 +171,38 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		37F040481E37B7C500548C03 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F0404F1E37B7C500548C03 /* MTDates.h in Headers */,
+				37F040531E37B80B00548C03 /* NSDate+MTDates.h in Headers */,
+				37F040541E37B80B00548C03 /* NSDateComponents+MTDates.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		37F0404A1E37B7C500548C03 /* MTDates-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37F040521E37B7C500548C03 /* Build configuration list for PBXNativeTarget "MTDates-iOS" */;
+			buildPhases = (
+				37F040461E37B7C500548C03 /* Sources */,
+				37F040471E37B7C500548C03 /* Frameworks */,
+				37F040481E37B7C500548C03 /* Headers */,
+				37F040491E37B7C500548C03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MTDates-iOS";
+			productName = "MTDates-iOS";
+			productReference = 37F0404B1E37B7C500548C03 /* MTDates.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		C20254B91751027100B6F23C /* MTDates */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C20254C01751027100B6F23C /* Build configuration list for PBXNativeTarget "MTDates" */;
@@ -186,6 +247,12 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Mysterious Trousers";
+				TargetAttributes = {
+					37F0404A1E37B7C500548C03 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = C2ABA6E515D48E92000A34A1 /* Build configuration list for PBXProject "MTDates" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -201,11 +268,19 @@
 			targets = (
 				C20254B91751027100B6F23C /* MTDates */,
 				C21CB4CF17512BFA0082CB97 /* MTDatesTests */,
+				37F0404A1E37B7C500548C03 /* MTDates-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		37F040491E37B7C500548C03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C21CB4DA17512BFA0082CB97 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +308,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37F040461E37B7C500548C03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F040551E37B81D00548C03 /* NSDate+MTDates.m in Sources */,
+				37F040561E37B81D00548C03 /* NSDateComponents+MTDates.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C20254BA1751027100B6F23C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +351,101 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		37F040501E37B7C500548C03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MTDates-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mysterioustrousers.MTDates-iOS";
+				PRODUCT_NAME = MTDates;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		37F040511E37B7C500548C03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MTDates-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mysterioustrousers.MTDates-iOS";
+				PRODUCT_NAME = MTDates;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		C20254C11751027100B6F23C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -382,6 +561,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37F040521E37B7C500548C03 /* Build configuration list for PBXNativeTarget "MTDates-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37F040501E37B7C500548C03 /* Debug */,
+				37F040511E37B7C500548C03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C20254C01751027100B6F23C /* Build configuration list for PBXNativeTarget "MTDates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
