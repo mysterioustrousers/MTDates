@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.8"
   s.tvos.deployment_target = "9.0"
   s.requires_arc 	= true
+  s.prefix_header_contents = "#define MTDATES_NO_PREFIX (TRUE)"
 end
